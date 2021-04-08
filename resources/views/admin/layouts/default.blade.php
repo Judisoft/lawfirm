@@ -9,7 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>
         @section('title')
-            | Ebai Law Firm
+          Admin  | Ebai Law Firm
         @show
     </title>
 

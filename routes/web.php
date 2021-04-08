@@ -349,7 +349,7 @@ Route::get(
             'Funds Practice',
             'International arbitration'
     ];
-        $countries = Country::all()->pluck('name', 'sortname')->toArray();
+        $countries = Country::all();
         return view('index', compact('data', 'countries'));
     }]
 );
@@ -366,5 +366,18 @@ Route::get('news/{news}', 'NewsController@show')->name('news.show');
 Route::get('{name?}', 'FrontEndController@showFrontEndView');
 Route::get('about_us', 'FrontEndController@about')->name('about');
 Route::get('services', 'FrontEndController@services')->name('services');
-//Route::get('consultation', 'FrontEndController@consulation')->name('consultation');
+//Route::post('index', 'FrontEndController@appointment');
+Route::post('my-account', 'FrontEndController@newsletter');
 // End of frontend views
+//partners
+Route::get('partners', 'FrontEndController@partners')->name('partners');
+//Services routes
+Route::get('services/real_estate', 'ServicesController@realEstate')->name('real_estate');
+Route::get('services/general_litigation', 'ServicesController@generalLitigation')->name('general_litigation');
+Route::get('services/corporate_and_finance_law', 'ServicesController@corporateAndFinanceLaw')->name('corporate_and_finance_law');
+Route::get('services/labour_and_industrial_law', 'ServicesController@labourAndIndustrialLaw')->name('labour_and_industrial_law');
+Route::get('services/legal_advisory', 'ServicesController@legalAdvisory')->name('legal_advisory');
+Route::get('services/consumer_protection_law', 'ServicesController@consumerProtectionLaw')->name('consumer_protection_law');
+Route::get('services/international_trade_law', 'ServicesController@internationalTradeLaw')->name('international_trade');
+Route::get('services/entertainment_and_sports', 'ServicesController@entertainmentAndSportsLaw')->name('entertainment_and_sports_law');
+

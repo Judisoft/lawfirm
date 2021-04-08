@@ -140,141 +140,51 @@ Josh Admin Template
     </div>
     <!--/row-->
     <div class="row ">
-        <div class="col-md-12 col-sm-12 col-lg-8 col-12 no_padding">
+        <div class="col-md-12 col-sm-12 col-lg-12 col-12 no_padding">
             <div class="row">
                 <div class="col-md-12 col-lg-12 col-12">
-                    <div class="card card-border main_chart">
-                        <div class="card-header bg-white">
-                            <span>
-                                <i class="livicon" data-name="barchart" data-size="16" data-loop="true" data-c="#EF6F6C"
-                                    data-hc="#EF6F6C"></i> Users Stats
-                            </span>
-                        </div>
-                        <div class="card-body">
-                            {!! $users_chart->container() !!}
+                     <div class="card ">
+            <div class="card-header bg-primary text-white">
+                <h3 class="card-title my-2 float-left"> <i class="livicon" data-name="users" data-size="16" data-loop="true" data-c="#fff" data-hc="white"></i>
+                    Appointments
+                </h3>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive-lg table-responsive-sm table-responsive-md">
+                <table class="table table-bordered table-hover table-striped width100">
+                    <thead>
+                        <tr class="filters">
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Country</th>
+                            <th>City</th>
+                            <th>Telephone</th>
+                            <th>Website</th>
+                            <th>Service Requested</th>
+                            <th>Preference</th>
+                            <th>Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($appointments as $appointment)
+                            <td>{{$appointment->id}}</td>
+                            <td>{{$appointment->name}}</td>
+                            <td>{{$appointment->email}}</td>
+                            <td>{{$appointment->country}}</td>
+                            <td>{{$appointment->city}}</td>
+                            <td>{{$appointment->telephone}}</td>
+                            <td>{{$appointment->website}}</td>
+                            <td>{{$appointment->service}}</td>
+                            <td>{{$appointment->service_type}}</td>
+                            <td>{{$appointment->consultation_time}}</td>
+                    </tbody>
+                    @endforeach
+                </table>
 
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-6 col-12 my-3">
-                    <div class="card card-border roles_chart">
-
-                        <div class="card-header">
-                            <h4 class="card-title">
-                                <i class="livicon" data-name="users" data-size="16" data-loop="true" data-c="#F89A14"
-                                    data-hc="#F89A14"></i>
-                                User Roles
-                            </h4>
-
-                        </div>
-                        <div class="card-body nopadmar">
-                            {!! $user_roles->container() !!}
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-6 col-sm-6 col-12 my-3 ">
-                    <div class="card card-border">
-                        <div class="card-header">
-                            <h4 class="card-title">
-                                <i class="livicon" data-name="barchart" data-size="16" data-loop="true" data-c="#67C5DF"
-                                    data-hc="#67C5DF"></i>
-                                Yearly visitors
-                            </h4>
-
-                        </div>
-                        <div class="card-body nopadmar">
-                            <div id="bar_chart"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-12 col-lg-12 col-12">
-                    <div class="card card-border map">
-
-                        <div class="card-header">
-                            <h3 class="card-title">
-                                <i class="livicon" data-name="map" data-size="16" data-loop="true" data-c="#515763"
-                                    data-hc="#515763"></i>
-                                User Types
-                            </h3>
-
-                        </div>
-                        <div class="card-body nopadmar">
-                            <div id="donut_chart"></div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-lg-4 col-md-12 col-sm-12 col-12 my-lg-0 my-3 my-md-3 my-sm-0">
-            <div class="card card-border">
-                <div class="card-header border-light bg-white">
-                    <span>
-                        <i class="livicon" data-name="users" data-size="18" data-color="#00bc8c" data-hc="#00bc8c"
-                            data-l="true"></i>
-                        Recent Users
-                    </span>
-                </div>
-                <div class="card-body nopadmar users">
-                    @foreach($users as $user )
-                    <div class="media">
-                        <div>
-                            @if($user->pic)
-                            <img src="{{ $user->pic }}" class="media-object rounded-circle">
-                            @else
-                            <img src="{{ asset('images/authors/no_avatar.jpg') }}" class="media-object rounded-circle">
-                            @endif
-                        </div>
-                        <div class="media-body ml-3">
-                            <h5 class="media-heading">{{ $user->full_name }}</h5>
-                            <p>{{ $user->email }} <span
-                                    class="user_create_date float-right">{{ $user->created_at->format('d M') }} </span>
-                            </p>
-                        </div>
-                    </div>
-                    @endforeach
-
-                </div>
-            </div>
-            <div class="card card-border my-3">
-                <div class="card-header">
-                    <h4 class="card-title">
-                        <i class="livicon" data-name="eye-open" data-size="16" data-loop="true" data-c="#EF6F6C"
-                            data-hc="#EF6F6C"></i>
-                        This week visitors
-                    </h4>
-
-                </div>
-                <div class="card-body nopadmar">
-                    <div id="visitors_chart"></div>
-                </div>
-            </div>
-            <div class="card card-border">
-                <div class="card-header border-light">
-                    <h3 class="card-title">
-                        <i class="livicon" data-name="pen" data-size="16" data-color="#00bc8c" data-hc="#00bc8c"
-                            data-l="true"></i>
-                        Recent Blogs
-                    </h3>
-                </div>
-                <div class="card-body nopadmar blogs">
-                    @foreach($blogs as $blog )
-                    <div class="media">
-                        <div>
-                            @if($blog->author->pic)
-                            <img src="{{  $blog->author->pic }}" class="media-object rounded-circle">
-                            @else
-                            <img src="{{ asset('images/authors/no_avatar.jpg') }}" class="media-object rounded-circle">
-                            @endif
-                        </div>
-
-                        <div class="media-body ml-3">
-                            <h5 class="media-heading">{{ $blog->title }}</h5>
-                            <p>category: {{ $blog->category->title }} <span class="user_create_date float-right">by
-                                    {{ $blog->author->full_name }} </span></p>
-                        </div>
-                    </div>
-                    @endforeach
-
                 </div>
             </div>
         </div>

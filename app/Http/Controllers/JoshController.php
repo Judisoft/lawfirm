@@ -11,6 +11,7 @@ use Spatie\Activitylog\Models\Activity;
 use Yajra\DataTables\DataTables;
 use App\Charts\Highcharts;
 use App\Models\User;
+use App\Models\Consultation;
 use Illuminate\Support\Facades\DB;
 use Spatie\Analytics\Period;
 use File;
@@ -188,9 +189,11 @@ class JoshController extends Controller
             ]
         );
 
+        $appointments = Consultation::orderBy('id', 'desc')->get();
+
         //finally return view
         if (Sentinel::check()) {
-            return view('admin.index1', compact('analytics_error', 'users_chart', 'blog_count', 'user_count', 'users', 'blogs', 'visitors', 'pageVisits', 'month_visits', 'year_visits', 'user_roles', 'userTypes'));
+            return view('admin.index1', compact('analytics_error', 'users_chart', 'blog_count', 'user_count', 'users', 'blogs', 'visitors', 'pageVisits', 'month_visits', 'year_visits', 'user_roles', 'userTypes', 'appointments'));
         } else {
             return redirect('admin/signin')->with('error', 'You must be logged in!');
         }

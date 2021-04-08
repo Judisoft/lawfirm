@@ -8,21 +8,41 @@
 {{-- page level styles --}}
 @section('header_styles')
     <!--page level css starts-->
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css" >
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <!--end of page level css-->
 @stop
 <!--  Main banner section -->
+<style>
+.fa-3x{
+    font-size: 48px !important;
+}
+.text-blue{
+    color: #066BAE !important;
+}
+.circle-icon {
+    background: #062940;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 100px;
+    vertical-align: middle;
+    padding: 30px;
+}
+</style>
 @section('content')
 <main>
     <!--? slider Area Start-->
     <div class="slider-area ">
         <div class="slider-active">
             <!-- Single Slider -->
-            <div class="single-slider hero-overly slider-height2 d-flex align-items-center" data-background="{{('img/hero/about1.png')}}">
+            <div class="single-slider hero-overly slider-height2 d-flex align-items-center" data-background="{{asset('img/hero/about1.png')}}">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-9 col-lg-9">
                             <div class="hero__caption">
-                                <h1>Ebai & Associates <br><span>Law Firm</span></h1>
+                                <h1>EBAI<br><span>Law Firm</span></h1>
                             </div>
                             <!--Hero form -->
                             <form action="#" class="search-box">
@@ -30,12 +50,12 @@
                                     <input type="text" placeholder="How can we help you?">
                                 </div>
                                 <div class="search-form">
-                                    <a href="#">FIND OUT!</a>
+                                    <a href="https://direct.lc.chat/12675303/"><i class="icon-speech fa-2x px-2"></i>FIND OUT</a>
                                 </div>	
                             </form>	
                             <!-- Hero Pera -->
                             <div class="hero-pera">
-                                <p>For all inquiries</p>
+                                <p>For all inquiries, Leave us a message</p>
                             </div>
                         </div>
                     </div>
@@ -99,47 +119,65 @@
             </div>
             <div class="row">
                 <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="single-cat text-center mb-50">
-                        <div class="cat-icon">
-                            <span class="flaticon-shipped"></span>
-                        </div>
-                        <div class="cat-cap">
-                            <h5><a href="services.html">Real Estate Law</a></h5>
-                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-                                molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
-                                numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
+                    <div class="single-cat text-center">
+                        <div class="cat-cap pt-3">
+                            <h5><a href="{{route('real_estate')}}">Property and Real Estate Law</a></h5>
+                            <p>@php 
+                                    $realEstate = "At EBAI Law Firm, our lawyers are highly experienced in property 
+                                                    and real estate law matters spanning Advisory, Advocacy, Transactional,
+                                                     Managerial, and Regulatory services.
+                                                    With over decades of experience, our lawyers are ready to provide the premium legal 
+                                                    service you need in your property and real estate matters, including but not limited to:
+                                                    Investigation of title to land.
+                                                    Preparation and review of land documents.
+                                                    Dispute Resolution in land matters.
+                                                    Acquisition and sale of properties.
+                                                    Commercial property transaction.
+                                                    Property development.
+                                                    Leasehold and tenancy agreement.
+                                                    Perfection and Registration of Title.
+                                                    Estate management.
+                                                    Recovery of Premises.
+                                                    Mortgages.";
+                                    echo substr($realEstate, 0, 600)."...";
+                                @endphp
                             </p>
-                            <a class="btn" href="#"> Read More</a>
+                            <a class="btn" href="{{route('real_estate')}}"> Read More</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="single-cat text-center mb-50">
-                        <div class="cat-icon">
-                            <span class="flaticon-ship"></span>
-                        </div>
-                        <div class="cat-cap">
-                            <h5><a href="services.html">Finance Law</a></h5>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-                                molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
-                                numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
+                    <div class="single-cat text-center shadow">
+                        <div class="cat-cap pt-3">
+                            <h5><a>Corporate, Securities and Finance Law</a></h5>
+                            <p>
+                                @php
+                                    $financeLaw = "At EBAI Law Firm, complex issues relating to corporate practice, securities and finance are handled with utmost dexterity that leaves our clients beaming with satisfaction.
+                                                    We offer a variety of services to our clients in areas ranging from Pre-incorporation of business organizations such as enterprises or sole proprietorship, partnership,private limited companies , public limited companies companies limited by shares, companies limited by guarantee, unlimited companies, and incorporated trustees, to incorporation and post-incorporation matters.
+                                                    Company contracts, company securities, filing of annual returns, corporate restructuring, company proceedings, winding up of companies, and of course, matters involving incorporated trustees are part of our practice areas, including aiding our clients in settlement of investment disputes as well as counselling on the legal aspects of financial and corporate matters both in Cameroon and Nigeria.
+                                                    ";
+
+                                      echo substr($financeLaw, 0, 500)."...";
+                                @endphp
                             </p>
-                            <a class="btn" href="#"> Read More</a>
+                            <a class="btn" href="{{route('corporate_and_finance_law')}}"> Read More</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="single-cat text-center mb-50">
-                        <div class="cat-icon">
-                            <span class="flaticon-plane"></span>
-                        </div>
-                        <div class="cat-cap">
-                            <h5><a href="services.html">General Litigation</a></h5>
-                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-                                molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
-                                numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
+                    <div class="single-cat text-center">
+                        <div class="cat-cap pt-3">
+                            <h5><a>Criminal and Civil Litigation</a></h5>
+                             <p>
+                                @php 
+                                    $generalLitigation = "EBAI Law Firm is concerned with the welfare of our clients, subsequently, our goal is to achieve solutions, solve problems and provide practical pieces of advice to clients with cases either civil or criminal.
+                                                    The firm prides itself on being the leading firm handling cases both criminal and civil proficiently.
+                                                    Already existing clients can attest to the fact that all briefs brought to the firm are treated with the expertise and skill they deserve.
+                                                    Wondering whether your matter is civil or criminal in nature? Leave that to us and be completely assured that the brief would be analyzed expertly and executed with the necessary acumen by our veteran lawyers.";
+                                    echo substr($generalLitigation, 0, 450)."...";
+                                @endphp
                             </p>
-                            <a class="btn" href="#"> Read More</a>
+                            <a class="btn" href="{{route('general_litigation')}}"> Read More</a>
                         </div>
                     </div>
                 </div>
@@ -156,7 +194,7 @@
                         <!-- Section Tittle -->
                         <div class="section-tittle mb-35">
                             <span>About Our Law Firm</span>
-                            <h2>Ebai and Associates Law Firm</h2>
+                            <h2>Ebai Law Firm</h2>
                         </div>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
                             molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
@@ -185,7 +223,7 @@
     </div>
     <!-- About Area End -->
     <!--? contact-form start -->
-    <section class="contact-form-area section-bg  pt-115 pb-120 fix" data-background="{{asset('img/gallery/section_bg02.jpg')}}">
+    <section class="contact-form-area section-bg  pt-115 pb-120 fix" data-background="{{asset('img/gallery/section_bg03.jpg')}}">
         <div class="container">
             <div class="row justify-content-end">
                 <!-- Contact wrapper -->
@@ -198,83 +236,138 @@
                                 <div class="section-tittle mb-50">
                                     <span>Book a Free Consultation</span>
                                     <h2>Request Consulation</h2>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-                                        molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
-                                        numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
+                                    <p>
+                                        Fill the Web Form below to request a free Legal consultation appointment
                                     </p>
+                                        @if(session()->has('success'))
+                                               <script type="text/javascript">
+                                                    $(document).ready(function() {
+                                                        $('#popupmodal').modal();
+                                                    });
+                                                </script>
+                                                
+                                            <div class="modal fade" id="popupmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-body">
+                                                                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            <p class="text-center">
+                                                                <span class="fa fa-check-circle fa-3x"></span>
+                                                                {{Session::get('success')}}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
+
+                                        @if(session()->has('error'))
+                                            <script type="text/javascript">
+                                                    $(document).ready(function() {
+                                                        $('#popupmodal').modal();
+                                                    });
+                                                </script>
+                                                
+                                            <div class="modal fade" id="popupmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-body">
+                                                        <p class="text-center">
+                                                            <span class="fa fa-check-circle fa-3x"></span>
+                                                            {{Session::get('error')}}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
                                 </div>
                             </div>
                         </div>
                         <!-- form -->
-                        <form action="#" class="contact-form">
+                        <form action="{{route('my-account')}}" class="contact-form" method="POST">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                             <div class="row ">
                                 <div class="col-lg-6 col-md-6">
                                     <div class="input-form">
-                                        <input type="text" placeholder="Name">
+                                        <input type="text" name="name" placeholder="Name">
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6">
                                     <div class="input-form">
-                                        <input type="text" placeholder="Email">
+                                        <input type="email" name="email" placeholder="Email">
                                     </div>
                                 </div>
                                  <div class="col-lg-12">
-                                    <div class="select-items">
-                                        <select name="select" id="select1">
-                                                <option value="">Select Country</option>
-                                            @foreach ($countries as $country)
-                                                <option value="">{{$country}}</option>
-                                            @endforeach
-                                        </select>
+                                    <div class="input-form">
+                                        <input type="text" name="country" placeholder="Country">
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
                                     <div class="input-form">
-                                        <input type="text" placeholder="Contact Number">
+                                        <input type="text" name="telephone" placeholder="Telephone">
+                                    </div>
+                                </div>
+                                   <div class="col-lg-12">
+                                    <div class="input-form">
+                                        <input type="text" name="company" placeholder="Company">
+                                    </div>
+                                </div>
+                                   <div class="col-lg-12">
+                                    <div class="input-form">
+                                        <input type="text" placeholder="Website">
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6">
                                     <div class="input-form">
-                                        <input type="text" placeholder="Town/City of Residence">
+                                        <input type="text" name="city" placeholder="Town/City of Residence">
                                     </div>
                                 </div>
                                    <div class="col-lg-6">
                                     <div class="select-items">
-                                        <select name="select" id="select1">
+                                        <select name="service">
                                                 <option value="">Select Service Type</option>
                                             @foreach ($data as $service)
-                                                <option value="">{{$service}}</option>
+                                                <option value="{{$service}}">{{$service}}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                 </div>
+                                   <!-- Radio Button -->
+                                <div class="col-lg-12">
+                                     <h5>I prefer</h5>
+                                    <div class="select-items">
+                                        <select name="service_type">
+                                                <option value="">Choose Delivery Method</option>
+                                                <option value="In-Person">In-Person</option>
+                                                <option value="Online">Online</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                  <div class="col-lg-12">
+                                     <h5>Choose Consultation Date</h5>
+                                    <div class="select-items">
+                                        <input type="date" name="consultation_date">
+                                    </div>
+                                </div>
+                                <!-- Button -->
                                 <!-- Radio Button -->
                                 <div class="col-lg-12">
-                                     <h5>Office Consulation Hours</h5>
-                                    <div class="radio-wrapper mb-30 mt-15">
-                                        <div class="select-radio">
-                                            <div class="radio">
-                                                <input id="radio-1" name="radio" type="radio" checked="">
-                                                <label for="radio-1" class="radio-label">8am - 10am</label>
-                                            </div>
-                                            <div class="radio">
-                                                <input id="radio-2" name="radio" type="radio">
-                                                <label for="radio-2" class="radio-label">10:30am - 12:30pm</label>
-                                            </div>
-                                            <div class="radio">
-                                                <input id="radio-4" name="radio" type="radio">
-                                                <label for="radio-4" class="radio-label">2pm - 4pm</label>
-                                            </div>
-                                            <div class="radio">
-                                                <input id="radio-5" name="radio" type="radio">
-                                                <label for="radio-5" class="radio-label">4:30pm - 6pm</label>
-                                            </div>
-                                        </div>
-                                    </div> 
+                                     <h5>Choose Consultation Time</h5>
+
+                                    <div class="select-items">
+                                        <select name="consultation_time">
+                                                <option value="">Choose Time</option>
+                                                <option value="8am - 10am">8am - 10am</option>
+                                                <option value="10:30am - 12:30pm">10:30am - 12:30pm</option>
+                                                <option value="2pm - 4pm">2pm - 4pm</option>
+                                                <option value="4:30pm - 6pm">4:30pm - 6pm</option>
+                                        </select>
+                                    </div>
                                 </div>
                                 <!-- Button -->
                                 <div class="col-lg-12">
-                                    <button name="submit" class="submit-btn">Validate</button>
+                                    <button type="submit" name="consultation" class="submit-btn">Submit Request</button>
                                 </div>
                             </div>
                         </form>	
@@ -302,8 +395,9 @@
                         <div class="team-img">
                             <img src="{{asset('img/gallery/team1.png')}}" alt="">
                             <div class="team-caption">
-                                <h3><a href="#">Staff Number 1</a></h3>
-                                <p>Staff Role</p>
+                                <h4><a href="#">IVA IDA BESSEM EBAI, LLB, MA & BL</a></h4>
+                                <p>Senior Partner</p>
+                                <p>Head of Firm</p>
                                 <!-- Blog Social -->
                                 <div class="team-social">
                                     <ul>
@@ -322,8 +416,9 @@
                         <div class="team-img">
                             <img src="{{asset('img/gallery/team2.png')}}" alt="">
                             <div class="team-caption">
-                                <h3><a href="#">Staff Number 2</a></h3>
-                                <p>Staff Role</p>
+                                <h4><a href="#">BAIYE MBI, LLB, BL</a></h4>
+                                <p>Partner</p>
+                                <p>Barrister at Law</p>
                                 <!-- Blog Social -->
                                 <div class="team-social">
                                     <ul>
@@ -342,8 +437,9 @@
                         <div class="team-img">
                             <img src="{{asset('img/gallery/team3.png')}}" alt="">
                             <div class="team-caption">
-                                <h3><a href="#">Staff Number 3</a></h3>
-                                <p>Staff Role</p>
+                                <h4><a href="#">JULIAN TABI EBAI, BSc Econs/Acc, LLB, LLM</a></h4>
+                                <p>Associate</p>
+                                <p>Barrister at Law</p>
                                 <!-- Blog Social -->
                                 <div class="team-social">
                                     <ul>
@@ -416,8 +512,11 @@
                 <div class="col-xl-4 col-lg-5 col-md-8">
                     <div class="testimonial-form text-center">
                         <h3>Subscribe to Our Newsletter <br> <small>Receive Notifications from Us</small></h3>
-                        <input type="email" placeholder="Enter Email">
-                        <button name="submit" class="submit-btn">Subscribe</button>
+                        <form action="{{route("my-account")}}" method="POST">
+                            <input type="hidden" name="_token" value="{{csrf_token()}}" />
+                            <input type="email" name="email" placeholder="Enter Email">
+                            <button type="submit" name="newsletter" class="submit-btn">Subscribe</button>
+                        </form>
                     </div>
                 </div>
                 <!-- Form End -->
@@ -432,7 +531,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-tittle text-center mb-70">
-                        <span>Our Recent news</span>
+                        <span>Our Recent Blog Items</span>
                         <h2>E&A Legal Blog</h2>
                     </div>
                 </div>

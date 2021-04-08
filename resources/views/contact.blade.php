@@ -10,6 +10,7 @@ Contact
 @section('header_styles')
 <!--page level css starts-->
 <link rel="stylesheet" type="text/css" href="{{ asset('css/frontend/contact.css') }}">
+<link rel="stylesheet" href="{{ asset('vendors/simple-line-icons/css/simple-line-icons.css') }}"/>
 <!--end of page level css-->
 @stop
 
@@ -48,11 +49,6 @@ Contact
                     <div class="col-lg-8">
                         <form class="form-contact contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
                             <div class="row">
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <textarea class="form-control w-100" name="message" id="message" cols="30" rows="9" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Message'" placeholder=" Enter Message"></textarea>
-                                    </div>
-                                </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <input class="form-control valid" name="name" id="name" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" placeholder="Enter your name">
@@ -68,6 +64,11 @@ Contact
                                         <input class="form-control" name="subject" id="subject" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Subject'" placeholder="Enter Subject">
                                     </div>
                                 </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <textarea class="form-control w-100" name="message" id="message" cols="30" rows="9" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Message'" placeholder=" Enter Message"></textarea>
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-group mt-3">
                                 <button type="submit" class="button button-contactForm boxed-btn">Send</button>
@@ -76,16 +77,16 @@ Contact
                     </div>
                     <div class="col-lg-3 offset-lg-1">
                         <div class="media contact-info">
-                            <span class="contact-info__icon"><i class="ti-home"></i></span>
+                            <span class="contact-info__icon"><i class="ti-home fa-2x"></i></span>
                             <div class="media-body">
-                                <h3>Limbe, SW Region</h3>
+                                <h3>Limbe, Fako Division<br>SW Region</h3>
                                 <p>CAMEROON</p>
                             </div>
                         </div>
                         <div class="media contact-info">
                             <span class="contact-info__icon"><i class="ti-tablet"></i></span>
                             <div class="media-body">
-                                <h3>+ (237)&nbsp; 674-526-116</h3>
+                                <h3>(+237)&nbsp;233-332-343 <br>(+237)&nbsp; 674-526-116 <br>(+237)&nbsp;675-935-265</h3>
                                 <p>Mon to Fri 8am to 6pm</p>
                             </div>
                         </div>
@@ -95,6 +96,14 @@ Contact
                                 <h3>info@domainname.com</h3>
                                 <h3>PO Box 286 Limbe</h3>
                                 <p>Send us your query anytime!</p>
+                            </div>
+                        </div>
+                       <div class="media contact-info">
+                            <span class="contact-info__icon"><i class="icon-directions fa-2x"></i></span>
+                            <div class="media-body">
+                                <h3>No. 5 Nambeke Street</h3>
+                                <h3>Limbe</h3>
+                                <p>Behind UBA Bank</p>
                             </div>
                         </div>
                     </div>

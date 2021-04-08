@@ -121,15 +121,17 @@ Blog
 
                             <aside class="single_sidebar_widget popular_post_widget">
                                 <h3 class="widget_title">Recent Post</h3>
-                                <div class="media post_item">
-                                    <img src="{{asset('img/post/post_1.png')}}" alt="post">
-                                    <div class="media-body">
-                                        <a href="blog_details.html">
-                                            <h3>From life was you fish...</h3>
-                                        </a>
-                                        <p>January 12, 2019</p>
+                                @foreach ($blogs as $blog)
+                                    <div class="media post_item">
+                                        <img src="{{ URL::to('/uploads/blog/'.$blog->image)  }}" alt="post" width="100px" height="100px">
+                                        <div class="media-body">
+                                            <a href="blog_details.html">
+                                                <h3>{{$blog->title}}</h3>
+                                            </a>
+                                            <p>{{$blog->created_at->diffForHumans()}}</p>
+                                        </div>
                                     </div>
-                                </div>
+                                @endforeach
                             </aside>
                             <aside class="single_sidebar_widget tag_cloud_widget">
                                 <h4 class="widget_title">Tags</h4>

@@ -23,11 +23,11 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/nice-select.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
     <!--end of global css-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <!--page level css-->
     @yield('header_styles')
     <!--end of page level css-->
 </head>
-
 <body>
 <!--? Preloader Start -->
 <div id="preloader-active">
@@ -35,7 +35,7 @@
         <div class="preloader-inner position-relative">
             <div class="preloader-circle"></div>
             <div class="preloader-img pere-text">
-               Loading ...
+               <img src="{{asset('icons/logo.png')}}" style="max-height: 50px; max-width: 50px;" />
             </div>
         </div>
     </div>
@@ -51,7 +51,7 @@
                         <div class="row d-flex justify-content-between align-items-center">
                             <div class="header-info-left">
                                 <ul>     
-                                    <li>Phone: + (237) &nbsp; 674-526-116</li>
+                                    <li>Phone: + (237) 233-332-343&nbsp;&nbsp; 674-526-116 &nbsp;&nbsp; 675-935-265 </li>
                                     <li>Email: info@domainname.com</li>
                                 </ul>
                             </div>
@@ -73,7 +73,7 @@
                         <!-- Logo -->
                         <div class="col-xl-2 col-lg-2">
                             <div class="logo">
-                                <a href="{{route('home')}}">COMPANY LOGO</a>
+                                <a href="{{route('home')}}"><img src="{{asset('icons/logo.png')}}" style="max-height: 50px; max-width: 50px;" /></a>
                             </div>
                         </div>
                         <div class="col-xl-10 col-lg-10">
@@ -83,19 +83,17 @@
                                     <nav> 
                                         <ul id="navigation">                                                                                          
                                             <li><a href="{{route('home')}}">Home</a></li>
-                                            <li><a href="{{route('about')}}">About</a>
-                                            </li>
-                                            <li><a href="{{route('services')}}">Services</a>
-                                            </li>
-                                            <li><a href="{{route('blog')}}">Blog</a>
-                                            </li>
-                                            <li><a href="{{route('contact')}}">Contact</a></li>
+                                            <li><a href="{{route('about')}}">About</a></li>
+                                            <li><a href="{{route('services')}}">Services</a></li>
+                                            <li><a href="{{route('partners')}}">Partners</a></li>
+                                            <li><a href="{{route('blog')}}">Blog</a></li>
+                                            <li><a href="{{route('contact')}}">Contact Us</a></li>
                                         </ul>
                                     </nav>
                                 </div>
                                 <!-- Header-btn -->
                                 <div class="header-right-btn d-none d-lg-block ml-20">
-                                    <a href="contact.html" class="btn header-btn">Free Legal Consultation</a>
+                                    <a href="#" class="btn header-btn">Free Legal Consultation</a>
                                 </div>
                             </div>
                         </div> 
@@ -121,19 +119,6 @@
     <div class="footer-area footer-bg">
         <div class="container">
             <div class="footer-top footer-padding">
-                <!-- footer Heading -->
-                <div class="footer-heading">
-                    <div class="row justify-content-between">
-                        <div class="col-xl-6 col-lg-8 col-md-8">
-                            <div class="wantToWork-caption wantToWork-caption2">
-                                <h2><small>We Understand The Importance Approaching Each Work with Integrity!</small></h2>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-4">
-                            <span class="contact-number f-right"><small> + (237) 674-526-116 </small></span>
-                        </div>
-                    </div>
-                </div>
                 <!-- Footer Menu -->
                 <div class="row d-flex justify-content-between">
                     <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6">
@@ -141,9 +126,9 @@
                             <div class="footer-tittle">
                                 <h4>QUICK LINKS</h4>
                                 <ul>
-                                    <li><a href="#">About Us</a></li>
-                                    <li><a href="#">Services</a></li>
-                                    <li><a href="#"> Legal Blog</a></li>
+                                    <li><a href="{{route('about')}}">About Us</a></li>
+                                    <li><a href="{{route('services')}}">Services</a></li>
+                                    <li><a href="{{route('blog')}}"> Legal Blog</a></li>
                                     <li><a href="#"> Privacy Policy</a></li>
                                 </ul>
                             </div>
@@ -250,6 +235,20 @@
     <!-- Jquery Plugins, main Jquery -->	
     <script src="{{asset('js/plugins.js')}}"></script>
     <script src="{{asset('js/main.js')}}"></script>
-    
+<!-- GetButton.io widget -->
+<script type="text/javascript">
+    (function () {
+        var options = {
+            whatsapp: "+(237)672076995", // WhatsApp number
+            call_to_action: "Message us", // Call to action
+            position: "right", // Position may be 'right' or 'left'
+        };
+        var proto = document.location.protocol, host = "getbutton.io", url = proto + "//static." + host;
+        var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
+        s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
+        var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+    })();
+</script>
+<!-- /GetButton.io widget -->
 </body>
 </html>

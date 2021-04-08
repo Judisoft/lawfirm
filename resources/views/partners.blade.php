@@ -2,7 +2,7 @@
 
 {{-- Page title --}}
 @section('title')
-About us
+Partners
 @parent
 @stop
 
@@ -28,11 +28,11 @@ About us
                     <div class="row">
                         <div class="col-xl-12">
                             <div class="hero-cap">
-                                <h2>About us</h2>
+                                <h2>Our Partners</h2>
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                        <li class="breadcrumb-item"><a href="#">About</a></li> 
+                                        <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+                                        <li class="breadcrumb-item"><a href="{{route('partners')}}">Our Partners</a></li> 
                                     </ol>
                                 </nav>
                             </div>
@@ -50,8 +50,8 @@ About us
                         <div class="about-caption mb-35">
                             <!-- Section Tittle -->
                             <div class="section-tittle mb-35">
-                                <span>About Our Firm</span>
-                                <h2>Ebai and Associates Law Firm</h2>
+                                <span>Our Partners</span>
+                                <h2>ASSOCIATES</h2>
                             </div>
                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
                             molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
@@ -107,9 +107,8 @@ About us
                         <div class="team-img">
                             <img src="{{asset('img/gallery/team1.png')}}" alt="">
                             <div class="team-caption">
-                                 <h4><a href="#">IVA IDA BESSEM EBAI, LLB, MA & BL</a></h4>
-                                <p>Senior Partner</p>
-                                <p>Head of Firm</p>
+                                <h3><a href="#">Staff Number 1</a></h3>
+                                <p>Staff Role</p>
                                 <!-- Blog Social -->
                                 <div class="team-social">
                                     <ul>
@@ -128,9 +127,8 @@ About us
                         <div class="team-img">
                             <img src="{{asset('img/gallery/team2.png')}}" alt="">
                             <div class="team-caption">
-                               <h4><a href="#">BAIYE MBI, LLB, BL</a></h4>
-                                <p>Partner</p>
-                                <p>Barrister at Law</p>
+                                <h3><a href="#">Staff Number 2</a></h3>
+                                <p>Staff Role</p>
                                 <!-- Blog Social -->
                                 <div class="team-social">
                                     <ul>
@@ -149,9 +147,8 @@ About us
                         <div class="team-img">
                             <img src="{{asset('img/gallery/team3.png')}}" alt="">
                             <div class="team-caption">
-                                <h4><a href="#">JULIAN TABI EBAI, BSc Econs/Acc, LLB, LLM</a></h4>
-                                <p>Associate</p>
-                                <p>Barrister at Law</p>
+                                <h3><a href="#">Staff Number 3</a></h3>
+                                <p>Staff Role</p>
                                 <!-- Blog Social -->
                                 <div class="team-social">
                                     <ul>
@@ -176,9 +173,8 @@ About us
                         <div class="team-img">
                             <img src="{{asset('img/gallery/team1.png')}}" alt="">
                             <div class="team-caption">
-                                <h4><a href="#">EBEKWO ANDREW, Licence en Droit</a></h4>
-                                <p>Associate</p>
-                                <p>Attorney</p>
+                                <h3><a href="#">Staff Number 1</a></h3>
+                                <p>Staff Role</p>
                                 <!-- Blog Social -->
                                 <div class="team-social">
                                     <ul>
@@ -197,9 +193,8 @@ About us
                         <div class="team-img">
                             <img src="{{asset('img/gallery/team2.png')}}" alt="">
                             <div class="team-caption">
-                                <h4><a href="#">CHAI KIMBI EMMANUEL, LLB, BL</a></h4>
-                                <p>Associate</p>
-                                <p>Barrister at Law</p>
+                                <h3><a href="#">Staff Number 2</a></h3>
+                                <p>Staff Role</p>
                                 <!-- Blog Social -->
                                 <div class="team-social">
                                     <ul>
@@ -218,9 +213,8 @@ About us
                         <div class="team-img">
                             <img src="{{asset('img/gallery/team3.png')}}" alt="">
                             <div class="team-caption">
-                                <h4><a href="#">AGBOR STEPHEN T, Licence en Droit</a></h4>
-                                <p>Associate</p>
-                                <p>Attorney</p>
+                                <h3><a href="#">Staff Number 3</a></h3>
+                                <p>Staff Role</p>
                                 <!-- Blog Social -->
                                 <div class="team-social">
                                     <ul>

@@ -9,6 +9,11 @@ Services
 {{-- page level styles --}}
 @section('header_styles')
 @stop
+<style>
+h5{
+    font-size: 10px !important;
+}
+</style>
 {{-- Page content --}}
 @section('content')
   <main>
@@ -23,7 +28,7 @@ Services
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-                                        <li class="breadcrumb-item"><a href="{{route('services')}}">Our Services</a></li> 
+                                        <li class="breadcrumb-item"><a>Our Services</a></li> 
                                     </ol>
                                 </nav>
                             </div>
@@ -47,183 +52,48 @@ Services
             </div>
             <div class="row">
                 <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="single-cat text-center">
-                        <div class="cat-cap">
-                            <h5><a href="services.html">Real Estate Law</a></h5>
-                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-                                molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
-                                numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
-                            </p>
-                            <a class="btn" href="#"> Read More</a>
-                        </div>
+                    <div class="single-cat shadow text-center">
+                        <h3><a href="{{route('real_estate')}}">Property and Real Estate Law</a></h3>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="single-cat text-center mb-50">
-                        <div class="cat-cap">
-                            <h5><a href="services.html">Finance Law</a></h5>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-                                molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
-                                numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
-                            </p>
-                            <a class="btn" href="#"> Read More</a>
-                        </div>
+                    <div class="single-cat shadow text-center mb-50">
+                        <h3><a href="{{route('corporate_and_finance_law')}}">Corporate, Securities and Finance Law</a></h3>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="single-cat text-center mb-50">
-                        <div class="cat-cap">
-                            <h5><a href="services.html">General Litigation</a></h5>
-                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-                                molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
-                                numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
-                            </p>
-                            <a class="btn" href="#"> Read More</a>
-                        </div>
+                    <div class="single-cat shadow text-center mb-50">
+                        <h3><a href="{{route('general_litigation')}}">Civil and Criminal Litigation</a></h3>
                     </div>
                 </div>
                   <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="single-cat text-center mb-50">
-                        <div class="cat-cap">
-                            <h5><a href="services.html">Maritim Law</a></h5>
-                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-                                molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
-                                numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
-                            </p>
-                            <a class="btn" href="#"> Read More</a>
-                        </div>
+                    <div class="single-cat shadow text-center mb-50">
+                        <h3><a href="{{route('labour_and_industrial_law')}}">Labour and Industrial Law</a></h3>
                     </div>
                 </div>
-                  <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="single-cat text-center mb-50">
-                        <div class="cat-cap">
-                            <h5><a href="services.html">Oil and Gas Law</a></h5>
-                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-                                molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
-                                numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
-                            </p>
-                            <a class="btn" href="#"> Read More</a>
-                        </div>
-                    </div>
-                </div>
-                  <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="single-cat text-center mb-50">
-                        <div class="cat-cap">
-                            <h5><a href="services.html">Company Incorporation</a></h5>
-                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-                                molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
-                            </p>
-                            <br>
-                            <a class="btn" href="#"> Read More</a>
-                        </div>
+                 <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="single-cat shadow text-center mb-50">
+                        <h3><a href="{{route('legal_advisory')}}">Legal Advisory and Statuary and Regulatory Compliance Law</a></h3>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="single-cat text-center mb-50">
-                        <div class="cat-cap">
-                            <h5><a href="services.html">Contracts and Compliance</a></h5>
-                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-                                molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
-                                numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
-                            </p>
-                            <a class="btn" href="#"> Read More</a>
-                        </div>
+                    <div class="single-cat shadow text-center mb-50">
+                        <h3><a href="services.html">Contract Law</a></h3>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="single-cat text-center mb-50">
-                        <div class="cat-cap">
-                            <h5><a href="services.html">Lobbying of Contracts</a></h5>
-                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-                                molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
-                                numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
-                            </p>
-                            <a class="btn" href="#"> Read More</a>
-                        </div>
+                    <div class="single-cat shadow text-center mb-50">
+                        <h3><a href="{{route('consumer_protection_law')}}">Consumer Protection Law</a></h3>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="single-cat text-center mb-50">
-                        <div class="cat-cap">
-                            <h5><a href="services.html">Intellectual Properties</a></h5>
-                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-                                molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
-                                numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
-                            </p>
-                            <a class="btn" href="#"> Read More</a>
-                        </div>
+                    <div class="single-cat shadow text-center mb-50">
+                        <h3><a href="{{route('international_trade')}}">Shipping, Aviation and International Trade Law</a></h3>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="single-cat text-center mb-50">
-                        <div class="cat-cap">
-                            <h5><a href="services.html">Mining Law</a></h5>
-                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-                                molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
-                                numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
-                            </p>
-                            <a class="btn" href="#"> Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="single-cat text-center mb-50">
-                        <div class="cat-cap">
-                            <h5><a href="services.html">Employment Law</a></h5>
-                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-                                molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
-                                numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
-                            </p>
-                            <a class="btn" href="#"> Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="single-cat text-center mb-50">
-                        <div class="cat-cap">
-                            <h5><a href="services.html">Insolvency and Restructuring</a></h5>
-                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-                                molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
-                            </p>
-                            <br>
-                            <a class="btn" href="#"> Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="single-cat text-center mb-50">
-                        <div class="cat-cap">
-                            <h5><a href="services.html">Fintech Practice</a></h5>
-                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-                                molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
-                                numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
-                            </p>
-                            <a class="btn" href="#"> Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="single-cat text-center mb-50">
-                        <div class="cat-cap">
-                            <h5><a href="services.html">Funds Practice</a></h5>
-                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-                                molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
-                                numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
-                            </p>
-                            <a class="btn" href="#"> Read More</a>
-                        </div>
-                    </div>
-                </div>
-               <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="single-cat text-center mb-50">
-                        <div class="cat-cap">
-                            <h5><a href="services.html">International Arbitration</a></h5>
-                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-                                molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
-                            </p>
-                            <br>
-                            <a class="btn" href="#"> Read More</a>
-                        </div>
+                    <div class="single-cat shadow text-center mb-50">
+                        <h3><a href="{{route('entertainment_and_sports_law')}}">Entertainment and Sports Law</a></h3>
                     </div>
                 </div>
             </div>

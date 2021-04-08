@@ -25,6 +25,8 @@ use App\Mail\Contact;
 use App\Mail\ContactUser;
 use App\Mail\ForgotPassword;
 use App\Models\Country;
+use App\Models\Consultation;
+use App\Models\Newsletter;
 
 class FrontEndController extends JoshController
 {
@@ -377,5 +379,76 @@ class FrontEndController extends JoshController
         }
         // Redirect to the users page
         return redirect('login')->with('success', 'You have successfully logged out!');
+    }
+    
+     /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function newsletter(Request $request)
+    {
+        
+    
+        if($request->has('newsletter')) 
+        {
+            $this -> validate($request,[
+                'email' => 'required'
+            ]);
+
+            $newsletter = new Newsletter;
+            $newsletter->email = $request->input('email');
+            $newsletter->save();
+            if ($newsletter->id) {
+                return Redirect::route("home")->with('success', trans('Thank you for subscribing to our newsletter'));
+                //return redirect('user_dashboard')->with('success', trans('admin/blog/message.success.create'));
+            } else {
+                return Redirect::route("home")->with('error', trans('Oups! an error occured'));
+            }
+        }
+        if($request->has('consultation'))
+        {
+            $this -> validate($request, [
+
+                'name' => 'required',
+                'email' => 'required',
+                'country' => 'required',
+                'telephone' => 'required',
+                'company' => 'nullable',
+                'website' => 'nullable',
+                'city' => 'required',
+                'service' => 'required',
+                'service_type' => 'required',
+                'consultation_time' => 'required'
+            ]);
+
+            $consultation = new Consultation;
+            $consultation->name = $request->input('name');
+            $consultation->email = $request->input('email');
+            $consultation->country = $request->input('country');
+            $consultation->telephone = $request->input('telephone');
+            $consultation->company = $request->input('company');
+            $consultation->website = $request->input('website');
+            $consultation->city = $request->input('city');
+            $consultation->service =$request->input('service');
+            $consultation->service_type = $request->input('service_type');
+            $consultation->consultation_time = $request->input('consultation_time');
+            $consultation->save();
+
+            if($consultation->id) 
+            {
+                return redirect('/')->with('success', 'Consultation Request Sent Successfully');
+            }
+
+        else{
+            return redirect('/')->with('error', 'Something went wrong');
+        }
+        }
+
+    }
+
+    public function partners(){
+        return view('partners');
     }
 }
