@@ -1,60 +1,70 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>500 Internal Error | Josh Admin Template</title>
-    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-    <!-- global level js -->
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
-    <!-- end of global js-->
-    <!-- page level styles-->
-    <link href="{{ asset('css/pages/500.css') }}" rel="stylesheet" type="text/css"/>
-    <!-- end of page level styles-->
-</head>
-<body>
-    <div class="container-fluid">
-        <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-offset-1 col-10 middle mx-auto" style="padding-top: 177.5px;">
-            <div class="error-container">
-                <div class="error-main">
-                    <h1> <i class="livicon" data-name="warning" data-s="100" data-c="#ffbc60" data-hc="#ffbc60" data-eventtype="click" data-iteration="15" data-duration="2000"></i>
-                        500
-                    </h1>
-                    <h3>
-                        Thats an error.
-                        <br>There was an error. Please Try again later. Thats all we know
-                    </h3>
-                        <a href="{{ route('admin.dashboard') }}" class="btn btn-warning" style="color:#fff !important;">Home</a>
-                    <br>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- global js -->
-    <script src="{{ asset('js/frontend/jquery.min.js') }}" type="text/javascript"></script>
-    <!-- Bootstrap -->
-    <script src="{{ asset('js/frontend/bootstrap.min.js') }}" type="text/javascript"></script>
-    <!--livicons-->
-    <script src="{{ asset('js/raphael.min.js') }}"></script>
-    <script src="{{ asset('js/livicons-1.4.min.js') }}"></script>
-    <script src="{{ asset('js/holder.js') }}"></script>
-    <!-- end of global js -->
-    <!-- begining of page level js-->
-    <script>
-    $("document").ready(function() {
-        setTimeout(function() {
-            $(".livicon").trigger('click');
-        }, 10);
-    });
-    // code for aligning center
-    $(document).ready(function() {
-        var x = $(window).height();
-        var y = $(".middle").height();
 
-        x = x - y;
-        x = x / 2;
-        $(".middle").css("padding-top", x);
-    });
-    </script>
-    <!-- end of page level js-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  ================================================== -->
+  <meta charset="utf-8">
+  <title>Small Apps | Bootstrap App Landing Template</title>
+
+  <!-- Mobile Specific Metas
+  ================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Bootstrap App Landing Template">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="author" content="Themefisher">
+  <meta name="generator" content="Themefisher Small Apps Template v1.0">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+  
+  <!-- PLUGINS CSS STYLE -->
+  <link rel="stylesheet" href="{{asset('plugins1/bootstrap/bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{asset('plugins1/themify-icons/themify-icons.css')}}">
+  <link rel="stylesheet" href="{{asset('plugins1/slick/slick.css')}}">
+  <link rel="stylesheet" href="{{asset('plugins1/slick/slick-theme.css')}}">
+  <link rel="stylesheet" href="{{asset('plugins1/fancybox/jquery.fancybox.min.css')}}">
+  <link rel="stylesheet" href="{{asset('plugins1/aos/aos.css')}}">
+
+  <!-- CUSTOM CSS -->
+  <link href="{{asset('plugins1/css/style.css')}}" rel="stylesheet">
+
+</head>
+
+<body class="body-wrapper" data-spy="scroll" data-target=".privacy-nav">
+
+
+<section class="error-page">
+	<div class="center">
+		<div class="block text-center">
+			<h1>404</h1>
+			<h3>Page Not Found</h3>
+			<p>There was an error, Try again later
+				<br>Internal server error</p>
+			<a href="{{route('home')}}" class="btn btn-main-md">visit homepage</a>
+		</div>
+	</div>
+</section>
+
+
+  <!-- To Top -->
+  <div class="scroll-top-to">
+    <i class="ti-angle-up"></i>
+  </div>
+  
+  <!-- JAVASCRIPTS -->
+  <script src="plugins/jquery/jquery.min.js"></script>
+  <script src="plugins/bootstrap/bootstrap.min.js"></script>
+  <script src="plugins/slick/slick.min.js"></script>
+  <script src="plugins/fancybox/jquery.fancybox.min.js"></script>
+  <script src="plugins/syotimer/jquery.syotimer.min.js"></script>
+  <script src="plugins/aos/aos.js"></script>
+  <!-- google map -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgeuuDfRlweIs7D6uo4wdIHVvJ0LonQ6g"></script>
+  <script src="plugins/google-map/gmap.js"></script>
+  
+  <script src="js/script.js"></script>
 </body>
+
 </html>

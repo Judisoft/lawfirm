@@ -1,363 +1,203 @@
-@extends('layouts.default')
+<!doctype html>
+<html>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<title>StudPort Admissions Portal</title>
+<link href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css' rel='stylesheet'>
+<!-- PLUGINS CSS STYLE -->
+<link rel="stylesheet" href="{{asset('plugins1/bootstrap/bootstrap.min.css')}}">
+<link rel="stylesheet" href="{{asset('plugins1/themify-icons/themify-icons.css')}}">
+<link rel="stylesheet" href="{{asset('plugins1/slick/slick.css')}}">
+<link rel="stylesheet" href="{{asset('plugins1/slick/slick-theme.css')}}">
+<link rel="stylesheet" href="{{asset('plugins1/fancybox/jquery.fancybox.min.css')}}">
+<link rel="stylesheet" href="{{asset('plugins1/aos/aos.css')}}">
+<link rel="stylesheet" href="{{asset('plugins1/user_account/style.css')}}">
 
-{{-- Page title --}}
-@section('title')
-    User Account
-    @parent
-@stop
-
-{{-- page level styles --}}
-@section('header_styles')
-
-    <link rel="stylesheet" type="text/css" href="{{ asset('vendors/jasny-bootstrap/css/jasny-bootstrap.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('vendors/iCheck/css/minimal/blue.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('vendors/select2/css/select2.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('vendors/select2/css/select2-bootstrap.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('vendors/datetimepicker/css/bootstrap-datetimepicker.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/frontend/user_account.css') }}">
-
-@stop
-
-{{-- Page content --}}
-@section('content')
-    <hr class="content-header-sep">
-    <div class="container">
-        <div class="welcome">
-            <h3>My Account</h3>
-        </div>
-        <hr>
-            <div class="row">
-                <div class="col-lg-10 col-12">
-                    <!--main content-->
-                    <div class="position-center">
-                        <!-- Notifications -->
-                        <div id="notific">
-                        @include('notifications')
-                        </div>
-
-                        <div>
-                            <h3 class="text-primary" id="title">Personal Information</h3>
-                        </div>
-                        {!! Form::model($user, ['url' => URL::to('my-account'), 'method' => 'put', 'class' => 'form-horizontal','enctype'=>"multipart/form-data"]) !!}
-
-                            {{ csrf_field() }}
-                            <div class="form-group {{ $errors->first('pic', 'has-error') }}">
-                                <div class="row">
-                                    <div class="col-lg-2">
-                                        <label class="control-label">Avatar:</label>
-                                    </div>
-                                <div class="col-lg-10">
-                                    <div class="fileinput fileinput-new" data-provides="fileinput">
-                                        <div class="fileinput-new thumbnail" style="max-width: 200px; max-height: 200px;">
-                                            @if($user->pic)
-                                                <img src="{{ $user->pic }}" alt="img"
-                                                     class="img-fluid"/>
-                                            @elseif($user->gender === "male")
-                                            <img src="{{ asset('images/authors/avatar3.png') }}" alt="..."
-                                                     class="img-fluid"/>
-                                            @elseif($user->gender === "female")
-                                                <img src="{{ asset('images/authors/avatar5.png') }}" alt="..."
-                                                     class="img-fluid"/>
-                                            @else
-                                                <img src="{{ asset('images/authors/no_avatar.jpg') }}" alt="..."
-                                                     class="img-fluid"/>
-                                            @endif
-                                        </div>
-                                        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
-                                        <div>
-                                            <span class="btn btn-primary btn-file">
-                                                <span class="fileinput-new">Select image</span>
-                                                <span class="fileinput-exists">Change</span>
-                                                <input type="file" name="pic" id="pic" />
-                                            </span>
-                                            <span class="btn btn-primary fileinput-exists" data-dismiss="fileinput">Remove</span>
-                                        </div>
-                                    </div>
-                                    <span class="help-block">{{ $errors->first('pic', ':message') }}</span>
-                                </div>
-                            </div>
-                                </div>
-                            <div class="form-group {{ $errors->first('first_name', 'has-error') }}">
-                                <div class="row">
-                                    <div class="col-lg-2 col-12">
-                                <label class="control-label">
-                                    First Name:
-                                    <span class='require'>*</span>
-                                </label>
-                                </div>
-                                    <div class="col-lg-10 col-12">
-                                    <div class="input-group input-group-append">
-                                    <span class="input-group-text">
-                        <i class="livicon" data-name="user" data-size="16" data-loop="true" data-c="#418bca" data-hc="#418bca"></i>
-                                    </span>
-                                        <input type="text" placeholder=" " name="first_name" id="first_name"
-                                               class="form-control" value="{!! old('first_name',$user->first_name) !!}">
-                                    </div>
-                                    <span class="help-block">{{ $errors->first('first_name', ':message') }}</span>
-                                </div>
-
-                            </div>
-                            </div>
-
-                            <div class="form-group {{ $errors->first('last_name', 'has-error') }}">
-                                <div class="row">
-                                    <div class="col-lg-2 col-12">
-                                        <label class="control-label">
-                                            Last Name:
-                                            <span class='require'>*</span>
-                                        </label>
-                                    </div>
-
-
-                                    <div class="col-lg-10 col-12">
-                                    <div class="input-group input-group-append">
-                                            <span class="input-group-text">
-                        <i class="livicon" data-name="user" data-size="16" data-loop="true" data-c="#418bca" data-hc="#418bca"></i>
-                                            </span>
-                                        <input type="text" placeholder=" " name="last_name" id="last_name"
-                                               class="form-control"
-                                               value="{!! old('last_name',$user->last_name) !!}"></div>
-                                    <span class="help-block">{{ $errors->first('last_name', ':message') }}</span>
-                                </div>
-                            </div>
-                            </div>
-
-                            <div class="form-group {{ $errors->first('email', 'has-error') }}">
-                                <div class="row">
-                                    <div class="col-lg-2 col-12">
-                                        <label class="control-label">
-                                            Email:
-                                            <span class='require'>*</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-lg-10 col-12">
-                                    <div class="input-group input-group-append">
-                                                                <span class="input-group-text">
-                        <i class="livicon" data-name="mail" data-size="16" data-loop="true" data-c="#418bca" data-hc="#418bca"></i>
-                                                                </span>
-                                        <input type="text" placeholder=" " id="email" name="email" class="form-control"
-                                               value="{!! old('email',$user->email) !!}"></div>
-                                    <span class="help-block">{{ $errors->first('email', ':message') }}</span>
-                                </div>
-
-                            </div>
-                            </div>
-
-                            <div class="form-group {{ $errors->first('password', 'has-error') }}">
-                                <p class="text-warning col-md-offset-2"><strong>If you don't want to change password... please leave them empty</strong></p>
-                                    <div class="row">
-                                        <div class="col-lg-2 col-12">
-                                        <label class="control-label">
-                                            Password:
-                                            <span class='require'>*</span>
-                                        </label>
-                                    </div>
-
-                                        <div class="col-lg-10 col-12">
-                                    <div class="input-group input-group-append">
-                                            <span class="input-group-text">
-                        <i class="livicon" data-name="key" data-size="16" data-loop="true" data-c="#418bca" data-hc="#418bca"></i>
-                                            </span>
-                                        <input type="password" name="password" placeholder=" " id="pwd" class="form-control"></div>
-                                    <span class="help-block">{{ $errors->first('password', ':message') }}</span>
-                                </div>
-                            </div>
-                            </div>
-
-                            <div class="form-group {{ $errors->first('password_confirm', 'has-error') }}">
-                                <div class="row">
-                                <label class="col-lg-2  col-12 control-label">
-                                    Confirm Password:
-                                    <span class='require'>*</span>
-                                </label>
-                                    <div class="col-lg-10 col-12">
-                                    <div class="input-group input-group-addon">
-                                            <span class="input-group-text">
-                        <i class="livicon" data-name="key" data-size="16" data-loop="true" data-c="#418bca" data-hc="#418bca"></i>
-                                            </span>
-                                        <input type="password" name="password_confirm" placeholder=" " id="cpwd" class="form-control"></div>
-                                    <span class="help-block">{{ $errors->first('password_confirm', ':message') }}</span>
-                                </div>
-                            </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-lg-2 col-12">
-                                    <label class="control-label">Gender: </label>
-                                </div>
-                                    <div class="col-lg-10 col-12">
-                                    <div class="radio">
-                                        <label>
-                                            <input type="radio" name="gender" value="male" @if($user->gender === "male") checked="checked" @endif />
-                                            Male
-                                        </label>
-                                    </div>
-                                    <div class="radio">
-                                        <label>
-                                            <input type="radio" name="gender" value="female" @if($user->gender === "female") checked="checked" @endif />
-                                            Female
-                                        </label>
-                                    </div>
-                                    <div class="radio">
-                                        <label>
-                                            <input type="radio" name="gender" value="other" @if($user->gender === "other") checked="checked" @endif />
-                                            Other
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                            </div>
-                            <div class="form-group  {{ $errors->first('bio', 'has-error') }}">
-                                <div class="row">
-                                    <div class="col-lg-2 col-12">
-                                        <label for="" class="control-label">Bio <small>(brief intro):</small></label>
-                                    </div>
-
-                                    <div class="col-lg-10 col-12">
-                                            <textarea name="bio" id="bio" class="form-control resize_vertical"
-                                                      rows="4">{!! old('bio', $user->bio) !!}</textarea>
-                                    </div>
-                                    {!! $errors->first('bio', '<span class="help-block">:message</span>') !!}
-                                </div>
-                                </div>
-
-
-                            <div>
-                                <h3 class="text-primary" id="title">Contact: </h3>
-                            </div>
-
-                            <div class="form-group {{ $errors->first('address', 'has-error') }}">
-                                <div class="row">
-
-                                    <div class="col-lg-2 col-12">
-                                <label class="control-label">
-                                    Address:
-                                </label>
-                               </div>
-                                    <div class="col-lg-10 col-12">
-                                            <textarea rows="5" cols="30" class="form-control resize_vertical" id="add1"
-                                                      name="address">{!! old('address',$user->address) !!}</textarea>
-                                </div>
-                                <span class="help-block">{{ $errors->first('address', ':message') }}</span>
-                            </div>
-                            </div>
-
-                            <div class="form-group {{ $errors->first('country', 'has-error') }}">
-                                <div class="row">
-                                    <div class="col-lg-2 col-12">
-                                        <label class="control-label">Select Country: </label>
-                                    </div>
-
-                                    <div class="col-lg-10 col-12">
-                                    {!! Form::select('country', $countries, $user->country,['class' => 'form-control select2', 'id' => 'countries']) !!}
-                                    <span class="help-block">{{ $errors->first('country', ':message') }}</span>
-                                </div>
-                            </div>
-                            </div>
-
-                            <div class="form-group {{ $errors->first('user_state', 'has-error') }}">
-                                <div class="row">
-                                    <div class="col-lg-2 col-12" >
-                                        <label class="control-label" for="state">State:</label>
-                                    </div>
-                                    <div class="col-lg-10 col-12 col-md-12 col-sm-12 ">
-                                    <div class="input-group input-group-append">
-                                                        <span class="input-group-text">
-                        <i class="livicon" data-name="plus-alt" data-size="16" data-loop="true" data-c="#418bca" data-hc="#418bca"></i>
-                                                        </span>
-                                        <input type="text" placeholder=" " id="state" class="form-control" name="user_state"
-                                               value="{!! old('user_state',$user->user_state) !!}"/>
-                                    </div>
-                                </div>
-                                <span class="help-block">{{ $errors->first('user_state', ':message') }}</span>
-                            </div>
-                            </div>
-
-                            <div class="form-group {{ $errors->first('city', 'has-error') }}">
-                                <div class="row">
-                                    <div class="col-lg-2 col-12">
-                                        <label class=control-label" for="city">City:</label>
-                                    </div>
-                                    <div class="col-lg-10 col-12">
-                                    <div class="input-group input-group-append">
-                                                        <span class="input-group-text">
-                        <i class="livicon" data-name="plus-alt" data-size="16" data-loop="true" data-c="#418bca" data-hc="#418bca"></i>
-                                                        </span>
-                                        <input type="text" placeholder=" " id="city" class="form-control" name="city"
-                                               value="{!! old('city',$user->city) !!}"/>
-                                    </div>
-                                </div>
-                                <span class="help-block">{{ $errors->first('city', ':message') }}</span>
-                            </div>
-
-                            <div class="form-group {{ $errors->first('postal', 'has-error') }}">
-                                <div class="row">
-                                    <div class="col-lg-2 col-12">
-                                        <label class=" control-label" for="postal">Postal:</label>
-                                    </div>
-
-                                    <div class="col-lg-10 col-12">
-                                        <div class="input-group input-group-append">
-                                                        <span class="input-group-text">
-                        <i class="livicon" data-name="plus-alt" data-size="16" data-loop="true" data-c="#418bca" data-hc="#418bca"></i>
-                                                        </span>
-                                            <input type="text" placeholder=" " id="postal" class="form-control"
-                                                   name="postal" value="{!! old('postal',$user->postal) !!}"/>
-                                        </div>
-                                        <span class="help-block">{{ $errors->first('postal', ':message') }}</span>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <div class="form-group {{ $errors->first('dob', 'has-error') }}">
-                                <div class="row">
-                                    <div class="col-lg-2 col-12">
-                                        <label class= "control-label">   DOB:
-                                        </label>
-                                    </div>
-                                    <div class="col-lg-10 col-12">
-                                    <div class="input-group input-group-append">
-                                            <span class="input-group-text">
-                        <i class="livicon" data-name="calendar" data-size="16" data-loop="true" data-c="#418bca" data-hc="#418bca"></i>
-                                            </span>
-                                            @if($user->dob === '')
-                                                {!!  Form::text('dob', null, ['id' => 'datepicker','class' => 'form-control'])  !!}
-                                        @else
-                                                 {!!  Form::text('dob', old('dob',$user->dob), ['id' => 'datepicker','class' => 'form-control', 'data-date-format'=> 'YYYY-MM-DD'])  !!}
-                                        @endif
-                                    </div>
-                                    <span class="help-block">{{ $errors->first('dob', ':message') }}</span>
-                                </div>
-                            </div>
-                                </div>
-
-                            <div class="form-group">
-                                <div class="col-lg-10 col-12 ml-auto">
-                                    <button class="btn btn-primary" type="submit">Save</button>
-                                </div>
-                            </div>
-
-                        {!!  Form::close()  !!}
+<!-- CUSTOM CSS -->
+<link href="{{asset('plugins1/css/style.css')}}" rel="stylesheet">
+<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+</head>
+<body oncontextmenu='return false' class='snippet-body'>
+<nav class="navbar main-nav fixed-top navbar-expand-lg px-2 px-sm-0 py-2 py-lg-0 bg-light border-bottom" style="overflow-x: hidden;">
+  <div class="container">
+    <a class="navbar-brand" href="index.html"><img src="{{asset('images/recruit.png')}}" style="height: 40px; width: 40px;" alt="logo"><span class="h5 text-dark text-capitalize"><b>Admissions Portal<b></span></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="ti-menu"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+       <li class="nav-item {!! (Request::is('/admissions/institution_details/') ? 'active' : '') !!}">
+          <a class="nav-link" href="/admissions/institutions/">Institutions</a>
+        </li>
+        @if(Sentinel::check())
+          <li class="nav-item">
+            <a class="nav-link " href="{{route('my-account')}}">Apply </a>
+          </li>
+        @endif
+        <li class="nav-item">
+          <a class="nav-link {!! (Request::is('about_us') ? 'active' : '') !!}" href="{{route('about')}}">Admissions</a>
+        </li>
+       
+        <li class="nav-item {!! (Request::is('contact') ? 'active' : '') !!}">
+          <a class="nav-link" href="{{route('contact')}}">Need help?</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link btn-sell text-light" href="{{route('login')}}"><i class="ti-shopping-cart px-2"></i><b>Buy Textbooks</b></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav> 
+<div class="container-fluid px-1 py-5 mx-auto">
+    <div class="row d-flex justify-content-center text-center">
+        <div class="col-lg-9 col-md-10">
+            <div class="card b-0 rounded-0 show">
+                <div class="row justify-content-between mx-auto step-container">
+                    <div class="col-md-3 col-4 step-box active">
+                        <h6 class="step-title-0"> <span class="ti-agenda"></span> <span class="break-line"></span> <span class="step-title">Programme Choice</span></h6>
                     </div>
+                    <div class="col-md-3 col-4 step-box">
+                        <h6 class="step-title-0"> <span class="ti-user"></span> <span class="break-line"></span> <span class="step-title">Personal Information</span></h6>
+                    </div>
+                    <div class="col-md-3 col-4 step-box">
+                        <h6 class="step-title-0"> <span class="ti-folder"></span> <span class="break-line"></span> <span class="step-title">Doucuments Upload</span> </h6>
+                    </div>
+                    <div class="col-md-3 col-4 step-box">
+                        <h6 class="step-title-0"> <span class="ti-wallet"></span> <span class="break-line"></span> <span class="step-title">Payment</span> </h6>
+                    </div>
+                </div>
+                <div class="p-3 justify-content-center text-center">
+                    <h4 class="heading">Select Institution</h4>
+                    <div class="row justify-content-center mb-3">
+                        <div class="col-lg-6 col-md-6 col-12 list">
+                            <div class="form-group">
+                                <select class="form-control" id="customCheck1">
+                                    <option value="">select institution</option>
+                                    @foreach ($institutions as $institution)
+                                        <option value="{{$institution->institution_name}}">{{$institution->institution_name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div> 
+                    <button name="next" id="next1" class="btn btn-success rounded-0 mb-5 next">Next <span class="ti-arrow-right"></span></button>
+                </div>
+            </div>
+            <div class="card b-0 rounded-0">
+                <div class="row justify-content-between mx-auto step-container">
+                    <div class="col-md-3 col-4 step-box completed">
+                        <h6 class="step-title-0"> <span class="ti-check"></span> <span class="break-line"></span> <span class="step-title">Programme Choice</span></h6>
+                    </div>
+                    <div class="col-md-3 col-4 step-box active">
+                        <h6 class="step-title-0"> <span class="ti-user"></span> <span class="break-line"></span> <span class="step-title">Personal Information</span></h6>
+                    </div>
+                    <div class="col-md-3 col-4 step-box">
+                        <h6 class="step-title-0"> <span class="ti-folder"></span> <span class="break-line"></span> <span class="step-title">Doucuments Upload</span> </h6>
+                    </div>
+                    <div class="col-md-3 col-4 step-box">
+                        <h6 class="step-title-0"> <span class="ti-wallet"></span> <span class="break-line"></span> <span class="step-title">Payment</span> </h6>
+                    </div>
+                </div>
+                <div class="p-3 justify-content-center text-center">
+                    <h4 class="heading">Feedback</h4>
+                    <div class="row justify-content-center mb-4">
+                        <div class="col-xl-7 col-lg-8 col-10 list text-left"> <label class="text-danger mb-3">* Required</label>
+                            <div class="form-group"> <label class="form-control-label">Subject * :</label> <input type="text" id="sub" name="subject" placeholder="Subject" class="form-control" onblur="validate(1)"> </div>
+                            <div class="form-group"> <label class="form-control-label">Message * :</label> <textarea type="textarea" id="msg" name="message" placeholder="Message" class="form-control" onblur="validate(2)"></textarea> </div>
+                        </div>
+                    </div> 
+                    <div class="d-flex justify-content-between">
+                        <div class="p-1"><button class="btn btn-success rounded-0 mb-5 prev"><span class="ti-arrow-left"></span>Back</button></div>
+                        <div class="p-1"><button id="next2" class="btn btn-success rounded-0 mb-5 next" onclick="validate(0)">Next <span class="ti-arrow-right"></span></button></div>
+                    </div>
+                </div>
+            </div>
+            <div class="card b-0 rounded-0">
+                <div class="row justify-content-center mx-auto step-container">
+                    <div class="col-md-3 col-4 step-box completed">
+                        <h6 class="step-title-0"> <span class="ti-check"></span> <span class="break-line"></span> <span class="step-title">Programme Choice</span></h6>
+                    </div>
+                    <div class="col-md-3 col-4 step-box completed">
+                        <h6 class="step-title-0"> <span class="ti-check"></span> <span class="break-line"></span> <span class="step-title">Personal Information</span></h6>
+                    </div>
+                    <div class="col-md-3 col-4 step-box active">
+                        <h6 class="step-title-0"> <span class="ti-folder"></span> <span class="break-line"></span> <span class="step-title">Doucuments Upload</span> </h6>
+                    </div>
+                    <div class="col-md-3 col-4 step-box">
+                        <h6 class="step-title-0"> <span class="ti-wallet"></span> <span class="break-line"></span> <span class="step-title">Payment</span> </h6>
+                    </div>
+                </div>
+                <div class="p-3 justify-content-center text-center">
+                    <h4 class="heading">Confirmation</h4>
+                    <div class="row d-flex justify-content-center">
+                        <div class="mb-4">
+                            <h6 class="confirm">Verify all entered details and press confirm</h6>
+                        </div>
+                    </div> 
+                    <div class="d-flex justify-content-between">
+                        <div class="p-1"><button class="btn btn-success rounded-0 mb-5 prev"><span class="ti-arrow-left"></span>Back</button></div>
+                        <div class="p-1"><button id="next3" class="btn btn-success rounded-0 mb-5 next">Next <span class="ti-arrow-right"></span></button></div>
+                    </div>
+                </div>
+            </div>
+            <div class="card b-0 rounded-0">
+                <div class="row justify-content-center mx-auto step-container">
+                    <div class="col-md-3 col-4 step-box completed">
+                        <h6 class="step-title-0"> <span class="ti-check"></span> <span class="break-line"></span> <span class="step-title">Programme Choice</span></h6>
+                    </div>
+                    <div class="col-md-3 col-4 step-box completed">
+                        <h6 class="step-title-0"> <span class="ti-check"></span> <span class="break-line"></span> <span class="step-title">Personal Information</span></h6>
+                    </div>
+                    <div class="col-md-3 col-4 step-box completed">
+                        <h6 class="step-title-0"> <span class="ti-check"></span> <span class="break-line"></span> <span class="step-title">Doucuments Upload</span> </h6>
+                    </div>
+                    <div class="col-md-3 col-4 step-box active">
+                        <h6 class="step-title-0"> <span class="ti-circle"></span> <span class="break-line"></span> <span class="step-title">Payment</span> </h6>
+                    </div>
+                </div>
+                <div class="p-3 justify-content-center text-center">
+                    <h4 class="heading">Confirmation</h4>
+                    <div class="row d-flex justify-content-center">
+                        <div class="mb-4">
+                            <h6 class="confirm">Verify all entered details and press confirm</h6>
+                        </div>
+                    </div> 
+                    <div class="d-flex justify-content-between">
+                        <div class="p-1"><button class="btn btn-success rounded-0 mb-5 prev"><span class="ti-arrow-left"></span>Back</button></div>
+                        <div class="p-1"><button id="next4" class="btn btn-success rounded-0 mb-5 next">Next <span class="ti-arrow-right"></span></button></div>
+                    </div>
+                </div>
+            </div>
+            <div class="card b-0 rounded-0">
+                <div class="row justify-content-center mx-auto step-container">
+                    <div class="col-md-3 col-4 step-box completed">
+                        <h6 class="step-title-0"> <span class="fa fa-check"></span> <span class="break-line"></span> <span class="step-title">Programme Choice</span></h6>
+                    </div>
+                    <div class="col-md-3 col-4 step-box completed">
+                        <h6 class="step-title-0"> <span class="fa fa-check"></span> <span class="break-line"></span> <span class="step-title">Personal Information</span></h6>
+                    </div>
+                    <div class="col-md-3 col-4 step-box completed">
+                        <h6 class="step-title-0"> <span class="fa fa-check"></span> <span class="break-line"></span> <span class="step-title">Doucuments Upload</span> </h6>
+                    </div>
+                    <div class="col-md-3 col-4 step-box active">
+                        <h6 class="step-title-0"> <span class="fa fa-check"></span> <span class="break-line"></span> <span class="step-title">Payment</span> </h6>
+                    </div>
+                </div>
+                <div class="p-3 justify-content-center text-center">
+                    <h3 class="heading">Thank You for your Feedback!</h3>
+                    <div class="row justify-content-center">
+                        <div class=""> <img src="https://i.imgur.com/4Y9xMCF.gif" class="fit-image mb-5"> </div>
+                    </div><button class="btn btn-success rounded-0 mb-5 prev"><span class="ti-arrow-left"></span>Back</button> <button id="next3" class="btn btn-success rounded-0 mb-5 next"><a href="{{route('my-account')}}">Finish</a></button>
                 </div>
             </div>
         </div>
     </div>
-        </div>
-            </div>
-    </div>
-@stop
+</div>
+<script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
+<script src="{{ asset('vendors/bootstrapwizard/jquery.bootstrap.wizard.js') }}" type="text/javascript"></script>
 
-{{-- page level scripts --}}
-@section('footer_scripts')
-
-    <script type="text/javascript" src="{{ asset('vendors/moment/js/moment.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('vendors/jasny-bootstrap/js/jasny-bootstrap.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('vendors/iCheck/js/icheck.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('vendors/select2/js/select2.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('vendors/datetimepicker/js/bootstrap-datetimepicker.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/frontend/user_account.js') }}"></script>
-
-@stop
+</body>
+</html>

@@ -381,3 +381,7 @@ Route::get('services/consumer_protection_law', 'ServicesController@consumerProte
 Route::get('services/international_trade_law', 'ServicesController@internationalTradeLaw')->name('international_trade');
 Route::get('services/entertainment_and_sports', 'ServicesController@entertainmentAndSportsLaw')->name('entertainment_and_sports_law');
 
+//institutions
+
+Route::get('admissions/institutions', 'InstitutionsController@index');
+Route::get('admissions/institution_details/{id}', 'InstitutionsController@show');

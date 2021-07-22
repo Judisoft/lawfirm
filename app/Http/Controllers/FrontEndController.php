@@ -27,6 +27,7 @@ use App\Mail\ForgotPassword;
 use App\Models\Country;
 use App\Models\Consultation;
 use App\Models\Newsletter;
+use App\Models\Institution;
 
 class FrontEndController extends JoshController
 {
@@ -97,7 +98,8 @@ class FrontEndController extends JoshController
     {
         $user = Sentinel::getUser();
         $countries = Country::all()->pluck('name', 'sortname')->toArray();
-        return view('user_account', compact('user', 'countries'));
+        $institutions = Institution::orderBy('institution_name', 'ASC')->get();
+        return view('user_account', compact('user', 'countries', 'institutions'));
     }
 
     /**

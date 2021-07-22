@@ -40,7 +40,7 @@
         </div>
     </div>
 </div>
-<!-- Preloader Start -->
+<!-- Preloader Start end-->
 <header>
     <!-- Header Start -->
     <div class="header-area">

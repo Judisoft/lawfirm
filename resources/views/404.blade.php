@@ -1,51 +1,70 @@
+
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>404 page | Welcome to Josh Frontend</title>
-    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-    <!-- global level css-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/lib.css') }}">
-    <!-- end of globallevel css-->
-    <!-- page level styles-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/frontend/404.css') }}" />
 
-    <style>
-        .btn-primary {
-            color: #fff;
-            background-color: #337ab7 !important;
-            border-color: #2e6da4 !important;
-            font-size:14px !important;
-        }
-    </style>
-    <!-- end of page level styles-->
+  <!-- Basic Page Needs
+  ================================================== -->
+  <meta charset="utf-8">
+  <title>Small Apps | Bootstrap App Landing Template</title>
+
+  <!-- Mobile Specific Metas
+  ================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Bootstrap App Landing Template">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="author" content="Themefisher">
+  <meta name="generator" content="Themefisher Small Apps Template v1.0">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+  
+  <!-- PLUGINS CSS STYLE -->
+  <link rel="stylesheet" href="{{asset('plugins1/bootstrap/bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{asset('plugins1/themify-icons/themify-icons.css')}}">
+  <link rel="stylesheet" href="{{asset('plugins1/slick/slick.css')}}">
+  <link rel="stylesheet" href="{{asset('plugins1/slick/slick-theme.css')}}">
+  <link rel="stylesheet" href="{{asset('plugins1/fancybox/jquery.fancybox.min.css')}}">
+  <link rel="stylesheet" href="{{asset('plugins1/aos/aos.css')}}">
+
+  <!-- CUSTOM CSS -->
+  <link href="{{asset('plugins1/css/style.css')}}" rel="stylesheet">
+
 </head>
 
-<body>
+<body class="body-wrapper" data-spy="scroll" data-target=".privacy-nav">
 
-    <div id="animate" class="row">
-        <div class="number">4</div>
-        <div class="icon"> <i class="livicon" data-name="pacman" data-size="105" data-c="#f6c500" data-hc="#f1b21d" data-eventtype="click" data-iteration="15"></i>
-        </div>
-        <div class="number">4</div>
-    </div>
-    <div class="hgroup">
-        <h1>Page Not Found</h1>
-        <h2>It seems that page you are looking for no longer exists.</h2>
-        <a href="{{ route('home') }}" class="btn btn-primary text-white">
-            Home
-        </a>
-    </div>
-    <!-- global js -->
-    <script src="{{ asset('js/frontend/jquery.min.js') }}" type="text/javascript"></script>
-    <script src="{{ asset('js/frontend/bootstrap.min.js') }}" type="text/javascript"></script>
-    <!--livicons-->
-    <script src="{{ asset('js/raphael.min.js') }}"></script>
-    <script src="{{ asset('js/livicons-1.4.min.js') }}"></script>
-    <!-- end of global js -->
-    <!-- begining of page level js-->
-    <script src="{{ asset('js/frontend/404.js') }}"></script>
-    <!-- end of page level js-->
+
+<section class="error-page">
+	<div class="center">
+		<div class="block text-center">
+			<h1>404</h1>
+			<h3>Page Not Found</h3>
+			<p>The link you clicked may be broken or the
+				<br>page may have been removed.</p>
+			<a href="{{route('home')}}" class="btn btn-main-md">visit homepage</a>
+		</div>
+	</div>
+</section>
+
+
+  <!-- To Top -->
+  <div class="scroll-top-to">
+    <i class="ti-angle-up"></i>
+  </div>
+  
+  <!-- JAVASCRIPTS -->
+  <script src="plugins/jquery/jquery.min.js"></script>
+  <script src="plugins/bootstrap/bootstrap.min.js"></script>
+  <script src="plugins/slick/slick.min.js"></script>
+  <script src="plugins/fancybox/jquery.fancybox.min.js"></script>
+  <script src="plugins/syotimer/jquery.syotimer.min.js"></script>
+  <script src="plugins/aos/aos.js"></script>
+  <!-- google map -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgeuuDfRlweIs7D6uo4wdIHVvJ0LonQ6g"></script>
+  <script src="plugins/google-map/gmap.js"></script>
+  
+  <script src="js/script.js"></script>
 </body>
+
 </html>
