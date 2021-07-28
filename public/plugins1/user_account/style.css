@@ -20,12 +20,11 @@ body {
 }
 
 .step-container {
-    border-top: 1px solid lightgrey;
-    border-bottom: 1px solid lightgrey;
+    
     width: 99.85%;
     height: 75px;
     margin-top: 70px;
-    margin-bottom: 50px;
+    margin-bottom: 70px;
 }
 
 .fa-circle {
@@ -37,8 +36,7 @@ body {
 
 .step-box {
     padding: 10px;
-    border-left: 1px solid lightgrey;
-    border-right: 1px solid lightgrey;
+    border: 1px solid lightgrey;
     background-color: #fff;
 }
 
@@ -94,6 +92,18 @@ body {
     font-weight: 800;
     text-transform: uppercase;
 }
+.list{
+    text-align: left !important;
+}
+h6{
+    font-weight: 500 !important;
+}
+table{
+    width: 100%;
+}
+td > a{
+    font-weight: 500;
+}
 select{
     height: 50px !important;
     border: 1px solid #042851 !important;
@@ -122,6 +132,9 @@ button {
     font-size: 16px;
     letter-spacing: 1px;
 }
+input, select:hover{
+    border: 1px solid var(--success) !important;
+}
 
 input,
 textarea{
@@ -138,6 +151,13 @@ textarea{
     font-size: 16px;
     letter-spacing: 1px;
 }
+input[type="file"]{
+    border:none;
+
+}
+input[type="file"]:hover, :focus{
+    border:none;
+    
 }
 
 input:focus,
@@ -165,10 +185,43 @@ button {
     width: 120px;
     letter-spacing: 2px;
 }
-
+.btn{
+    border-radius: 35px !important;
+}
+.form-wizard-next-btn{
+    background-color: #d65470;
+    border-color: #d65470 !important;
+    color: #ffffff;
+    display: inline-block;
+    min-width: 100px;
+    min-width: 120px;
+    padding: 10px;
+    border-radius: 35px !important;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  .form-wizard-prev-btn{
+    background-color: lightgray;
+    color: #ffffff;
+    display: inline-block;
+    min-width: 100px;
+    min-width: 120px;
+    padding: 10px;
+    border-radius: 35px !important;
+    text-transform: uppercase;
+    text-align: center;
+  }
 .fit-image {
     width: 100%;
     object-fit: cover;
+}
+.notice{
+    padding: 20px 50px;
+}
+
+.notice h4{
+    font-weight: 700;
+    color: var(--danger);
 }
 
 @media screen and (max-width: 768px) {

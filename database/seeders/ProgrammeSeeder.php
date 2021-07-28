@@ -24,7 +24,7 @@ class ProgrammeSeeder extends Seeder
         //create blogs
         $levels = ['hnd','bachelors', 'masters', 'phd'];
         $degrees = ['HND','BA', 'BBA', 'BTech', 'Beng', 'BSc', 'MA', 'MSc', 'MBA', 'MEd', 'MEng', 'MTech', 'PhD'];
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 5; $i++) {
             for($j = 0; $j < count($levels); $j++) {
                 for($k = 0; $k < count($degrees); $k++){
                     $firstStringCharacter = substr($degrees[$k], 0, 1);
@@ -34,6 +34,8 @@ class ProgrammeSeeder extends Seeder
                             'institution_id'   => rand(1, 200),
                             'level' => $levels[0],
                             'degree' => $degrees[$k],
+                            'faculty' => $faker->text(20),
+                            'department' => $faker->text(20),
                             
                         ]);
 
@@ -43,6 +45,8 @@ class ProgrammeSeeder extends Seeder
                             'institution_id'   => rand(1, 200),
                             'level' => $levels[1],
                             'degree' => $degrees[$k],
+                            'faculty' => $faker->text(20),
+                            'department' => $faker->text(20),
                             
                         ]);
                     } elseif($firstStringCharacter == 'M'){
@@ -51,6 +55,8 @@ class ProgrammeSeeder extends Seeder
                             'institution_id'   => rand(1, 200),
                             'level' => $levels[2],
                             'degree' => $degrees[$k],
+                            'faculty' => $faker->text(20),
+                            'department' => $faker->text(20),
                             
                         ]);
                     }
@@ -60,6 +66,8 @@ class ProgrammeSeeder extends Seeder
                             'institution_id'   => rand(1, 200),
                             'level' => $levels[3],
                             'degree' => $degrees[$k],
+                            'faculty' => $faker->text(20),
+                            'department' => $faker->text(20),
                             
                         ]);
                     }

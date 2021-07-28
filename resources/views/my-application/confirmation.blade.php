@@ -1,96 +1,8 @@
-<!doctype html>
-<html>
-<head>
-<meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'>
-<title>StudPort Admissions Portal</title>
-<link href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' rel='stylesheet'>
-<link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css' rel='stylesheet'>
-<!-- PLUGINS CSS STYLE -->
-<link rel="stylesheet" href="{{asset('plugins1/bootstrap/bootstrap.min.css')}}">
-<link rel="stylesheet" href="{{asset('plugins1/themify-icons/themify-icons.css')}}">
-<link rel="stylesheet" href="{{asset('plugins1/slick/slick.css')}}">
-<link rel="stylesheet" href="{{asset('plugins1/slick/slick-theme.css')}}">
-<link rel="stylesheet" href="{{asset('plugins1/fancybox/jquery.fancybox.min.css')}}">
-<link rel="stylesheet" href="{{asset('plugins1/aos/aos.css')}}">
-<link rel="stylesheet" href="{{asset('plugins1/user_account/style.css')}}">
-
-<!-- CUSTOM CSS -->
-<link href="{{asset('plugins1/css/style.css')}}" rel="stylesheet">
-<link href="{{asset('plugins1/css/upload.css')}}" rel="stylesheet">
-<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-</head>
-<body oncontextmenu='return false' class='snippet-body'>
-<nav class="navbar main-nav fixed-top navbar-expand-lg px-2 px-sm-0 py-2 py-lg-0 bg-light border-bottom" style="overflow-x: hidden;">
-  <div class="container">
-    <a class="navbar-brand" href="index.html"><img src="{{asset('images/recruit.png')}}" style="height: 40px; width: 40px;" alt="logo"><span class="h5 text-dark text-capitalize"><b>Admissions Portal<b></span></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="ti-menu"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto">
-       <li class="nav-item {!! (Request::is('/admissions/institution_details/') ? 'active' : '') !!}">
-          <a class="nav-link" href="/admissions/institutions/">Institutions</a>
-        </li>
-        @if(Sentinel::check())
-          <li class="nav-item">
-            <a class="nav-link " href="{{route('my-account')}}">Apply </a>
-          </li>
-        @endif
-        <li class="nav-item">
-          <a class="nav-link {!! (Request::is('about_us') ? 'active' : '') !!}" href="{{route('about')}}">Admissions</a>
-        </li>
-       
-        <li class="nav-item {!! (Request::is('contact') ? 'active' : '') !!}">
-          <a class="nav-link" href="{{route('contact')}}">Need help?</a>
-        </li>
-        <li class="nav-item ">
-          <a class="nav-link" href="{{route('logout')}}">Logout</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link btn-sell text-light" href="{{route('login')}}"><i class="ti-shopping-cart px-2"></i><b>Buy Textbooks</b></a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav> 
-  
-
-<div class="container-fluid px-1 py-5 mx-auto">
-    <div class="row d-flex justify-content-center text-center">
-        <div class="col-lg-9 col-md-10 col-sm-10">
-            <div class="card b-0 rounded-0 show">
-                <div class="row justify-content-between mx-auto step-container">
-                    <div class="col-md-3 col-4 step-box active">
-                        <h6 class="step-title-0"> <span class="ti-agenda"></span> <span class="break-line"></span> <span class="step-title">Institutions & Programmes</span></h6>
-                    </div>
-                    <div class="col-md-3 col-4 step-box">
-                        <h6 class="step-title-0"> <span class="ti-user"></span> <span class="break-line"></span> <span class="step-title">Personal Information</span></h6>
-                    </div>
-                    <div class="col-md-3 col-4 step-box">
-                        <h6 class="step-title-0"> <span class="ti-folder"></span> <span class="break-line"></span> <span class="step-title">Doucuments Upload</span> </h6>
-                    </div>
-                    <div class="col-md-3 col-4 step-box">
-                        <h6 class="step-title-0"> <span class="ti-wallet"></span> <span class="break-line"></span> <span class="step-title">Payment</span> </h6>
-                    </div>
-                </div>
-                @include('notifications')
-                <div class="p-3 pt-5 justify-content-center mb-5 text-center">
-                    <h4 class="heading">Institutions - Faculties - Departments</h4>
-                    <div class="row justify-content-center mb-3">
-                        <div class="col-lg-3 col-md-6 col-12 list">
-                            Select Institution <span class="text-danger">*</span>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-12 list">
-                        
-                        
-                        {!! Form::model($user, ['url' => URL::to('my-account'), 'method' => 'put', 'name' => 'myForm', 'class' => 'form-horizontal','enctype'=>"multipart/form-data"]) !!}
+ {!! Form::model($user, ['url' => URL::to('my-account'), 'method' => 'put', 'name' => 'myForm', 'class' => 'form-horizontal','enctype'=>"multipart/form-data"]) !!}
 {{ csrf_field() }}
 <fieldset>
                             <div class="form-group">
                                 <select class="form-control" id="institution" name="institution">
-                                    <option value="">Select institution</option>
                                 @foreach ($institutions as $institution)
                                     <option value="{{ $institution->institution_name }}"
                                     @if ($institution->institution_name == old('institution', $user->institution)) selected="selected"
@@ -149,6 +61,7 @@
                                         @endif>{{ $item->department }}</option>
                                     @endforeach
                                 </select>
+                                <small class="text-danger"><b>{{ $errors->first('second_choice', ':message') }}</b></small>
                             </div>
                         </div>
                     </div>  
@@ -158,7 +71,7 @@
             <div class="card b-0 rounded-0">
                 <div class="row justify-content-between mx-auto step-container">
                     <div class="col-md-3 col-4 step-box completed">
-                        <h6 class="step-title-0"> <span class="ti-check"></span> <span class="break-line"></span> <span class="step-title">Institutions & Programmes</span></h6>
+                        <h6 class="step-title-0"> <span class="ti-check"></span> <span class="break-line"></span> <span class="step-title">Programme Choice</span></h6>
                     </div>
                     <div class="col-md-3 col-4 step-box active">
                         <h6 class="step-title-0"> <span class="ti-user"></span> <span class="break-line"></span> <span class="step-title">Personal Information</span></h6>
@@ -174,95 +87,87 @@
                     <h4 class="heading">Applicant's Information</h4>
                     <div class="row justify-content-center mb-3">
                         <div class="col-lg-3 col-md-6 col-12 list">
-                            First Name <span class="text-danger">*</span>
+                            First Name
                         </div>
                         <div class="col-lg-6 col-md-6 col-12 list">
                             <div class="form-group">
                                 <input id="first_name" name="first_name" type="text" placeholder="First Name" class="form-control required" value="{{Sentinel::getUser()->first_name}}"/>
-                                <small class="text-danger"><b>{{ $errors->first('first_name', ':message') }}</b></small>
                             </div>
                         </div>
                     </div>
                     <div class="row justify-content-center mb-3">
                         <div class="col-lg-3 col-md-6 col-12 list">
-                            Last Name <span class="text-danger">*</span>
+                            Last Name
                         </div>
                         <div class="col-lg-6 col-md-6 col-12 list">
                             <div class="form-group">
                                 <input id="last_name" name="last_name" type="text" placeholder="Last Name" class="form-control required" value="{{Sentinel::getUser()->last_name}}"/>
-                                <small class="text-danger"><b>{{ $errors->first('last_night', ':message') }}</b></small>
                             </div>
                         </div>
                     </div>
                     <div class="row justify-content-center mb-3">
                         <div class="col-lg-3 col-md-6 col-12 list">
-                         Address <span class="text-danger">*</span>
+                         Address
                         </div>
                         <div class="col-lg-6 col-md-6 col-12 list">
                             <div class="form-group">
                                 <input type="text" name="address"  placeholder="Address" class="form-control required" value="{{ old('address', $user->address) }}"/>
-                                <small class="text-danger"><b>{{ $errors->first('address', ':message') }}</b></small>
                             </div>
                         </div>
                     </div>
                     <div class="row justify-content-center mb-3">
                         <div class="col-lg-3 col-md-6 col-12 list">
-                            Email <span class="text-danger">*</span>
+                            Email
                         </div>
                         <div class="col-lg-6 col-md-6 col-12 list">
                             <div class="form-group">
                                 <input type="email" id="email" name="email"  placeholder="Email" class="form-control required" value="{{old('email', $user->email)}}"/>
-                                <small class="text-danger"><b>{{ $errors->first('email', ':message') }}</b></small>
                             </div>
                         </div>
                     </div>
                     <div class="row justify-content-center mb-3">
                         <div class="col-lg-3 col-md-6 col-12 list">
-                           Telephone <span class="text-danger">*</span>
+                           Telephone
                         </div>
                         <div class="col-lg-6 col-md-6 col-12 list">
                             <div class="form-group">
                                 <input type="text" id="telephone" name="telephone"  placeholder="Telephone" class="form-control required" value="{{old('telephone', $user->telephone) }}"/>
-                                <small class="text-danger"><b>{{ $errors->first('telephone', ':message') }}</b></small>
                             </div>
                         </div>
                     </div>
                      <div class="row justify-content-center mb-3">
                         <div class="col-lg-3 col-md-6 col-12 list">
-                           Postal <span class="text-danger">*</span>
+                           Postal
                         </div>
                         <div class="col-lg-6 col-md-6 col-12 list">
                             <div class="form-group">
                                 <input type="text" id="postal" name="postal"  placeholder="Postal Address" class="form-control required" value="{{old('postal', $user->postal) }}"/>
-                                <small class="text-danger"><b>{{ $errors->first('postal', ':message') }}</b></small>
                             </div>
                         </div>
                     </div>
                     <div class="row justify-content-center mb-3">
                         <div class="col-lg-3 col-md-6 col-12 list">
-                           Date of Birth <span class="text-danger">*</span>
+                           Date of Birth
                         </div>
                         <div class="col-lg-6 col-md-6 col-12 list">
                             <div class="form-group">
                                 <input type="date" id="dob" name="dob"  class="form-control required" value="{{ old('dob', $user->dob) }}" data-date-format="YYYY-MM-DD" placeholder="yyyy-mm-dd"/>
-                                <small class="text-danger"><b>{{ $errors->first('dob', ':message') }}</b></small>
                             </div>
                         </div>
                     </div>
                     <div class="row justify-content-center mb-3">
                         <div class="col-lg-3 col-md-6 col-12 list">
-                           Place of Birth <span class="text-danger">*</span>
+                           Place of Birth
                         </div>
                         <div class="col-lg-6 col-md-6 col-12 list">
                             <div class="form-group">
-                                <input type="text" id="pob" name="pob"  placeholder="Place of birth" class="form-control required" value="{{ old('pob', $user->pob) }}"/>
-                                <small class="text-danger"><b>{{ $errors->first('pob', ':message') }}</b></small>
+                                <input type="text" id="pob" name="pob"  placeholder="Place of birth" class="form-control required" value="{!! old('pob') !!}"/>
                             </div>
                         </div>
                     </div>
                     <div class="row justify-content-center mb-3">
                         <div class="col-lg-3 col-md-6 col-12 list">
-                           Gender <span class="text-danger">*</span>
+                           Gender
                         </div>
                         <div class="col-lg-6 col-md-6 col-12 list">
                             <div class="form-group">
@@ -275,7 +180,6 @@
                                 <option value="other" @if($user->gender === 'other') selected="selected"
                                                     @endif >Other</option>
                                 </select>
-                                <small class="text-danger"><b>{{ $errors->first('gender', ':message') }}</b></small>
                             </div>
                         </div>
                     </div>
@@ -298,24 +202,23 @@
                     </div>
                     <div class="row justify-content-center mb-3">
                         <div class="col-lg-3 col-md-6 col-12 list">
-                           Nationality <span class="text-danger">*</span>
+                           Nationality
                         </div>
                         <div class="col-lg-6 col-md-6 col-12 list">
                             <div class="form-group">
-                                <select class="form-control" id="country" name="country">
-                                    @foreach ($countries as $item)
-                                        <option value="{{$item->name}}" 
-                                        @if($item->name == old('country', $user->country)) selected="selected" @endif>
-                                        {{$item->name}}</option>
+                                <select class="form-control" id="third_choice" name="nationality">
+                                    @foreach ($countries as $country)
+                                     <option value="{{ $country->name }}"
+                                        @if ($country->name == old('nationality', $user->nationality)) selected="selected"
+                                        @endif>{{ $country->name }}</option>
                                     @endforeach
                                 </select>
-                                <small class="text-danger"><b>{{ $errors->first('country', ':message') }}</b></small>
                             </div>
                         </div>
                     </div>
                     <div class="row justify-content-center mb-3">
                         <div class="col-lg-3 col-md-6 col-12 list">
-                          First Language <span class="text-danger">*</span>
+                          First Language
                         </div>
                         <div class="col-lg-6 col-md-6 col-12 list">
                             <div class="form-group">
@@ -325,7 +228,6 @@
                                     <option value="French" @if($user->first_language === 'french')
                                         selected="selected" @endif >French</option>
                                 </select>
-                                <small class="text-danger"><b>{{ $errors->first('first_language', ':message') }}</b></small>
                             </div>
                         </div>
                     </div>
@@ -342,34 +244,31 @@
                      <h4 class="heading">Parent/Guardian Information</h4>
                     <div class="row justify-content-center mb-3">
                         <div class="col-lg-3 col-md-6 col-12 list">
-                          Name (as written on NIC) <span class="text-danger">*</span>
+                          Name (as written on NIC)
                         </div>
                         <div class="col-lg-6 col-md-6 col-12 list">
                             <div class="form-group">
                                 <input type="text" id="g_name" name="g_name"  placeholder="First Name" class="form-control required" value="{{ old('g_name', $user->g_name) }}"/>
-                                <small class="text-danger"><b>{{ $errors->first('g_name', ':message') }}</b></small>
                             </div>
                         </div>
                     </div>
                     <div class="row justify-content-center mb-3">
                         <div class="col-lg-3 col-md-6 col-12 list">
-                          Email <span class="text-danger">*</span>
+                          Email
                         </div>
                         <div class="col-lg-6 col-md-6 col-12 list">
                             <div class="form-group">
                                 <input type="text" id="g_email" name="g_email"  placeholder="Email" class="form-control required" value="{{ old('g_email', $user->g_email) }}"/>
-                                <small class="text-danger"><b>{{ $errors->first('g_email', ':message') }}</b></small>
                             </div>
                         </div>
                     </div>
                     <div class="row justify-content-center mb-3">
                         <div class="col-lg-3 col-md-6 col-12 list">
-                          Telephone <span class="text-danger">*</span>
+                          Telephone
                         </div>
                         <div class="col-lg-6 col-md-6 col-12 list">
                             <div class="form-group">
                                 <input type="text" id="g_telephone" name="g_telephone"  placeholder="Telephone" class="form-control required" value="{{ old('g_telephone', $user->g_telephone) }}"/>
-                                <small class="text-danger"><b>{{ $errors->first('g_telephone', ':message') }}</b></small>
                             </div>
                         </div>
                     </div>
@@ -385,12 +284,11 @@
                     </div>
                     <div class="row justify-content-center mb-3">
                         <div class="col-lg-3 col-md-6 col-12 list">
-                          Address <span class="text-danger">*</span>
+                          Address
                         </div>
                         <div class="col-lg-6 col-md-6 col-12 list">
                             <div class="form-group">
                                 <input type="text" id="g_address" name="g_address"  placeholder="Address" class="form-control required" value="{{ old('guardian_address', $user->g_address) }}"/>
-                                <small class="text-danger"><b>{{ $errors->first('g_address', ':message') }}</b></small>
                             </div>
                         </div>
                     </div>
@@ -398,34 +296,31 @@
                     <h4 class="heading">Previous school(s) attended</h4>
                     <div class="row justify-content-center mb-3">
                         <div class="col-lg-3 col-md-6 col-12 list">
-                          Secondary school <span class="text-danger">*</span>
+                          Secondary school
                         </div>
                         <div class="col-lg-6 col-md-6 col-12 list">
                             <div class="form-group">
                                 <input type="text" id="previous_inst1" name="previous_inst1"  placeholder="Secondary School" class="form-control required" value="{{ old('previous_inst1', $user->previous_inst1) }}"/>
-                                <small class="text-danger"><b>{{ $errors->first('previous_inst1', ':message') }}</b></small>
                             </div>
                         </div>
                     </div>
                     <div class="row justify-content-center mb-3">
                         <div class="col-lg-3 col-md-6 col-12 list">
-                          High school <span class="text-danger">*</span>
+                          High school
                         </div>
                         <div class="col-lg-6 col-md-6 col-12 list">
                             <div class="form-group">
                                 <input type="text" id="previous_inst2" name="previous_inst2"  placeholder="Higher Education" class="form-control required" value="{{ old('previous_inst2', $user->previous_inst2) }}"/>
-                                <small class="text-danger"><b>{{ $errors->first('previous_inst2', ':message') }}</b></small>
                             </div>
                         </div>
                     </div>
                     <div class="row justify-content-center mb-3">
                         <div class="col-lg-3 col-md-6 col-12 list">
-                          University/Higher Institution <span class="text-danger">*</span>
+                          University/Higher Institution
                         </div>
                         <div class="col-lg-6 col-md-6 col-12 list">
                             <div class="form-group">
                                 <input type="text" id="previous_inst3" name="previous_inst3"  placeholder="Higher Institution" class="form-control required" value="{{ old('previous_inst3', $user->previous_inst3) }}"/>
-                                <small class="text-danger"><b>{{ $errors->first('previous_inst3', ':message') }}</b></small>
                             </div>
                         </div>
                     </div>
@@ -437,7 +332,7 @@
             <div class="card b-0 rounded-0">
                 <div class="row justify-content-center mx-auto step-container">
                     <div class="col-md-3 col-4 step-box completed">
-                        <h6 class="step-title-0"> <span class="ti-check"></span> <span class="break-line"></span> <span class="step-title">Institutions & Programmes</span></h6>
+                        <h6 class="step-title-0"> <span class="ti-check"></span> <span class="break-line"></span> <span class="step-title">Programme Choice</span></h6>
                     </div>
                     <div class="col-md-3 col-4 step-box completed">
                         <h6 class="step-title-0"> <span class="ti-check"></span> <span class="break-line"></span> <span class="step-title">Personal Information</span></h6>
@@ -452,63 +347,19 @@
                 <div class="p-3 justify-content-center mb-5 pt-5 text-center">
                     <h4 class="heading">DOCUMENTS UPLOAD</h4>
                     <div class="row d-flex justify-content-center">
-                        <div class="mb-5">
-                            <h5 class="confirm list">Upload all required documents. <br>
-                                Accepted file extensions - .jpeg, .jpg, .png,.pdf, .bmp <br>
-                                Maximum file size : 5MB
-                            </h5>
+                        <div class="mb-4">
+                            <h6 class="confirm">Upload all required documents.</h6>
                         </div>
                     </div>
                     <div class="row justify-content-center mb-3">
                         <div class="col-lg-3 col-md-6 col-12 list">
-                          Photo <span class="text-danger">*</span>
+                          GCE O/L Certificate
                         </div>
                         <div class="col-lg-6 col-md-6 col-12 list">
-                            <div class="file-drop-area"> <span class="file-message"></span> 
-                            <input type="file" class="form-control bg-transparent border-0"  name="pic"> </div>
-                            <div id="divImageMediaPreview"> </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-12 list">
-                         <small class="text-danger"><b>{{ $errors->first('pic', 'Upload photo') }}</b></small>
-                        </div>
-                    </div>
-                    <div class="row justify-content-center mb-3">
-                        <div class="col-lg-3 col-md-6 col-12 list">
-                          Birth Certificate <span class="text-danger">*</span>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-12 list">
-                            <div class="file-drop-area"> <span class="file-message"></span> 
-                            <input type="file" class="form-control bg-transparent border-0"  name="doc1"> </div>
-                            <div id="divImageMediaPreview"> </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-12 list">
-                         <small class="text-danger"><b>{{ $errors->first('doc1', 'Upload Bith Certificate') }}</b></small>
-                        </div>
-                    </div>
-                    <div class="row justify-content-center mb-3">
-                        <div class="col-lg-3 col-md-6 col-12 list">
-                          National ID Card <span class="text-danger">*</span>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-12 list">
-                            <div class="file-drop-area"> <span class="file-message"></span> 
-                            <input type="file" class="form-control bg-transparent border-0" accept=".pdf,.jpg,.jpeg,.png" name="doc2"> </div>
-                            <div id="divImageMediaPreview"> </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-12 list">
-                         <small class="text-danger"><b>{{ $errors->first('doc2', 'Upload National ID Card') }}</b></small>
-                        </div>
-                    </div>
-                    <div class="row justify-content-center mb-3">
-                        <div class="col-lg-3 col-md-6 col-12 list">
-                          GCE O/L Certificate <span class="text-danger">*</span>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-12 list">
-                            <div class="file-drop-area"> <span class="file-message"></span> 
-                            <input type="file" class="form-control bg-transparent border-0"  name="doc3"> </div>
-                            <div id="divImageMediaPreview"> </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-12 list">
-                         <small class="text-danger"><b>{{ $errors->first('doc3', 'Upload GCE O/L Certificate') }}</b></small>
+                            <div class="form-group">
+                                <input type="file" class="custom-file-input" id="doc1" name="doc1">
+                                <label class="custom-file-label" for="doc1">Choose file</label>
+                            </div>
                         </div>
                     </div>
                     <div class="row justify-content-center mb-3">
@@ -516,15 +367,24 @@
                           GCE A/L Certificate <br>or<br>Result Slip
                         </div>
                         <div class="col-lg-6 col-md-6 col-12 list">
-                            <div class="file-drop-area"> <span class="file-message"></span> 
-                            <input type="file" class="form-control bg-transparent border-0" accept=".pdf,.jpg,.jpeg,.png" name="doc4"> </div>
-                            <div id="divImageMediaPreview"> </div>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-12 list">
-                         <small class="text-danger"><b>{{ $errors->first('doc4', 'Upload GCE A/L Certificate') }}</b></small>
+                            <div class="form-group">
+                                <input type="file" class="custom-file-input" id="doc2" name="doc2">
+                                <label class="custom-file-label" for="doc2">Choose file</label>
+                            </div>
                         </div>
                     </div>
-
+                    <div class="row justify-content-center mb-3">
+                        <div class="col-lg-3 col-md-6 col-12 list">
+                          Others
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-12 list">
+                            <div class="form-group">
+                                <input type="file" class="custom-file-input" id="doc3" name="doc3">
+                                <label class="custom-file-label" for="doc3">Choose file</label>
+                            </div>
+                        </div>
+                    </div>
+ 
                     <button type="button" class="btn btn-secondary float-left rounded-0 mb-5 prev"><span class="ti-arrow-left"></span>Back</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <button type="button" id="next3" class="form-wizard-next-btn float-right rounded-0 mb-5 next">Next <span class="ti-arrow-right"></span></button>
                 </div>
@@ -532,7 +392,7 @@
             <div class="card b-0 rounded-0">
                 <div class="row justify-content-center mx-auto step-container">
                     <div class="col-md-3 col-4 step-box completed">
-                        <h6 class="step-title-0"> <span class="ti-check"></span> <span class="break-line"></span> <span class="step-title">Institutions & Programmes</span></h6>
+                        <h6 class="step-title-0"> <span class="ti-check"></span> <span class="break-line"></span> <span class="step-title">Programme Choice</span></h6>
                     </div>
                     <div class="col-md-3 col-4 step-box completed">
                         <h6 class="step-title-0"> <span class="ti-check"></span> <span class="break-line"></span> <span class="step-title">Personal Information</span></h6>
@@ -545,7 +405,7 @@
                     </div>
                 </div>
                 <div class="p-3 justify-content-center mb-5 pt-5 text-center">
-                    <h4 class="heading">Verify and Confirm your information</h4>
+                    <h4 class="heading">Verify and Confirm</h4>
                     <div class="row d-flex justify-content-center">
                         <div class="col-lg-9 col-md-9 mb-4">
                             <h6 class="confirm">Verify your Information and press confirm to proceed to payment</h6>
@@ -644,13 +504,13 @@
                                 <tr>
                                     <td>Nationality</td>
                                     <td>
-                                        <a>{{old('country', $user->country)}}</a>
+                                        <a>{{old('last_name', $user->nationality)}}</a>
                                     </td>
                                 </tr>
                                  <tr>
                                     <td>First Language</td>
                                     <td>
-                                        <a>{{old('first_language', $user->first_language)}}</a>
+                                        <a>{{old('firs_language', $user->first_language)}}</a>
                                     </td>
                                 </tr>
                                 <tr>
@@ -686,7 +546,7 @@
                                  <tr>
                                     <td>Secondary School</td>
                                     <td>
-                                        <a>{{old('previous_inst1', $user->previous_inst1)}}</a>
+                                        <a>{{old('previous_inst1', $user->prev_inst1)}}</a>
                                     </td>
                                 </tr>
                                 <tr>
@@ -706,182 +566,9 @@
                         </div>
                     </div> 
                     <button type="button" class="btn btn-secondary float-left rounded-0 mb-5 prev"><span class="ti-arrow-left"></span>Back</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <button type="button" class="btn btn-success float-right rounded-0 mb-5 next" id="btn">Next</button>
+                    <button type="submit" class="btn btn-success float-right rounded-0 mb-5 next">Confirm </button>
                 </div>
             </div>
+            </fieldset>
+            {!!  Form::close()  !!}
             
-            <div class="card b-0 rounded-0">
-                <div class="row justify-content-center mx-auto step-container">
-                    <div class="col-md-3 col-4 step-box completed">
-                        <h6 class="step-title-0"> <span class="ti-check"></span> <span class="break-line"></span> <span class="step-title">Institutions & Programmes</span></h6>
-                    </div>
-                    <div class="col-md-3 col-4 step-box completed">
-                        <h6 class="step-title-0"> <span class="ti-check"></span> <span class="break-line"></span> <span class="step-title">Personal Information</span></h6>
-                    </div>
-                    <div class="col-md-3 col-4 step-box completed">
-                        <h6 class="step-title-0"> <span class="ti-check"></span> <span class="break-line"></span> <span class="step-title">Doucuments Upload</span> </h6>
-                    </div>
-                    <div class="col-md-3 col-4 step-box completed">
-                        <h6 class="step-title-0"> <span class="ti-wallet"></span> <span class="break-line"></span> <span class="step-title">Payment</span> </h6>
-                    </div>
-                </div>
-                <div class="p-3 justify-content-center text-center">
-                    <h3 class="heading">Your Application has been submitted successfully<br>Proceed to <a class="btn btn-sm btn-info text-light rounded-0">payment</a> to complete your application</h3>
-                                   <div class="row justify-content-center mb-3">
-                        <div class="col-lg-3 col-md-6 col-12 list">
-                          First Language <span class="text-danger">*</span>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-12 list">
-                            <div class="form-group">
-                                <select class="form-control"  name="paid_via">
-                                    <option value="">select a payment method</option>
-                                    <option value="momo" style="background-image:url(images/momo.jpg);">MTN Mobile Money</option>
-                                    <option value="om" style="background-image:url(images/volvo.png);">Orange Money</option>
-                                    <option value="express_union" style="background-image:url(images/volvo.png);">Express Union Mobile Money</option>
-                                </select>
-                                <small class="text-danger"><b>{{ $errors->first('paid_via', ':message') }}</b></small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row justify-content-center mb-3">
-                        <div class="col-lg-3 col-md-6 col-12 list">
-                           Payment Reference
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-12 list">
-                            <div class="form-group">
-                                <input type="text"  name="payment_reference"  placeholder="Enter payment/transaction ID here" class="form-control required"/>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="form-wizard-prev-btn rounded-0 mb-5 prev"><span class="ti-arrow-left"></span>Back</button> <button type="button" id="next3" class="btn btn-success rounded-0 mb-5 next">Finish</button>
-                    <div class="justify-content-center notice">
-                        <h4 clas="text-center text-danger"> Your Application shall NOT be processed if you do not complete payment on the due date as on the invoice</h4>
-                    </div>
-                </div>
-                <div class="card b-0 rounded-0">
-                <div class="row justify-content-center mx-auto step-container">
-                    <div class="col-md-3 col-4 step-box completed">
-                        <h6 class="step-title-0"> <span class="ti-check"></span> <span class="break-line"></span> <span class="step-title">Institutions & Programmes</span></h6>
-                    </div>
-                    <div class="col-md-3 col-4 step-box completed">
-                        <h6 class="step-title-0"> <span class="ti-check"></span> <span class="break-line"></span> <span class="step-title">Personal Information</span></h6>
-                    </div>
-                    <div class="col-md-3 col-4 step-box completed">
-                        <h6 class="step-title-0"> <span class="ti-check"></span> <span class="break-line"></span> <span class="step-title">Doucuments Upload</span> </h6>
-                    </div>
-                    <div class="col-md-3 col-4 step-box completed">
-                        <h6 class="step-title-0"> <span class="ti-check"></span> <span class="break-line"></span> <span class="step-title">Payment</span> </h6>
-                    </div>
-                </div>
-                <div class="p-3 justify-content-center text-center">
-                    <h4 class="heading">End</h4>
-                    <div class="row d-flex justify-content-center">
-                        <div class="mb-4">
-                            <h6 class="confirm">Verify all entered details and press confirm</h6>
-                        </div>
-                    </div> 
-                    <button class="form-wizard-prev-btn rounded-0 mb-5 prev"><span class="ti-arrow-left"></span>Back</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <button class="btn btn-success rounded-0 mb-5 next">Confirm </button>
-                </div>
-            </div>
-            </div>
-        </div>
-    </div>
-</div>
-</fieldset>
-{!!  Form::close()  !!}
-<script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
-<script src="{{ asset('vendors/bootstrapwizard/jquery.bootstrap.wizard.js') }}" type="text/javascript"></script>
-
-<script type='text/javascript'>
-
-$(document).ready(function(){
-
-let current_fs, next_fs, previous_fs;
-
-$(".next").click(function(){
-
-current_fs = $(this).parent().parent();
-next_fs = $(this).parent().parent().next();
-
-$(current_fs).removeClass("show");
-$(next_fs).addClass("show");
-
-current_fs.animate({}, {
-step: function() {
-
-current_fs.css({
-'display': 'none',
-'position': 'relative'
-});
-
-next_fs.css({
-'display': 'block'
-});
-}
-});
-
-});
-
-$(".prev").click(function(){
-
-current_fs = $(this).parent().parent();
-previous_fs = $(this).parent().parent().prev();
-
-$(current_fs).removeClass("show");
-$(previous_fs).addClass("show");
-
-current_fs.animate({}, {
-step: function() {
-
-current_fs.css({
-'display': 'none',
-'position': 'relative'
-});
-
-previous_fs.css({
-'display': 'block'
-});
-}
-});
-});
-
-});
-
-</script>
-<script type='text/javascript'>$(document).on('change', '.file-input', function() {
-
-var filesCount = $(this)[0].files.length;
-
-var textbox = $(this).prev();
-
-if (filesCount === 1) {
-var fileName = $(this).val().split('\\').pop();
-textbox.text(fileName);
-} else {
-textbox.text(filesCount + ' files selected');
-}
-
-
-
-if (typeof (FileReader) != "undefined") {
-var dvPreview = $("#divImageMediaPreview");
-dvPreview.html("");
-$($(this)[0].files).each(function () {
-var file = $(this);
-var reader = new FileReader();
-reader.onload = function (e) {
-var img = $("<img />");
-img.attr("style", "width: 150px; height:100px; padding: 10px");
-img.attr("src", e.target.result);
-dvPreview.append(img);
-}
-reader.readAsDataURL(file[0]);
-});
-} else {
-alert("This browser does not support HTML5 FileReader.");
-}
-});
-</script>
-</body>
-</html>
