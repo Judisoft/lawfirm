@@ -309,6 +309,7 @@ Route::group(
     function () {
         Route::put('my-account', 'FrontEndController@update');
         Route::get('my-account', 'FrontEndController@myAccount')->name('my-account');
+        Route::get('print', 'PrintController@printApplicationForm')->name('print');
     }
 );
 // Email System

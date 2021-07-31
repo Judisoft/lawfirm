@@ -63,7 +63,7 @@
           <a class="nav-link" href="{{route('contact')}}">Need help?</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link btn-sell text-light" href="{{route('login')}}"><i class="ti-shopping-cart px-2"></i><b>Buy Textbooks</b></a>
+          <a class="nav-link btn-primary text-light" href="{{route('login')}}"><i class="ti-shopping-cart px-2"></i><b>Buy Textbooks</b></a>
         </li>
       </ul>
     </div>
@@ -170,7 +170,6 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgeuuDfRlweIs7D6uo4wdIHVvJ0LonQ6g"></script>
   <script src="{{asset('plugins1/google-map/gmap.js')}}"></script>
   <script src="{{asset('plugins1/js/script.js')}}"></script>
-
 </body>
 
 </html>

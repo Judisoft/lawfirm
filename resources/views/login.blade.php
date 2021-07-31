@@ -9,7 +9,7 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('css/frontend/login.css') }}">
         <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
     </head>
-<body oncontextmenu='return false' class='snippet-body'>
+<body oncontextmenu='return false' class='snippet-body bg-light'>
     <div class="container bg-light">
     <div class="row">
         <div class="col-md-6 col-12">
@@ -25,19 +25,21 @@
             <div class="d-flex align-items-center pb-4"> <a href="#">Learn More <span class="fas fa-arrow-right text-primary"></span> </a> </div>
             <div class="text-justify pb-3">Don't have an account yet? Sign Up for free</div>
             <div class="d-flex align-items-center pb-4"> <a href="{{route('register')}}">Sign Up<span class="fas fa-arrow-right text-primary"></span> </a> </div>
+            <img src="{{asset('images/login.jpg')}}" style="height: 100px; width: 100px;"/>
         </div>
         <div class="col-md-6 col-12">
             <div class="wrapper bordered bg-md-white d-flex flex-column align-items-between">
                 <div class="form">
-                    <div class="h4 font-weight-bold text-center mb-4">Login StudPort</div>
+                    <div class="h4 font-weight-bold text-center mb-4">Sign In - StudPort</div>
+                    @include('notifications')
                     <div class="btn d-flex align-items-center"> <img src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png" alt="">
-                        <div class="px-5">Login with Google</div>
+                        <div class="px-5"><a href="{{ url('/google') }}">Sign In with Google</a></div>
                     </div>
                     <div class="border-top my-4"></div>
                     <form action="{{ route('login') }}" class="omb_loginForm" autocomplete="off" method="POST">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <div class="form-group"> 
-                        <label for="email">Your email</label> 
+                        <label for="email">Email</label> 
                         <input type="email" class="form-control" name="email" value="{!! old('email') !!}">
                         <small>{{ $errors->first('email', ':message') }}</small>
                     </div>

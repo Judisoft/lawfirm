@@ -1964,10 +1964,13 @@ hr {
   position: -webkit-sticky;
   position: sticky;
   top: 100px;
-  background: #fafafa;
+  background: #6495ED;
   padding: 30px 0;
   display: flex;
   justify-content: center;
+  border-top: 3px solid var(--primary);
+  border-left: none !important;
+  border-radius: 0 0 3px 3px;
 }
 
 .privacy .privacy-nav ul {
@@ -1981,9 +1984,9 @@ hr {
 
 .privacy .privacy-nav ul li a {
   font-size: 16px;
-  color: #757575;
+  color: #fff;
   padding: 10px 0;
-  font-weight: bold;
+  font-weight: 500;
   display: block;
 }
 
@@ -1995,7 +1998,7 @@ hr {
 }
 
 .privacy .privacy-nav ul li a.active {
-  color: var(--primary);
+  color: var(--dark);
 }
 
 @media (max-width: 768px) {
@@ -2007,6 +2010,7 @@ hr {
 .privacy .block {
   background: #fff;
   padding: 40px 50px;
+  border-top: 3px solid var(--primary);
 }
 
 .privacy .block .policy-item {

@@ -1,102 +1,82 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Register | Welcome to Josh Frontend</title>
-    <!--global css starts-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.css') }}">
-    <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" type="image/x-icon">
-    <link rel="icon" href="{{ asset('images/favicon.png') }}" type="image/x-icon">
-    <!--end of global css-->
-    <!--page level css starts-->
-    <link type="text/css" rel="stylesheet" href="{{asset('vendors/iCheck/css/all.css')}}" />
-    <link href="{{ asset('vendors/bootstrapvalidator/css/bootstrapValidator.min.css') }}" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/frontend/register.css') }}">
-    <!--end of page level css-->
-</head>
-
-<body>
-    <div class="container">
-        <!--Content Section Start -->
-        <div class="row">
-            <div class="box animation flipInX">
-                <img src="{{ asset('images/josh-new.png') }}" alt="logo" class="img-responsive mar">
-                <h3 class="text-primary">Sign Up</h3>
-                <!-- Notifications -->
-                <div id="notific">
-                    @include('notifications')
+    <head>
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <title>StudPort - Sign Up</title>
+        <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' rel='stylesheet'>
+        <link href='https://use.fontawesome.com/releases/v5.7.2/css/all.css' rel='stylesheet'>
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/frontend/login.css') }}">
+        <link rel="stylesheet" href="{{asset('plugins1/themify-icons/themify-icons.css')}}">
+        <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    </head>
+<body oncontextmenu='return false' class='snippet-body bg-light'>
+    <div class="container bg-light">
+    <div class="row">
+        <div class="col-md-6 col-12">
+            <div id="over">
+                <div class="green-label text-uppercase">now available</div>
+                <div id="payment">
+                    <div class="text-white pt-2"><h5>Studort Bookshop</h5></div>
+                    <div class="text-justify text-lighter">Buy your textbooks online at a discount</div>
                 </div>
-                <form action="{{ route('register') }}" method="POST" id="reg_form">
-                    <!-- CSRF Token -->
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-
-                    <div class="form-group {{ $errors->first('first_name', 'has-error') }}">
-                        <label class="sr-only"> First Name</label>
-                        <input type="text" class="form-control" id="first_name" name="first_name"
-                            placeholder="First Name" value="{!! old('first_name') !!}">
-                        {!! $errors->first('first_name', '<span class="help-block">:message</span>') !!}
+                <div id="rupee"> <span>- 20%</span> </div>
+            </div>
+            <div class="text-justify py-3"> Place an order for your textbooks and have them supplied to you at cheap and affordaboe prices</div>
+            <div class="d-flex align-items-center pb-4"> <a href="#">Learn More <span class="fas fa-arrow-right text-primary"></span> </a> </div>
+            <div class="text-justify pb-3">Already have an account? Sign In </div>
+            <div class="d-flex align-items-center pb-4"> <a href="{{route('login')}}">Sign In<span class="fas fa-arrow-right text-primary"></span> </a> </div>
+        </div>
+        <div class="col-md-6 col-12">
+            <div class="wrapper bordered bg-md-white d-flex flex-column align-items-between">
+                <div class="form">
+                    <div class="h4 font-weight-bold text-center mb-4">Sign Up - StudPort</div>
+                    <div class="btn d-flex align-items-center"> <img src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png" alt="">
+                        <div class="px-5">Sign Up with Google</div>
                     </div>
-                    <div class="form-group {{ $errors->first('last_name', 'has-error') }}">
-                        <label class="sr-only"> Last Name</label>
-                        <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last Name"
-                            value="{!! old('last_name') !!}">
-                        {!! $errors->first('last_name', '<span class="help-block">:message</span>') !!}
+                    <div class="border-top my-4 pb-3"></div>
+                    <form action="{{ route('register') }}" class="omb_loginForm" autocomplete="off" method="POST">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <div class="form-group"> 
+                        <label for="first_name">First Name</label> 
+                        <input type="text" class="form-control" name="first_name" value="{{ old('first_name') }}">
+                        <small>{{ $errors->first('first_name', ':message') }}</small>
                     </div>
-                    <div class="form-group {{ $errors->first('email', 'has-error') }}">
-                        <label class="sr-only"> Email</label>
-                        <input type="email" class="form-control" id="Email" name="email" placeholder="Email"
-                            value="{!! old('Email') !!}">
-                        {!! $errors->first('email', '<span class="help-block">:message</span>') !!}
+                    <div class="form-group"> 
+                        <label for="last_name">Last Name</label> 
+                        <input type="text" class="form-control" name="last_name" value="{{ old('last_name') }}">
+                        <small>{{ $errors->first('last_name', ':message') }}</small>
                     </div>
-                    <div class="form-group {{ $errors->first('password', 'has-error') }}">
-                        <label class="sr-only"> Password</label>
-                        <input type="password" class="form-control" id="Password1" name="password"
-                            placeholder="Password">
-                        {!! $errors->first('password', '<span class="help-block">:message</span>') !!}
+                    <div class="form-group"> 
+                        <label for="email">Email</label> 
+                        <input type="email" class="form-control" name="email" value="{!! old('email') !!}">
+                        <small>{{ $errors->first('email', ':message') }}</small>
                     </div>
-                    <div class="form-group {{ $errors->first('password_confirm', 'has-error') }}">
-                        <label class="sr-only"> Confirm Password</label>
-                        <input type="password" class="form-control" id="Password2" name="password_confirm"
-                            placeholder="Confirm Password">
-                        {!! $errors->first('password_confirm', '<span class="help-block">:message</span>') !!}
+                    <div class="form-group"> 
+                        <label for="password">Password </label> 
+                        <input type="password" class="form-control" name="password">
+                        <small>{{ $errors->first('password', ':message') }}</small> 
                     </div>
-                    <div class="clearfix"></div>
-                    <div class="form-group {{ $errors->first('gender', 'has-error') }}">
-                        <label class="sr-only">Gender</label>
-                        <label class="radio-inline">
-                            <input type="radio" name="gender" id="inlineRadio1" value="male"> Male
-                        </label>
-                        <label class="radio-inline">
-                            <input type="radio" name="gender" id="inlineRadio2" value="female"> Female
-                        </label>
-                        {!! $errors->first('gender', '<span class="help-block">:message</span>') !!}
+                    <div class="form-group"> 
+                        <label for="password">Confirm Password </label> 
+                        <input type="password" class="form-control" name="password_confirm">
+                        <small>{{ $errors->first('password_confirm', ':message') }}</small> 
                     </div>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" name="subscribed"> I accept <a href="#"> Terms and Conditions</a>
+                    <div class="checkbox mb-2">
+                        <label for="remember-me">
+                            <input type="checkbox">&nbsp; Accept Terms and Privacy policies
                         </label>
                     </div>
-                    <div class="g-recaptcha" data-sitekey="{{ env('GOOGLE_RECAPTCHA_KEY') }}"></div>
-                    <button type="submit" class="btn btn-block br-0 btn-primary my-2">Sign Up</button>
-                    Already have an account? Please <a href="{{ route('login') }}"> Log In</a>
-                </form>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary btn-block rounded-0" value="Sign Up">
+                    </div>
+                </div>
+                <div class="text-center text-muted mt-3"> Need help? <span><a href="{{route('contact')}}">Contact Us</a></span> </div>
             </div>
         </div>
-
-        <!-- //Content Section End -->
     </div>
-    <!--global js starts-->
-    <script src='https://www.google.com/recaptcha/api.js'></script>
-    {{--<script type="text/javascript" src="{{ asset('js/app.js') }}"></script>--}}
-    <script type="text/javascript" src="{{ asset('js/frontend/jquery.min.js') }}"></script>
-    <script src="{{ asset('vendors/bootstrapvalidator/js/bootstrapValidator.min.js') }}" type="text/javascript">
-    </script>
-    <script type="text/javascript" src="{{ asset('vendors/iCheck/js/icheck.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/frontend/register_custom.js') }}"></script>
-    <!--global js end-->
+</div>
+<script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js'></script>
+<script type='text/javascript'></script>
 </body>
-
 </html>

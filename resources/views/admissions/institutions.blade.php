@@ -8,6 +8,7 @@ Home
 
 {{-- page level styles --}}
 @section('header_styles')
+<link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css' rel='stylesheet'>
 @stop
 {{-- breadcrumb --}}
 @section('top')
@@ -16,19 +17,28 @@ Home
 
 <style>
 h3 {
-    font-weight: 500 !important;
+    font-weight: 400 !important;
+	font-size: 36px !important;
 }
 li {
     font-weight: 500;
 }
-li{
-    list-style: none;
-    
+p{
+	color: #000 !important;
+	font-weight: 400;
+	padding: 10px;
 }
 .scroll-top-to {
    padding-top: 10px;
-    
 }
+
+.title a:hover{
+	text-decoration: underline;
+}
+.bg-side-bar{
+	color: #5983EC;
+}
+
 </style>
 {{-- Page content --}}
 @section('content')
@@ -40,7 +50,7 @@ li{
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-3">
-				<nav class="privacy-nav bg-light br-5">
+				<nav class="privacy-nav bg-side-bar">
 					<ul>
 						<li><a class="nav-link scrollTo" href="#userLicense" class="scrollTo">User License</a></li>
 						<li><a class="nav-link scrollTo" href="#disclaimer" class="scrollTo">Disclaimer</a></li>
@@ -50,16 +60,17 @@ li{
 				</nav>
 			</div>
 			<div class="col-lg-9">
-				<div class="block bg-light" style="box-shadow: none;">
+				<div class="card card-body block bg-light">
 					<!-- User License -->
 					<div id="userLicense" class="policy-item">
 						<div class="title">
-							<h2 class="border-bottom">Institutions</h2>
-                            <ul>
+							<h3 class="text-dark"><b>INSTITUTIONS</h3>
+                            <div>
                                 @foreach($institutions as $institution)
-                                    <li class="list-group-item border-0 bg-transparent"><h5><a href="/admissions/institution_details/{{$institution->id}}" class="nav-item">{{$institution->institution_name}}</h5></a></li>
+                                	<p><span class="ti-arrow-circle-right pr-3"></span>
+									<a href="/admissions/institution_details/{{$institution->id}}">{{$institution->institution_name}} </a></p>
                                 @endforeach
-                            </ul>
+                            </div>
 						</div>
 					</div>
 				</div>

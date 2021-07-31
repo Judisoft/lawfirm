@@ -17,7 +17,11 @@ Home
 @section('top')
 
 @stop
-
+<style>
+.footer-main .block ul.social-icon li a {
+  padding-top: 10px;
+}
+</style>
 
 {{-- Page content --}}
 @section('content')
@@ -31,7 +35,7 @@ Home
 			</div>
 			<div class="col-lg-8 align-self-center">
 				<div class="block">
-					<h1 style="font-weight: 700;"><b>Admissions Management <br><span class="text-primary"> Portal</span> </b></h1>
+					<h1 style="font-weight: 700;"><b>Admissions Management <br><span class="text-danger"> Portal</span> </b></h1>
 					<p>
 						The platform that makes Admissions Easy
                         <br>You can now apply to many schools from this Portal
