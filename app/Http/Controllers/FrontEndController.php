@@ -28,7 +28,6 @@ use App\Models\Country;
 use App\Models\Consultation;
 use App\Models\Newsletter;
 use App\Models\Institution;
-use App\Models\Programme;
 
 class FrontEndController extends JoshController
 {
@@ -98,11 +97,9 @@ class FrontEndController extends JoshController
     public function myAccount()
     {
         $user = Sentinel::getUser();
-        $countries = Country::all();
+        $countries = Country::all()->pluck('name', 'sortname')->toArray();
         $institutions = Institution::orderBy('institution_name', 'ASC')->get();
-        $programmes = Programme::select('degree')->orderBy('degree', 'ASC')->distinct()->get();
-        $programme_choices = Programme::select('department')->orderBy('department', 'ASC')->distinct()->get();
-        return view('user_account', compact('user', 'countries', 'institutions', 'programmes', 'programme_choices'));
+        return view('user_account', compact('user', 'countries', 'institutions'));
     }
 
     /**
@@ -115,7 +112,6 @@ class FrontEndController extends JoshController
     public function update(FrontendRequest $request)
     {
         $user = Sentinel::getUser();
-        $data['myForm'] = $request->all();
         //update values
         $user->update($request->except('password', 'pic', 'password_confirm'));
 
@@ -141,32 +137,22 @@ class FrontEndController extends JoshController
         // Was the user updated?
         if ($user->save()) {
             // Prepare the success message
-            $success = trans('Application saved');
+            $success = trans('users/message.success.update');
             //Activity log for update account
             activity($user->full_name)
                 ->performedOn($user)
                 ->causedBy($user)
-                ->log('Application saved');
+                ->log('User Updated successfully');
             // Redirect to the user page
-            //return dd(get_defined_vars());
-            //return dd($data);
-            //return view('my-application.confirmation', $data);
-            return Redirect::route('my-account')->with(['success' =>  $success, 'data' => $data]);
-            //return redirect()->route('confirmation')->with('data', $data);
+            return Redirect::route('my-account')->with('success', $success);
         }
 
         // Prepare the error message
-        $error = trans('Application not saved');
+        $error = trans('users/message.error.update');
 
 
         // Redirect to the user page
         return Redirect::route('my-account')->withInput()->with('error', $error);
-    }
-
-    public function confirmation(Request $request)
-    {
-        $data['myForm'] = $request->all();
-        return $request->session()->get('data', $data);
     }
 
     /**
@@ -229,7 +215,7 @@ class FrontEndController extends JoshController
     /**
      * User account activation page.
      *
-     * @param number $userI``d
+     * @param number $userId
      * @param string $activationCode
      */
     public function getActivate($userId, $activationCode)

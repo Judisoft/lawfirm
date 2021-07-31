@@ -385,4 +385,3 @@ Route::get('services/entertainment_and_sports', 'ServicesController@entertainmen
 
 Route::get('admissions/institutions', 'InstitutionsController@index');
 Route::get('admissions/institution_details/{id}', 'InstitutionsController@show');
-Route::get('/my-application/confirmation', 'FrontEndController@confirmation')->name('confirmation');
