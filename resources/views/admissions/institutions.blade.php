@@ -38,7 +38,9 @@ p{
 .bg-side-bar{
 	color: #5983EC;
 }
-
+.policy-item a, p{
+	font-weight: 600;
+}
 </style>
 {{-- Page content --}}
 @section('content')

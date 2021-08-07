@@ -393,7 +393,10 @@ small{
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </section>
-
+  <div class="text-center bg-dark py-4">
+    <small class="text-secondary">Copyright &copy; <script>document.write(new Date().getFullYear())</script>. Designed &amp; Developed by <a href="{{ route('home') }}" class="text-light">FalconsTech</a></small class="text-secondary">
+  </div>
+</footer>
 <!-- jQuery -->
 <script src="../../plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
@@ -402,5 +405,8 @@ small{
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
+<script type="text/javascript"> 
+    window.addEventListener("load", window.print());
+</script>
 </body>
 </html>

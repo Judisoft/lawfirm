@@ -104,8 +104,49 @@ class FrontEndController extends JoshController
         $programmes = Programme::select('degree')->orderBy('degree', 'ASC')->distinct()->get();
         $programme_choices = Programme::select('department')->orderBy('department', 'ASC')->distinct()->get();
         $payment_details = Institution::all()->where('institution_name', $user->institution);
-        //return dd($payment_details);
-        return view('user_account', compact('user', 'countries', 'institutions', 'programmes', 'programme_choices', 'payment_details'));
+        $required_data = array($user->first_name,
+                        $user->last_name,
+                        $user->email,
+                        $user->pic,
+                        $user->institution,
+                        $user->degree,
+                        $user->faculty,
+                        $user->department,
+                        $user->address,
+                        $user->telephone,
+                        $user->postal,
+                        $user->dob,
+                        $user->pob,
+                        $user->bio,
+                        $user->gender,
+                        $user->country,
+                        $user->first_language,
+                        $user->g_name,
+                        $user->g_email,
+                        $user->g_telephone,
+                        $user->g_occupation,
+                        $user->g_address,
+                        $user->previous_inst1,
+                        $user->previous_inst2,
+                        $user->previous_inst3,
+                        $user->previous_inst1_from,
+                        $user->previous_inst2_from,
+                        $user->previous_inst3_from,
+                        $user->previous_inst1_to,
+                        $user->previous_inst2_to,
+                        $user->previous_inst3_to
+
+                        );
+
+        //return dd(count($required_data));
+        
+        for ($i=0; $i<count($required_data); $i++)
+        {   
+          $needed = $required_data;
+        }
+        
+        
+        return view('user_account', compact('user', 'countries', 'institutions', 'programmes', 'programme_choices', 'payment_details', 'needed'));
     }
 
     /**
@@ -119,6 +160,11 @@ class FrontEndController extends JoshController
     {
         $user = Sentinel::getUser();
         $data['myForm'] = $request->all();
+        $countries = Country::all();
+        $institutions = Institution::orderBy('institution_name', 'ASC')->get();
+        $programmes = Programme::select('degree')->orderBy('degree', 'ASC')->distinct()->get();
+        $programme_choices = Programme::select('department')->orderBy('department', 'ASC')->distinct()->get();
+        $payment_details = Institution::all()->where('institution_name', $user->institution);
         //update values
         $user->update($request->except('password', 'pic', 'password_confirm'));
 
@@ -140,6 +186,62 @@ class FrontEndController extends JoshController
             //save new file path into db
             $user->pic =url('/').'/uploads/users/'.$safeName;
         }
+        if ($file = $request->file('doc1')) {
+            $extension = $file->extension()?: 'png';
+            $folderName = '/uploads/documents/';
+            $destinationPath = public_path() . $folderName;
+            $safeName = str_random(10) . '.' . $extension;
+            $file->move($destinationPath, $safeName);
+
+            //delete old pic if exists
+            if (File::exists(public_path() . $folderName . $user->doc1)) {
+                File::delete(public_path() . $folderName . $user->doc1);
+            }
+            //save new file path into db
+            $user->doc1 =url('/').'/uploads/documents/'.$safeName;
+        }
+        if ($file = $request->file('doc2')) {
+            $extension = $file->extension()?: 'png';
+            $folderName = '/uploads/documents/';
+            $destinationPath = public_path() . $folderName;
+            $safeName = str_random(10) . '.' . $extension;
+            $file->move($destinationPath, $safeName);
+
+            //delete old pic if exists
+            if (File::exists(public_path() . $folderName . $user->doc2)) {
+                File::delete(public_path() . $folderName . $user->doc2);
+            }
+            //save new file path into db
+            $user->doc2 =url('/').'/uploads/documents/'.$safeName;
+        }
+        if ($file = $request->file('doc3')) {
+            $extension = $file->extension()?: 'png';
+            $folderName = '/uploads/documents/';
+            $destinationPath = public_path() . $folderName;
+            $safeName = str_random(10) . '.' . $extension;
+            $file->move($destinationPath, $safeName);
+
+            //delete old pic if exists
+            if (File::exists(public_path() . $folderName . $user->doc3)) {
+                File::delete(public_path() . $folderName . $user->doc3);
+            }
+            //save new file path into db
+            $user->doc3 =url('/').'/uploads/documents/'.$safeName;
+        }
+        if ($file = $request->file('doc4')) {
+            $extension = $file->extension()?: 'png';
+            $folderName = '/uploads/documents/';
+            $destinationPath = public_path() . $folderName;
+            $safeName = str_random(10) . '.' . $extension;
+            $file->move($destinationPath, $safeName);
+
+            //delete old pic if exists
+            if (File::exists(public_path() . $folderName . $user->doc4)) {
+                File::delete(public_path() . $folderName . $user->doc4);
+            }
+            //save new file path into db
+            $user->doc4 =url('/').'/uploads/documents/'.$safeName;
+        }
 
         // Was the user updated?
         if ($user->save()) {
@@ -151,11 +253,10 @@ class FrontEndController extends JoshController
                 ->causedBy($user)
                 ->log('Application saved');
             // Redirect to the user page
-            //return dd(get_defined_vars());
-            //return dd($data);
-            //return view('my-application.confirmation', $data);
-            return Redirect::route('my-account')->with(['success' =>  $success, 'data' => $data]);
+            
+           // return Redirect::route('my-account')->with(['success' =>  $success, 'data' => $data]);
             //return redirect()->route('confirmation')->with('data', $data);
+            return view('user_account', compact('success','user', 'countries', 'institutions', 'programmes', 'programme_choices', 'payment_details'));//->with('success', $success);
         }
 
         // Prepare the error message

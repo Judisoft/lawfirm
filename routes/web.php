@@ -310,6 +310,10 @@ Route::group(
         Route::put('my-account', 'FrontEndController@update');
         Route::get('my-account', 'FrontEndController@myAccount')->name('my-account');
         Route::get('print', 'PrintController@printApplicationForm')->name('print');
+        Route::get('select-print', 'PrintController@printIndividualForm')->name('select-print');
+        Route::get('/print/print1', 'PrintController@printOne')->name('printOne');
+        Route::get('/print/print2', 'PrintController@printTwo')->name('printTwo');
+        Route::get('/print/print3', 'PrintController@printThree')->name('printThree');
     }
 );
 // Email System
@@ -386,3 +390,12 @@ Route::get('services/entertainment_and_sports', 'ServicesController@entertainmen
 
 Route::get('admissions/institutions', 'InstitutionsController@index');
 Route::get('admissions/institution_details/{id}', 'InstitutionsController@show');
+Route::get('qr-code-g', function () {
+  
+    \QrCode::size(500)
+            ->format('png')
+            ->generate('studport.cm', public_path('images/qrcode.png'));
+    
+  return view('print');
+    
+});

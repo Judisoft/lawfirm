@@ -33,13 +33,13 @@ h6{
     font-size: 16px;
 }
 h5{
-    font-size: 16px;
+    font-size: 14px;
     color: #000;
 }
 
 h3{
     color: #000;
-    font-size: 24px;
+    font-size: 18px;
     font-weight: 600 !important;
     padding: 20px 10px 0 10px !important;
 }
@@ -53,7 +53,7 @@ legend{
 
 }
 .border-line{
-    border-bottom:3px dotted var(--dark);
+    border-bottom:2px dotted var(--dark);
 }
 small{
     font-size: 14px !important;
@@ -73,47 +73,30 @@ small{
     text-align: center;
 
 }
+.reg-photo{
+    height: 100px;
+    width: 100px;
+}
 </style>
 <body>
   <!-- Content Wrapper. Contains page content -->
     <section class="content m-auto">
       <div class="container">
         <div class="row">
-          <div class="col-lg-12 col-md-12 col-12">
-             <div class="mr-3 p-2"><a href="{{route('print')}}" target="_blank" class="btn-print"><i class="ti-printer"></i> Print</a></div>
+          <div class="col-lg-12 col-md-12 col-12 mt-0">
             <!-- Main content -->
             <div class="invoice p-3 mb-3">
-              <!-- title row -->
-              <div class="row">
-                <div class="col-lg-4">
-                    <div class="d-flex flex-column">
-                        <div class="justify-content-center">
-                            <img src="{{asset('images/help.png')}}" class="img-frame" />
-                        </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 mt-5 mt-md-0">
+                        <img src="{{asset('images/school_logo.jpeg')}}" class="img-fluid" />
                     </div>
-                </div>
-                <div class="col-lg-4">
-                    <h3 class="text-center text-dark text-uppercase bold border-line pb-1"><b>@if($user->institution) {{$user->institution}} @else <em>no institution choosen</em> @endif</b></h3>
-                    <h4 class="text-center border-line pt-3 pb-3"><b> APPLICATION FORM</b></h4>
-                </div>
-                <div class="col-lg-4">
-                    <img src="{{$user->pic}}" class="img-frame float-right" />
-                </div>
-                <p class="bold">
-                        <small>
-                            Address: @foreach($institution_info as $inst) {{$inst->city. ', ' .$inst->region. ' ' .'Region '}} @endforeach
-                        </small>
-                        <small class="pl-5">
-                            Website: @foreach($institution_info as $inst) {{$inst->website}} @endforeach
-                        </small>
-                        <small class="pl-5">
-                            Email: @foreach($institution_info as $inst) {{$inst->email}} @endforeach
-                        </small>
-                        <small class="pl-5">
-                            Telephone: @foreach($institution_info as $inst) {{$inst->telephone}} @endforeach
-                        </small>
-                    </p>
-                <!-- /.col -->
+                    <div class="col-lg-4 col-md-6 mt-5 mt-md-0">
+                        <h3 class="border-line p-3 mt-2 text-uppercase h5">{{$user->institution_2}}</h3>
+                        <h3 class="mt-2 text-capitalize h5 border-line p-3">Application Form</h3>
+                    </div>
+                    <div class="col-lg-4 col-md-12 mt-5 mt-lg-0 text-right">
+                        <img src="{{$user->pic}}" class="img-fluid reg-photo float-right"/>
+                    </div>
                 </div>
                 <fieldset>
                     <legend><h3 class="text-uppercase bold">Programme Choice</h3></legend>
@@ -121,20 +104,20 @@ small{
                         <div class="col-md-3 col-4">
                             <div class="d-flex flex-row">
                                 <div class="p-2"><h6 class="text-capitalize">Faculty:</h6></div>
-                                <div class="p-2"><h5 class="text-uppercase bold">{{$user->faculty}}</h5></div>
+                                <div class="p-2"><h5 class="text-uppercase bold">{{$user->faculty_2}}</h5></div>
                             </div>
                             
                         </div>
                         <div class="col-md-3 col-4">
                             <div class="d-flex flex-row">
                                 <div class="p-2"><h6 class="text-capitalize">Department:</h6></div>
-                                <div class="p-2"><h5 class="text-uppercase bold">{{$user->department}}</h5></div>
+                                <div class="p-2"><h5 class="text-uppercase bold">{{$user->department_2}}</h5></div>
                             </div>
                         </div>
                         <div class="col-md-3 col-4">
                             <div class="d-flex flex-row">
                                 <div class="p-2"><h6 class="text-capitalize">Certificate:</h6></div>
-                                <div class="p-2"><h5 class="text-uppercase bold">{{$user->degree}}</h5></div>
+                                <div class="p-2"><h5 class="text-uppercase bold">{{$user->degree_2}}</h5></div>
                             </div>
                         </div>
                     </div>
@@ -393,14 +376,8 @@ small{
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </section>
-
-<!-- jQuery -->
-<script src="../../plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="../../dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../../dist/js/demo.js"></script>
+<script type="text/javascript"> 
+  window.addEventListener("load", window.print());
+</script>
 </body>
 </html>

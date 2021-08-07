@@ -22,7 +22,7 @@
 <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 </head>
 <body oncontextmenu='return false' class='snippet-body'>
-<nav class="navbar main-nav fixed-top navbar-expand-lg px-2 px-sm-0 py-2 py-lg-0 bg-light border-bottom" style="overflow-x: hidden;">
+<nav class="navbar main-nav fixed-top navbar-expand-lg border-bottom px-2 px-sm-0 py-2 py-lg-0">
   <div class="container">
     <a class="navbar-brand" href="index.html"><img src="{{asset('images/recruit.png')}}" style="height: 40px; width: 40px;" alt="logo"><span class="h5 text-dark text-capitalize"><b>Admissions Portal<b></span></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -31,39 +31,78 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
-       <li class="nav-item {!! (Request::is('/admissions/institution_details/') ? 'active' : '') !!}">
+        <li class="nav-item @@contact">
           <a class="nav-link" href="/admissions/institutions/">Institutions</a>
         </li>
-        @if(Sentinel::check())
-          <li class="nav-item">
-            <a class="nav-link " href="{{route('my-account')}}">Apply </a>
-          </li>
-        @endif
-        <li class="nav-item">
-          <a class="nav-link {!! (Request::is('about_us') ? 'active' : '') !!}" href="{{route('about')}}">Admissions</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">About Us
+            <span><i class="ti-angle-down"></i></span>
+          </a>
+          <!-- Dropdown list -->
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item @@team" href="team.html">Our Team</a></li>
+            <li><a class="dropdown-item @@career" href="career.html">FAQs</a></li>
+            <li><a class="dropdown-item @@blog" href="blog.html">Our Mission</a></li>
+            <li><a class="dropdown-item @@blog" href="blog.html">Privacy Policies</a></li>
+          </ul>
         </li>
-       
-        <li class="nav-item {!! (Request::is('contact') ? 'active' : '') !!}">
-          <a class="nav-link" href="{{route('contact')}}">Need help?</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Services
+            <span><i class="ti-angle-down"></i></span>
+          </a>
+          <!-- Dropdown list -->
+          <ul class="dropdown-menu">
+            <li class="dropdown dropdown-submenu dropright">
+              <a class="dropdown-item dropdown-toggle" href="#!" id="dropdown0301" role="button"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Academics</a>
+
+              <ul class="dropdown-menu" aria-labelledby="dropdown0301">
+                <li><a class="dropdown-item" href="index.html">Questions and answer</a></li>
+                <li><a class="dropdown-item" href="index.html">Online Courses</a></li>
+                <li><a class="dropdown-item" href="index.html">Digital Library</a></li>
+              </ul>
+            </li>
+            <li><a class="dropdown-item" href="homepage-2.html">General IT Support</a></li>
+            <li><a class="dropdown-item active3" href="homepage-3.html">Internship Placements</a></li>
+            <li><a class="dropdown-item active3" href="homepage-3.html">Online Application</a></li>
+            <li><a class="dropdown-item active3" href="homepage-3.html">Tutoring Jobs</a></li>
+          </ul>
         </li>
-        <li class="nav-item ">
-          <a class="nav-link" href="{{route('logout')}}">Logout</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">About Us
+            <span><i class="ti-angle-down"></i></span>
+          </a>
+          <!-- Dropdown list -->
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item @@team" href="team.html">Our Team</a></li>
+            <li><a class="dropdown-item @@career" href="career.html">FAQs</a></li>
+            <li><a class="dropdown-item @@blog" href="blog.html">Our Mission</a></li>
+            <li><a class="dropdown-item @@blog" href="blog.html">Privacy Policies</a></li>
+          </ul>
         </li>
-        <li class="nav-item">
-          <a class="nav-link btn-primary text-light" href="{{route('login')}}"><i class="ti-shopping-cart px-2"></i><b>Buy Textbooks</b></a>
+        <li class="nav-item @@contact">
+          <a class="nav-link" href="{{route('contact')}}">Need Help?</a>
+        </li>
+         <li class="nav-item dropdown">
+          <a class="nav-link btn-primary text-light dropdown-toggle" href="{{route('login')}}" data-toggle="dropdown"><b>{{Sentinel::getUser()->full_name}} </b></a>
+          </a>
+          <!-- Dropdown list -->
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item @@team" href="team.html">My Account</a></li>
+            <li><a class="dropdown-item @@career" href="{{route('logout')}}">Log Out</a></li>
+          </ul>
         </li>
       </ul>
     </div>
   </div>
 </nav> 
-  
 
 <div class="container-fluid px-1 py-5 mx-auto">
     <div class="row d-flex justify-content-center text-center">
-        <div class="col-lg-9 col-md-10 col-sm-10">
+        <div class="col-lg-10 col-md-10 col-sm-10">
             <div class="card b-0 rounded-0 show">
                 <div class="d-flex justify-content-end">
-                <div class="mr-3 p-2"><a href="{{route('print')}}" target="_blank" class="btn-print"><i class="ti-printer"></i> Print</a></div>
+                    <div class="mr-3 p-2"><a href="{{route('select-print')}}" target="_blank" class="btn-print p-3" style="font-weight:500;"><i class="ti-printer"></i> Print Application Form</a></div>
                 </div>
                 <div class="row justify-content-between mx-auto step-container">
                     <div class="col-md-3 col-4 step-box active">
@@ -73,7 +112,7 @@
                         <h6 class="step-title-0"> <span class="ti-user"></span> <span class="break-line"></span> <span class="step-title">Personal Information</span></h6>
                     </div>
                     <div class="col-md-3 col-4 step-box">
-                        <h6 class="step-title-0"> <span class="ti-folder"></span> <span class="break-line"></span> <span class="step-title">Doucuments Upload</span> </h6>
+                        <h6 class="step-title-0"> <span class="ti-folder"></span> <span class="break-line"></span> <span class="step-title">Academic Background</span> </h6>
                     </div>
                     <div class="col-md-3 col-4 step-box">
                         <h6 class="step-title-0"> <span class="ti-wallet"></span> <span class="break-line"></span> <span class="step-title">Payment</span> </h6>
@@ -81,17 +120,15 @@
                 </div>
                 @include('notifications')
                 <div class="p-3 pt-5 justify-content-center mb-5 text-center">
-                    <h4 class="heading">Institutions - Faculties - Departments</h4>
+                    <h4 class="heading">Select Institution(s)</h4>
                     <div class="row justify-content-center mb-3">
                         <div class="col-lg-3 col-md-6 col-12 list">
-                            Select Institution <span class="text-danger">*</span>
+                            Institution <span class="text-danger">*</span>
                         </div>
                         <div class="col-lg-6 col-md-6 col-12 list">
-                        
-                        
                         {!! Form::model($user, ['url' => URL::to('my-account'), 'method' => 'put', 'name' => 'myForm', 'class' => 'form-horizontal','enctype'=>"multipart/form-data", 'onsubmit'=>"return results();"]) !!}
-{{ csrf_field() }}
-<fieldset>
+                        {{ csrf_field() }}
+                        <fieldset>
                             <div class="form-group">
                                 <select class="form-control" id="institution" name="institution">
                                     <option value="">Select institution</option>
@@ -101,11 +138,45 @@
                                     @endif>{{ $institution->institution_name }}</option>
                                 @endforeach
                                 </select>
-                                <small class="text-danger"><b>{{ $errors->first('institution', ':message') }}</b></small>
+                                @error('institution') <small class="error-message"><b><span class="ti-info-alt"></span>{{'This field is required'}}</b></small>  @enderror                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center mb-3">
+                        <div class="col-lg-3 col-md-6 col-12 list">
+                            Faculty <span class="text-danger">*</span>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-12 list">
+                            <div class="form-group">
+                                <select class="form-control" id="faculty"  name="faculty">
+                                        <option value="">Select select faculty</option>
+                                    @foreach ($programme_choices as $item)
+                                        <option value="{{ $item->department }}"
+                                        @if ($item->department == old('faculty', $user->faculty)) selected="selected"
+                                        @endif>{{ $item->department }}</option>
+                                    @endforeach
+                                </select>
+                                @error('faculty') <small class="error-message"><b><span class="ti-info-alt"></span>{{'This field is required'}}</b></small>  @enderror
                             </div>
                         </div>
-                        
                     </div>
+                    <div class="row justify-content-center mb-3">
+                        <div class="col-lg-3 col-md-6 col-12 list">
+                            Department <span class="text-danger">*</span>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-12 list">
+                            <div class="form-group">
+                                <select class="form-control" id="department"  name="department">
+                                <option value="">Select department</option>
+                                    @foreach ($programme_choices as $item)
+                                        <option value="{{ $item->department }}"
+                                        @if ($item->department == old('department', $user->department)) selected="selected"
+                                        @endif>{{ $item->department }}</option>
+                                    @endforeach
+                                </select>
+                                @error('department') <small class="error-message"><b><span class="ti-info-alt"></span>{{'This field is required'}}</b></small>  @enderror
+                            </div>
+                        </div>
+                    </div> 
                     <div class="row justify-content-center mb-3">
                         <div class="col-lg-3 col-md-6 col-12 list">
                            Certificate <span class="text-danger">*</span>
@@ -120,45 +191,179 @@
                                         @endif>{{ $item->degree }}</option>
                                     @endforeach
                                 </select>
-                                <small class="text-danger"><b>{{ $errors->first('degree', ':message') }}</b></small>
+                                @error('degree') <small class="error-message"><b><span class="ti-info-alt"></span>{{'This field is required'}}</b></small>  @enderror
                             </div>
                         </div>
                     </div>
-                    <div class="row justify-content-center mb-3">
-                        <div class="col-lg-3 col-md-6 col-12 list">
-                            First Choice <span class="text-danger">*</span>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-12 list">
-                            <div class="form-group">
-                                <select class="form-control" id="first_choice"  name="first_choice">
-                                        <option value="">Select first choice</option>
-                                    @foreach ($programme_choices as $item)
-                                        <option value="{{ $item->department }}"
-                                        @if ($item->department == old('first_choice', $user->first_choice)) selected="selected"
-                                        @endif>{{ $item->department }}</option>
-                                    @endforeach
-                                </select>
-                                <small class="text-danger"><b>{{ $errors->first('first_choice', ':message') }}</b></small>
+                    <!-- Second Choice -->
+                    <div id="gstAccordion" data-children=".item">
+                        <!-- Accordion Item 01 -->
+                        <div class="item">
+                            <div class="row">
+                                <div class="col-lg-12 m-auto">
+                                    <div class="item-link border border-light p-3">
+                                        Do you want to apply to more than one  institution/school? Click 
+                                        <a class="text-info bold"  data-toggle="collapse" data-parent="#gstAccordion" href="#gstAccordion1"><b>HERE</b></a>
+                                        to add more fields
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="gstAccordion1" class="collapse accordion-block">
+                                <div class="row justify-content-center mb-3 mt-3">
+                                    <div class="col-lg-3 col-md-6 col-12 list">
+                                        Institution
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-12 list">
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <select class="form-control" id="institution_2" name="institution_2">
+                                                <option value="">Select institution</option>
+                                            @foreach ($institutions as $institution)
+                                                <option value="{{ $institution->institution_name }}"
+                                                @if ($institution->institution_name == old('institution_2', $user->institution_2)) selected="selected"
+                                                @endif>{{ $institution->institution_name }}</option>
+                                            @endforeach
+                                            </select>
+                                            @error('institution_2') <small class="error-message"><b><span class="ti-info-alt"></span>{{'This field is required'}}</b></small>  @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center mb-3">
+                                    <div class="col-lg-3 col-md-6 col-12 list">
+                                        Faculty
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-12 list">
+                                        <div class="form-group">
+                                            <select class="form-control" id="faculty_2"  name="faculty_2">
+                                                    <option value="">Select faculty</option>
+                                                @foreach ($programme_choices as $item)
+                                                    <option value="{{ $item->department }}"
+                                                    @if ($item->department == old('faculty_2', $user->faculty_2)) selected="selected"
+                                                    @endif>{{ $item->department }}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('faculty_2') <small class="error-message"><b><span class="ti-info-alt"></span>{{'This field is required'}}</b></small>  @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center mb-3">
+                                    <div class="col-lg-3 col-md-6 col-12 list">
+                                        Department
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-12 list">
+                                        <div class="form-group">
+                                            <select class="form-control" id="department_2"  name="department_2">
+                                            <option value="">Select department</option>
+                                                @foreach ($programme_choices as $item)
+                                                    <option value="{{ $item->department }}"
+                                                    @if ($item->department == old('department_2', $user->department_2)) selected="selected"
+                                                    @endif>{{ $item->department }}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('department_2') <small class="error-message"><b><span class="ti-info-alt"></span>{{'This field is required'}}</b></small>  @enderror
+                                        </div>
+                                    </div>
+                                </div> 
+                                <div class="row justify-content-center mb-3">
+                                    <div class="col-lg-3 col-md-6 col-12 list">
+                                    Certificate
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-12 list">
+                                        <div class="form-group">
+                                            <select class="form-control" id="degree_2"  name="degree_2" >
+                                                <option value="">Select a Degree/Diploma Programme</option>
+                                                @foreach ($programmes as $item)
+                                                    <option value="{{ $item->degree }}"
+                                                    @if ($item->degree == old('degree_2', $user->degree_2)) selected="selected"
+                                                    @endif>{{ $item->degree }}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('degree_2') <small class="error-message"><b><span class="ti-info-alt"></span>{{'This field is required'}}</b></small>  @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="item-link  p-3 br-5">
+
+                                    </div>
+                                </div>
+                                <!-- Institution 3 -->
+                                <div class="row justify-content-center mb-3 mt-3">
+                                    <div class="col-lg-3 col-md-6 col-12 list">
+                                        Institution 
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-12 list">
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <select class="form-control" id="institution_3" name="institution_3">
+                                                <option value="">Institution</option>
+                                            @foreach ($institutions as $institution)
+                                                <option value="{{ $institution->institution_name }}"
+                                                @if ($institution->institution_name == old('institution_3', $user->institution_3)) selected="selected"
+                                                @endif>{{ $institution->institution_name }}</option>
+                                            @endforeach
+                                            </select>
+                                            @error('institution_3') <small class="error-message"><b><span class="ti-info-alt"></span>{{'This field is required'}}</b></small>  @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center mb-3">
+                                    <div class="col-lg-3 col-md-6 col-12 list">
+                                        Faculty
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-12 list">
+                                        <div class="form-group">
+                                            <select class="form-control" id="faculty_3"  name="faculty_3">
+                                                    <option value="">Select first choice</option>
+                                                @foreach ($programme_choices as $item)
+                                                    <option value="{{ $item->department }}"
+                                                    @if ($item->department == old('faculty_3', $user->faculty_3)) selected="selected"
+                                                    @endif>{{ $item->department }}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('faculty_3') <small class="error-message"><b><span class="ti-info-alt"></span>{{'This field is required'}}</b></small>  @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center mb-3">
+                                    <div class="col-lg-3 col-md-6 col-12 list">
+                                        Department
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-12 list">
+                                        <div class="form-group">
+                                            <select class="form-control" id="department_3"  name="department_3">
+                                            <option value="">Select first choice</option>
+                                                @foreach ($programme_choices as $item)
+                                                    <option value="{{ $item->department }}"
+                                                    @if ($item->department == old('department_3', $user->department_3)) selected="selected"
+                                                    @endif>{{ $item->department }}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('department_3') <small class="error-message"><b><span class="ti-info-alt"></span>{{'This field is required'}}</b></small>  @enderror
+                                        </div>
+                                    </div>
+                                </div> 
+                                <div class="row justify-content-center mb-3">
+                                    <div class="col-lg-3 col-md-6 col-12 list">
+                                    Certificate
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-12 list">
+                                        <div class="form-group">
+                                            <select class="form-control" id="degree_3"  name="degree_3" >
+                                                <option value="">Select a Degree/Diploma Programme</option>
+                                                @foreach ($programmes as $item)
+                                                    <option value="{{ $item->degree }}"
+                                                    @if ($item->degree == old('degree_3', $user->degree_3)) selected="selected"
+                                                    @endif>{{ $item->degree }}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('degree_3') <small class="error-message"><b><span class="ti-info-alt"></span>{{'This field is required'}}</b></small>  @enderror
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row justify-content-center mb-3">
-                        <div class="col-lg-3 col-md-6 col-12 list">
-                            Second Choice
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-12 list">
-                            <div class="form-group">
-                                <select class="form-control" id="second_choice"  name="second_choice">
-                                <option value="">Select first choice</option>
-                                    @foreach ($programme_choices as $item)
-                                        <option value="{{ $item->department }}"
-                                        @if ($item->department == old('second_choice', $user->second_choice)) selected="selected"
-                                        @endif>{{ $item->department }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                    </div>  
                     <button type="button" class="form-wizard-next-btn float-right rounded-0 mb-5 next">Next <span class="ti-arrow-right"></span></button>
                 </div>
             </div>
@@ -171,14 +376,14 @@
                         <h6 class="step-title-0"> <span class="ti-user"></span> <span class="break-line"></span> <span class="step-title">Personal Information</span></h6>
                     </div>
                     <div class="col-md-3 col-4 step-box">
-                        <h6 class="step-title-0"> <span class="ti-folder"></span> <span class="break-line"></span> <span class="step-title">Doucuments Upload</span> </h6>
+                        <h6 class="step-title-0"> <span class="ti-folder"></span> <span class="break-line"></span> <span class="step-title">Academic Background</span> </h6>
                     </div>
                     <div class="col-md-3 col-4 step-box">
                         <h6 class="step-title-0"> <span class="ti-wallet"></span> <span class="break-line"></span> <span class="step-title">Payment</span> </h6>
                     </div>
                 </div>
                 <div class="p-3 justify-content-center mb-5 pt-5 text-center">
-                    <h4 class="heading">Applicant's Information</h4>
+                    <h4 class="heading">Applicant's Personal Information</h4>
                     <div class="row justify-content-center mb-3">
                         <div class="col-lg-3 col-md-6 col-12 list">
                             First Name <span class="text-danger">*</span>
@@ -186,7 +391,7 @@
                         <div class="col-lg-6 col-md-6 col-12 list">
                             <div class="form-group">
                                 <input id="first_name" name="first_name" type="text" placeholder="First Name" class="form-control required" value="{{Sentinel::getUser()->first_name}}"/>
-                                <small class="text-danger"><b>{{ $errors->first('first_name', ':message') }}</b></small>
+                                @error('first_name') <small class="error-message"><b><span class="ti-info-alt"></span>{{'This field is required'}}</b></small>  @enderror
                             </div>
                         </div>
                     </div>
@@ -197,7 +402,7 @@
                         <div class="col-lg-6 col-md-6 col-12 list">
                             <div class="form-group">
                                 <input id="last_name" name="last_name" type="text" placeholder="Last Name" class="form-control required" value="{{Sentinel::getUser()->last_name}}"/>
-                                <small class="text-danger"><b>{{ $errors->first('last_night', ':message') }}</b></small>
+                                @error('last_name') <small class="error-message"><b><span class="ti-info-alt"></span>{{'This field is required'}}</b></small>  @enderror
                             </div>
                         </div>
                     </div>
@@ -208,7 +413,7 @@
                         <div class="col-lg-6 col-md-6 col-12 list">
                             <div class="form-group">
                                 <input type="text" id="address" name="address"  placeholder="Address" class="form-control required" value="{{ old('address', $user->address) }}"/>
-                                <small class="text-danger"><b>{{ $errors->first('address', ':message') }}</b></small>
+                                @error('address') <small class="error-message"><b><span class="ti-info-alt"></span>{{'This field is required'}}</b></small>  @enderror
                             </div>
                         </div>
                     </div>
@@ -219,7 +424,7 @@
                         <div class="col-lg-6 col-md-6 col-12 list">
                             <div class="form-group">
                                 <input type="email" id="email" name="email"  placeholder="Email" class="form-control required" value="{{old('email', $user->email)}}"/>
-                                <small class="text-danger"><b>{{ $errors->first('email', ':message') }}</b></small>
+                                @error('email') <small class="error-message"><b><span class="ti-info-alt"></span>{{'This field is required'}}</b></small>  @enderror
                             </div>
                         </div>
                     </div>
@@ -230,7 +435,7 @@
                         <div class="col-lg-6 col-md-6 col-12 list">
                             <div class="form-group">
                                 <input type="text" id="telephone" name="telephone"  placeholder="Telephone" class="form-control required" value="{{old('telephone', $user->telephone) }}"/>
-                                <small class="text-danger"><b>{{ $errors->first('telephone', ':message') }}</b></small>
+                                @error('telephone') <small class="error-message"><b><span class="ti-info-alt"></span>{{'This field is required'}}</b></small>  @enderror
                             </div>
                         </div>
                     </div>
@@ -241,7 +446,7 @@
                         <div class="col-lg-6 col-md-6 col-12 list">
                             <div class="form-group">
                                 <input type="text" id="postal" name="postal"  placeholder="Postal Address" class="form-control required" value="{{old('postal', $user->postal) }}"/>
-                                <small class="text-danger"><b>{{ $errors->first('postal', ':message') }}</b></small>
+                                @error('postal') <small class="error-message"><b><span class="ti-info-alt"></span>{{'This field is required'}}</b></small>  @enderror
                             </div>
                         </div>
                     </div>
@@ -252,7 +457,7 @@
                         <div class="col-lg-6 col-md-6 col-12 list">
                             <div class="form-group">
                                 <input type="date" id="dob" name="dob"  class="form-control required" value="{{ old('dob', $user->dob) }}" data-date-format="YYYY-MM-DD" placeholder="yyyy-mm-dd"/>
-                                <small class="text-danger"><b>{{ $errors->first('dob', ':message') }}</b></small>
+                                @error('dob') <small class="error-message"><b><span class="ti-info-alt"></span>{{'This field is required'}}</b></small>  @enderror
                             </div>
                         </div>
                     </div>
@@ -263,7 +468,7 @@
                         <div class="col-lg-6 col-md-6 col-12 list">
                             <div class="form-group">
                                 <input type="text" id="pob" name="pob"  placeholder="Place of birth" class="form-control required" value="{{ old('pob', $user->pob) }}"/>
-                                <small class="text-danger"><b>{{ $errors->first('pob', ':message') }}</b></small>
+                                @error('pob') <small class="error-message"><b><span class="ti-info-alt"></span>{{'This field is required'}}</b></small>  @enderror
                             </div>
                         </div>
                     </div>
@@ -275,14 +480,12 @@
                             <div class="form-group">
                                 <select class="form-control" id="gender" name="gender">
                                 <option value="">Select gender</option>
-                                <option value="male" @if($user->gender === 'male') selected="selected"
+                                <option value="m" @if($user->gender === 'm') selected="selected"
                                                     @endif >Male</option>
-                                <option value="female" @if($user->gender === 'female')
+                                <option value="f" @if($user->gender === 'f')
                                     selected="selected" @endif >Female</option>
-                                <option value="other" @if($user->gender === 'other') selected="selected"
-                                                    @endif >Other</option>
                                 </select>
-                                <small class="text-danger"><b>{{ $errors->first('gender', ':message') }}</b></small>
+                                @error('gender') <small class="error-message"><b><span class="ti-info-alt"></span>{{'This field is required'}}</b></small>  @enderror
                             </div>
                         </div>
                     </div>
@@ -317,7 +520,7 @@
                                         {{$item->name}}</option>
                                     @endforeach
                                 </select>
-                                <small class="text-danger"><b>{{ $errors->first('country', ':message') }}</b></small>
+                                @error('country') <small class="error-message"><b><span class="ti-info-alt"></span>{{'This field is required'}}</b></small>  @enderror
                             </div>
                         </div>
                     </div>
@@ -333,7 +536,7 @@
                                     <option value="French" @if($user->first_language === 'french')
                                         selected="selected" @endif >French</option>
                                 </select>
-                                <small class="text-danger"><b>{{ $errors->first('first_language', ':message') }}</b></small>
+                                @error('first_language') <small class="error-message"><b><span class="ti-info-alt"></span>{{'This field is required'}}</b></small>  @enderror
                             </div>
                         </div>
                     </div>
@@ -347,15 +550,27 @@
                             </div>
                         </div>
                     </div>
-                     <h4 class="heading">Parent/Guardian Information</h4>
+                    <div class="row justify-content-center mb-3">
+                        <div class="col-lg-3 col-md-6 col-12 list">
+                          Tell us something about yourself <span class="text-danger">*</span>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-12 list">
+                            <div class="form-group">
+                                <textarea id="bio" name="bio" rows="10" cols="50" maxlength="200"  class="form-control required" style="min-height: 150px;">{{ old('bio', $user->bio) }}</textarea>
+                                @error('bio') <small class="error-message"><b><span class="ti-info-alt"></span>{{'This field is required'}}</b></small>  @enderror
+                            </div>
+                        </div>
+                    </div>
+
+                     <h4 class="heading">Parent/Guardian's Information</h4>
                     <div class="row justify-content-center mb-3">
                         <div class="col-lg-3 col-md-6 col-12 list">
                           Name (as written on NIC) <span class="text-danger">*</span>
                         </div>
                         <div class="col-lg-6 col-md-6 col-12 list">
                             <div class="form-group">
-                                <input type="text" id="g_name" name="g_name"  placeholder="First Name" class="form-control required" value="{{ old('g_name', $user->g_name) }}"/>
-                                <small class="text-danger"><b>{{ $errors->first('g_name', ':message') }}</b></small>
+                                <input type="text" id="g_name" name="g_name"  placeholder="Guardian/Parent Name" class="form-control required" value="{{ old('g_name', $user->g_name) }}"/>
+                                @error('g_name') <small class="error-message"><b><span class="ti-info-alt"></span>{{'This field is required'}}</b></small>  @enderror
                             </div>
                         </div>
                     </div>
@@ -366,7 +581,7 @@
                         <div class="col-lg-6 col-md-6 col-12 list">
                             <div class="form-group">
                                 <input type="text" id="g_email" name="g_email"  placeholder="Email" class="form-control required" value="{{ old('g_email', $user->g_email) }}"/>
-                                <small class="text-danger"><b>{{ $errors->first('g_email', ':message') }}</b></small>
+                                @error('g_email') <small class="error-message"><b><span class="ti-info-alt"></span>{{'This field is required'}}</b></small>  @enderror
                             </div>
                         </div>
                     </div>
@@ -377,17 +592,18 @@
                         <div class="col-lg-6 col-md-6 col-12 list">
                             <div class="form-group">
                                 <input type="text" id="g_telephone" name="g_telephone"  placeholder="Telephone" class="form-control required" value="{{ old('g_telephone', $user->g_telephone) }}"/>
-                                <small class="text-danger"><b>{{ $errors->first('g_telephone', ':message') }}</b></small>
+                                @error('g_telephone') <small class="error-message"><b><span class="ti-info-alt"></span>{{'This field is required'}}</b></small>  @enderror
                             </div>
                         </div>
                     </div>
                     <div class="row justify-content-center mb-3">
                         <div class="col-lg-3 col-md-6 col-12 list">
-                         Occupation
+                         Occupation/Profession
                         </div>
                         <div class="col-lg-6 col-md-6 col-12 list">
                             <div class="form-group">
                                 <input type="text" id="g_occupation" name="g_occupation"  placeholder="Occupation" class="form-control required" value="{{ old('g_occupation', $user->g_occupation) }}"/>
+                                @error('g_occupation') <small class="error-message"><b><span class="ti-info-alt"></span>{{'This field is required'}}</b></small>  @enderror
                             </div>
                         </div>
                     </div>
@@ -398,48 +614,12 @@
                         <div class="col-lg-6 col-md-6 col-12 list">
                             <div class="form-group">
                                 <input type="text" id="g_address" name="g_address"  placeholder="Address" class="form-control required" value="{{ old('guardian_address', $user->g_address) }}"/>
-                                <small class="text-danger"><b>{{ $errors->first('g_address', ':message') }}</b></small>
-                            </div>
-                        </div>
-                    </div>
-
-                    <h4 class="heading">Previous school(s) attended</h4>
-                    <div class="row justify-content-center mb-3">
-                        <div class="col-lg-3 col-md-6 col-12 list">
-                          Secondary school <span class="text-danger">*</span>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-12 list">
-                            <div class="form-group">
-                                <input type="text" id="previous_inst1" name="previous_inst1"  placeholder="Secondary School" class="form-control required" value="{{ old('previous_inst1', $user->previous_inst1) }}"/>
-                                <small class="text-danger"><b>{{ $errors->first('previous_inst1', ':message') }}</b></small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row justify-content-center mb-3">
-                        <div class="col-lg-3 col-md-6 col-12 list">
-                          High school <span class="text-danger">*</span>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-12 list">
-                            <div class="form-group">
-                                <input type="text" id="previous_inst2" name="previous_inst2"  placeholder="Higher Education" class="form-control required" value="{{ old('previous_inst2', $user->previous_inst2) }}"/>
-                                <small class="text-danger"><b>{{ $errors->first('previous_inst2', ':message') }}</b></small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row justify-content-center mb-3">
-                        <div class="col-lg-3 col-md-6 col-12 list">
-                          University/Higher Institution <span class="text-danger">*</span>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-12 list">
-                            <div class="form-group">
-                                <input type="text" id="previous_inst3" name="previous_inst3"  placeholder="Higher Institution" class="form-control required" value="{{ old('previous_inst3', $user->previous_inst3) }}"/>
-                                <small class="text-danger"><b>{{ $errors->first('previous_inst3', ':message') }}</b></small>
+                                @error('g_address') <small class="error-message"><b><span class="ti-info-alt"></span>{{'This field is required'}}</b></small>  @enderror
                             </div>
                         </div>
                     </div>
                     <button type="button" class="form-wizard-prev-btn float-left rounded-0 mb-5 mt-3  prev"><span class="ti-arrow-left"></span>Back</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <button type="button" id="next2" class="form-wizard-next-btn float-right rounded-0 mb-4 next">Next <span class="ti-arrow-right"></span></button>
-                    
+                    <button type="button" id="next2" class="form-wizard-next-btn float-right rounded-0 mb-5 mt-3 next">Next <span class="ti-arrow-right"></span></button>
                 </div>
             </div>
             <div class="card b-0 rounded-0">
@@ -451,23 +631,131 @@
                         <h6 class="step-title-0"> <span class="fa fa-check-circle"></span> <span class="break-line"></span> <span class="step-title">Personal Information</span></h6>
                     </div>
                     <div class="col-md-3 col-4 step-box active">
-                        <h6 class="step-title-0"> <span class="ti-folder"></span> <span class="break-line"></span> <span class="step-title">Doucuments Upload</span> </h6>
+                        <h6 class="step-title-0"> <span class="ti-folder"></span> <span class="break-line"></span> <span class="step-title">Academic Background</span> </h6>
                     </div>
                     <div class="col-md-3 col-4 step-box">
                         <h6 class="step-title-0"> <span class="ti-wallet"></span> <span class="break-line"></span> <span class="step-title">Payment</span> </h6>
                     </div>
                 </div>
-                <div class="p-3 justify-content-center mb-5 pt-5 text-center">
-                    <h4 class="heading">DOCUMENTS UPLOAD</h4>
-                    <div class="row d-flex justify-content-center">
-                        <div class="mb-5">
-                            <h5 class="confirm list">Upload all required documents. <br>
-                                Accepted file extensions - .jpeg, .jpg, .png,.pdf, .bmp <br>
-                                Maximum file size : 5MB
-                            </h5>
+                <div class="p-3 pt-5 justify-content-center mb-5 text-center">
+                    <h4 class="heading">Academic Background - Previous school(s) attended</h4>
+                    <div class="row justify-content-center">
+                        <div class="col-lg-3 col-md-6 col-12 list">
+                          Previous Institution 1<span class="text-danger">*</span>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-12 list">
+                            <div class="form-group">
+                                <input type="text" id="previous_inst1" name="previous_inst1"   class="form-control required" value="{{ old('previous_inst1', $user->previous_inst1) }}"/>
+                                @error('previous_inst1') <small class="error-message"><b><span class="ti-info-alt"></span>{{'This field is required'}}</b></small>  @enderror
+                            </div>
                         </div>
                     </div>
                     <div class="row justify-content-center mb-3">
+                        <div class="col-lg-4 col-md-6 col-12 list">
+                            Certificate Obtained <span class="text-danger">*</span>
+                            <div class="form-group">
+                                <input type="text" id="certificate_from_previous_inst1" name="certificate_from_previous_inst1"   class="form-control required" value="{{ old('certificate_from_previous_inst1', $user->certificate_from_previous_inst1) }}"/>
+                                @error('certificate_from_previous_inst1') <small class="error-message"><b><span class="ti-info-alt"></span>{{'This field is required'}}</b></small>  @enderror
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-12 mr-auto list">
+                                From <span class="text-danger">*</span>
+                                <div class="form-group">
+                                    <input type="date" id="previous_inst1_from" name="previous_inst1_from"   class="form-control required" value="{{ old('previous_inst1_from', $user->previous_inst1_from) }}"/>
+                                    @error('previous_inst1_from') <small class="error-message"><b><span class="ti-info-alt"></span>{{'This field is required'}}</b></small>  @enderror
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-12 list">
+                                To <span class="text-danger">*</span>
+                                <div class="form-group">
+                                    <input type="date" id="previous_inst1_to" name="previous_inst1_to"   class="form-control required" value="{{ old('previous_inst1_to', $user->previous_inst1_to) }}"/>
+                                    @error('previous_inst1_to') <small class="error-message"><b><span class="ti-info-alt"></span>{{'This field is required'}}</b></small>  @enderror
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-lg-3 col-md-6 col-12 list">
+                          Previous Institution 2<span class="text-danger">*</span>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-12 list">
+                            <div class="form-group">
+                                <input type="text" id="previous_inst2" name="previous_inst2"   class="form-control required" value="{{ old('previous_inst2', $user->previous_inst2) }}"/>
+                                @error('previous_inst2') <small class="error-message"><b><span class="ti-info-alt"></span>{{'This field is required'}}</b></small>  @enderror
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center mb-3">
+                        <div class="col-lg-4 col-md-6 col-12 list">
+                            Certificate Obtained <span class="text-danger">*</span>
+                            <div class="form-group">
+                                <input type="text" id="certificate_from_previous_inst2" name="certificate_from_previous_inst2"   class="form-control required" value="{{ old('certificate_from_previous_inst2', $user->certificate_from_previous_inst2) }}"/>
+                                @error('certificate_from_previous_inst2') <small class="error-message"><b><span class="ti-info-alt"></span>{{'This field is required'}}</b></small>  @enderror
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-12  list">
+                                From <span class="text-danger">*</span>
+                                <div class="form-group">
+                                    <input type="date" id="previous_inst2_from" name="previous_inst2_from"   class="form-control required" value="{{ old('previous_inst2_from', $user->previous_inst2_from) }}"/>
+                                    @error('previous_inst2_from') <small class="error-message"><b><span class="ti-info-alt"></span>{{'This field is required'}}</b></small>  @enderror
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-12 list">
+                                To <span class="text-danger">*</span>
+                                <div class="form-group">
+                                    <input type="date" id="previous_inst2_to" name="previous_inst2_to"   class="form-control required" value="{{ old('previous_inst2_to', $user->previous_inst2_to) }}"/>
+                                    @error('previous_inst2_to') <small class="error-message"><b><span class="ti-info-alt"></span>{{'This field is required'}}</b></small>  @enderror
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-lg-3 col-md-6 col-12 list">
+                          Previous Institution 3<span class="text-danger">*</span>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-12 list">
+                            <div class="form-group">
+                                <input type="text" id="previous_inst3" name="previous_inst3"   class="form-control required" value="{{ old('previous_inst3', $user->previous_inst3) }}"/>
+                                @error('previous_inst3') <small class="error-message"><b><span class="ti-info-alt"></span>{{'This field is required'}}</b></small>  @enderror
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center mb-3">
+                        <div class="col-lg-4 col-md-6 col-12 list">
+                            Certificate Obtained <span class="text-danger">*</span>
+                            <div class="form-group">
+                                <input type="text" id="certificate_from_previous_inst3" name="certificate_from_previous_inst3"   class="form-control required" value="{{ old('certificate_from_previous_inst1', $user->certificate_from_previous_inst1) }}"/>
+                               @error('certificate_from_previous_inst3') <small class="error-message"><b><span class="ti-info-alt"></span>{{'This field is required'}}</b></small>  @enderror
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-12  list">
+                                From <span class="text-danger">*</span>
+                                <div class="form-group">
+                                    <input type="date" id="previous_inst3_from" name="previous_inst3_from"   class="form-control required" value="{{ old('previous_inst3_from', $user->previous_inst3_from) }}"/>
+                                    @error('previous_inst3_from') <small class="error-message"><b><span class="ti-info-alt"></span>{{'This field is required'}}</b></small>  @enderror
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-12 list">
+                                To <span class="text-danger">*</span>
+                                <div class="form-group">
+                                    <input type="date" id="previous_inst3_to" name="previous_inst3_to"   class="form-control required" value="{{ old('previous_inst3_to', $user->previous_inst3_to) }}"/>
+                                    @error('previous_inst3_to') <small class="error-message"><b><span class="ti-info-alt"></span>{{'This field is required'}}</b></small>  @enderror
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h4 class="heading">DOCUMENTS UPLOAD</h4>
+                    <div class="row d-flex justify-content-center">
+                        <div class="mb-5 alert-warning shadow float-left upload-info">
+                            <p class="confirm list">Upload all required documents. 
+                                Accepted file extensions - .jpeg, .jpg, .png,.pdf, </p>
+                            <p class="confirmed list"> Maximum file size : 5MB </p>
+                        </div> 
+                    </div>
+                    <div class="row justify-content-center mb-3 ml-5">
                         <div class="col-lg-3 col-md-6 col-12 list">
                           Photo <span class="text-danger">*</span>
                         </div>
@@ -480,7 +768,7 @@
                          <small class="text-danger"><b>{{ $errors->first('pic', 'Upload photo') }}</b></small>
                         </div>
                     </div>
-                    <div class="row justify-content-center mb-3">
+                    <div class="row justify-content-center mb-3 ml-5">
                         <div class="col-lg-3 col-md-6 col-12 list">
                           Birth Certificate <span class="text-danger">*</span>
                         </div>
@@ -493,7 +781,7 @@
                          <small class="text-danger"><b>{{ $errors->first('doc1', 'Upload Bith Certificate') }}</b></small>
                         </div>
                     </div>
-                    <div class="row justify-content-center mb-3">
+                    <div class="row justify-content-center mb-3 ml-5">
                         <div class="col-lg-3 col-md-6 col-12 list">
                           National ID Card <span class="text-danger">*</span>
                         </div>
@@ -506,7 +794,7 @@
                          <small class="text-danger"><b>{{ $errors->first('doc2', 'Upload National ID Card') }}</b></small>
                         </div>
                     </div>
-                    <div class="row justify-content-center mb-3">
+                    <div class="row justify-content-center mb-3 ml-5">
                         <div class="col-lg-3 col-md-6 col-12 list">
                           GCE O/L Certificate <span class="text-danger">*</span>
                         </div>
@@ -519,7 +807,7 @@
                          <small class="text-danger"><b>{{ $errors->first('doc3', 'Upload GCE O/L Certificate') }}</b></small>
                         </div>
                     </div>
-                    <div class="row justify-content-center mb-3">
+                    <div class="row justify-content-center mb-3 ml-5">
                         <div class="col-lg-3 col-md-6 col-12 list">
                           GCE A/L Certificate <br>or<br>Result Slip
                         </div>
@@ -533,8 +821,8 @@
                         </div>
                     </div>
 
-                    <button type="button" class="form-wizard-prev-btn float-left rounded-0 mb-5 prev"><span class="ti-arrow-left"></span>Back</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <button type="button" id="next3" class="form-wizard-next-btn float-right rounded-0 mb-5 next">Next <span class="ti-arrow-right"></span></button>
+                    <button type="button" class="form-wizard-prev-btn float-left rounded-0 mb-5 mt-3 prev"><span class="ti-arrow-left"></span>Back</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button type="button" id="next3" class="form-wizard-next-btn float-right rounded-0 mb-5 mt-3 next">Next<span class="ti-arrow-right"></span></button>
                 </div>
             </div>
             <div class="card b-0 rounded-0">
@@ -549,187 +837,6 @@
                         <h6 class="step-title-0"> <span class="fa fa-check-circle"></span> <span class="break-line"></span> <span class="step-title">Doucuments Upload</span> </h6>
                     </div>
                     <div class="col-md-3 col-4 step-box active">
-                        <h6 class="step-title-0"> <span class="ti-wallet"></span> <span class="break-line"></span> <span class="step-title">Payment</span> </h6>
-                    </div>
-                </div>
-                <div class="p-3 justify-content-center mb-5 pt-5 text-center">
-                    <h4 class="heading">Verify and Confirm your information</h4>
-                    <div class="row d-flex justify-content-center">
-                        <div class="col-lg-9 col-md-9 mb-4">
-                            <h6 class="confirm">Verify your Information and press confirm to proceed to payment</h6>
-                            <table id="user" class="table table-bordered table-striped">
-                                <tbody class="text-left">
-                                <tr>
-                                    <td>Institution</td>
-                                    <td>
-                                        <a>{{old('institution', $user->institution)}}</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Degree</td>
-                                    <td>
-                                        <a>{{old('degree', $user->degree)}}</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>First Choice</td>
-                                    <td>
-                                        <a>{{old('first_choice', $user->first_choice)}}</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Second Choice</td>
-                                    <td>
-                                        <a>{{old('second_choice', $user->second_choice)}}</a>
-                                    </td>
-                                </tr>
-                                 <tr>
-                                    <td>First Name</td>
-                                    <td>
-                                        <a>{{old('firs_name', $user->first_name)}}</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Last Name</td>
-                                    <td>
-                                        <a>{{old('last_name', $user->last_name)}}</a>
-                                    </td>
-                                </tr>
-                                 <tr>
-                                    <td>Address</td>
-                                    <td>
-                                        <a>{{old('address', $user->address)}}</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Email</td>
-                                    <td>
-                                        <a>{{old('email', $user->email)}}</a>
-                                    </td>
-                                </tr>
-                                 <tr>
-                                    <td>Telephone</td>
-                                    <td>
-                                        <a>{{old('telephone', $user->telephone)}}</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Postal</td>
-                                    <td>
-                                        <a>{{old('postal', $user->postal)}}</a>
-                                    </td>
-                                </tr>
-                                 <tr>
-                                    <td>Date of Birth</td>
-                                    <td>
-                                        <a>{{old('dob', $user->dob)}}</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Last Name</td>
-                                    <td>
-                                        <a>{{old('last_name', $user->last_name)}}</a>
-                                    </td>
-                                </tr>
-                                 <tr>
-                                    <td>Place of Birth</td>
-                                    <td>
-                                        <a>{{old('pob', $user->pob)}}</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Gender</td>
-                                    <td>
-                                        <a>{{old('gender', $user->gender)}}</a>
-                                    </td>
-                                </tr>
-                                 <tr>
-                                    <td>Marital Status</td>
-                                    <td>
-                                        <a>{{old('marital_status', $user->marital_status)}}</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Nationality</td>
-                                    <td>
-                                        <a>{{old('country', $user->country)}}</a>
-                                    </td>
-                                </tr>
-                                 <tr>
-                                    <td>First Language</td>
-                                    <td>
-                                        <a>{{old('first_language', $user->first_language)}}</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Correspondence Language</td>
-                                    <td>
-                                        <a>{{old('correspondence_language', $user->correspondence_language)}}</a>
-                                    </td>
-                                </tr>
-                                 <tr>
-                                    <td>Name</td>
-                                    <td>
-                                        <a>{{old('g_name', $user->g_name)}}</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Email</td>
-                                    <td>
-                                        <a>{{old('g_email', $user->g_email)}}</a>
-                                    </td>
-                                </tr>
-                                 <tr>
-                                    <td>Telephone</td>
-                                    <td>
-                                        <a>{{old('g_telephone', $user->g_telephone)}}</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Address</td>
-                                    <td>
-                                        <a>{{old('g_address', $user->g_address)}}</a>
-                                    </td>
-                                </tr>
-                                 <tr>
-                                    <td>Secondary School</td>
-                                    <td>
-                                        <a>{{old('previous_inst1', $user->previous_inst1)}}</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>High School</td>
-                                    <td>
-                                        <a>{{old('previous_inst2', $user->previous_inst2)}}</a>
-                                    </td>
-                                </tr>
-                                 <tr>
-                                    <td>University/Higher Institution</td>
-                                    <td>
-                                        <a>{{old('previous_inst3', $user->previous_inst3)}}</a>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div> 
-                    <button type="button" class="form-wizard-prev-btn float-left rounded-0 mb-5 prev"><span class="ti-arrow-left"></span>Back</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <button type="button" class="form-wizard-next-btn float-right rounded-0 mb-5 next" id="btn">Save</button>
-                </div>
-            </div>
-            
-            <div class="card b-0 rounded-0">
-                <div class="row justify-content-center mx-auto step-container">
-                    <div class="col-md-3 col-4 step-box completed">
-                        <h6 class="step-title-0"> <span class="fa fa-check-circle"></span> <span class="break-line"></span> <span class="step-title">Institutions & Programmes</span></h6>
-                    </div>
-                    <div class="col-md-3 col-4 step-box completed">
-                        <h6 class="step-title-0"> <span class="fa fa-check-circle"></span> <span class="break-line"></span> <span class="step-title">Personal Information</span></h6>
-                    </div>
-                    <div class="col-md-3 col-4 step-box completed">
-                        <h6 class="step-title-0"> <span class="fa fa-check-circle"></span> <span class="break-line"></span> <span class="step-title">Doucuments Upload</span> </h6>
-                    </div>
-                    <div class="col-md-3 col-4 step-box completed">
                         <h6 class="step-title-0"> <span class="ti-wallet"></span> <span class="break-line"></span> <span class="step-title">Payment</span> </h6>
                     </div>
                 </div>
@@ -747,7 +854,7 @@
                                     <option value="om" style="background-image:url(images/volvo.png);">Orange Money</option>
                                     <option value="express_union" style="background-image:url(images/volvo.png);">Express Union Mobile Money</option>
                                 </select>
-                                <small class="text-danger"><b>{{ $errors->first('paid_via', ':message') }}</b></small>
+                                @error('paid_via') <small class="error-message"><b><span class="ti-info-alt"></span>{{'This field is required'}}</b></small>  @enderror
                             </div>
                         </div>
                     </div>
@@ -758,6 +865,7 @@
                         <div class="col-lg-6 col-md-6 col-12 list">
                             <div class="form-group">
                                 <input type="text" id="payment_reference"  name="payment_reference"  placeholder="Enter payment/transaction ID here" class="form-control required"/>
+                                @error('payment_reference') <small class="error-message"><b><span class="ti-info-alt"></span>{{'This field is required'}}</b></small>  @enderror
                             </div>
                         </div>
                     </div>
@@ -774,7 +882,8 @@
                         <div class="p-0"><img src="{{asset('images/express_union.png')}}" class="payment"></div>
                         <div class="p-0"><img src="{{asset('images/bank.jpeg')}}" class="payment"></div>
                     </div>
-                    <button class="form-wizard-prev-btn float-left rounded-0 mb-5 prev"><span class="ti-arrow-left"></span>Back</button> <button type="submit" id="next3" class="form-wizard-next-btn float-right rounded-0 mb-3 next">Submit</button>
+                    <button type="button" class="form-wizard-prev-btn float-left rounded-0 mb-5 mt-3 prev"><span class="ti-arrow-left"></span>Back</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button type="submit" id="next3" class="form-wizard-next-btn float-right rounded-0 mb-3 next">Submit</button>
                     <br>
                     <div class="d-flex justify-content-between border-top mt-5">
                         
@@ -789,53 +898,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="card b-0 rounded-0">
-                <div class="row justify-content-center mx-auto step-container">
-                    <div class="col-md-3 col-4 step-box completed">
-                        <h6 class="step-title-0"> <span class="fa fa-check-circle"></span> <span class="break-line"></span> <span class="step-title">Institutions & Programmes</span></h6>
-                    </div>
-                    <div class="col-md-3 col-4 step-box completed">
-                        <h6 class="step-title-0"> <span class="fa fa-check-circle"></span> <span class="break-line"></span> <span class="step-title">Personal Information</span></h6>
-                    </div>
-                    <div class="col-md-3 col-4 step-box completed">
-                        <h6 class="step-title-0"> <span class="fa fa-check-circle"></span> <span class="break-line"></span> <span class="step-title">Doucuments Upload</span> </h6>
-                    </div>
-                    <div class="col-md-3 col-4 step-box completed">
-                        <h6 class="step-title-0"> <span class="fa fa-check-circle"></span> <span class="break-line"></span> <span class="step-title">Payment</span> </h6>
-                    </div>
-                </div>
-                <div class="p-3 justify-content-center text-center">
-                    <h4 class="heading">End</h4>
-                    <div class="row d-flex justify-content-center">
-                        <div class="mb-4">
-                            <h6 class="confirm">Verify all entered details and press confirm</h6>
-                        </div>
-                    </div> 
-                    <button type="button" class="form-wizard-prev-btn rounded-0 mb-5 prev"><span class="ti-arrow-left"></span>Back</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <button type="submit" class="btn btn-primary rounded-0 mb-5 next">Save</button>
-                </div>
-            </div>
             </div>
         </div>
     </div>
 </div>
 </fieldset>
 {!!  Form::close()  !!}
-<script>
-    function results(){
 
-        var first_name = document.getElementById('first_name').value;
-        var email = document.getElementById('email').value;
-
-        document.write("<h1>Thank You</h1>");
-        document.write("<h1>Hello</h1>");
-
-        document.write(first_name + "<br/>");
-        document.write(email + "<br/>");
-
-
-    }
-</script>
 
 <!--============================
 =            Footer            =
@@ -986,6 +1055,22 @@ reader.readAsDataURL(file[0]);
 } else {
 alert("This browser does not support HTML5 FileReader.");
 }
+});
+</script>
+<script>
+function addRow() {
+   let row = $('tbody tr:first').clone();
+   row.find('input[type!=button]').val('');
+   $('#tbl tbody').append(row);
+}
+
+$('#tbl').on('click', '.add-row', addRow);
+
+$('#tbl').on('change', 'input', function() {
+  if($(this).val() != '' &&
+     $(this).closest('tr').is(':last-child')) {
+    addRow();
+  }
 });
 </script>
 </body>

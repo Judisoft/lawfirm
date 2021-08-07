@@ -49,4 +49,10 @@ class User extends EloquentUser
     {
         return $this->belongsTo(Country::class);
     }
+    /*
+    public function institution();
+    {
+         $this->hasMany(Institution::class);
+    }
+    */
 }
