@@ -9,7 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>
         @section('title')
-          Admin  | Ebai Law Firm
+          Admin  | StudPort
         @show
     </title>
 
@@ -24,7 +24,7 @@
 <body class="skin-josh">
 <header class="header">
     <a href="{{ route('admin.dashboard') }}" class="logo">
-       LOGO
+       <img src="{{asset('images/recruit.png')}}" class="img-fluid" />
     </a>
     <nav class="navbar navbar-static-top" role="navigation">
         <!-- Sidebar toggle button-->

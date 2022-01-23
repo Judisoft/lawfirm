@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Programme;
 
 class ProgrammesController extends Controller
 {
@@ -13,7 +14,9 @@ class ProgrammesController extends Controller
      */
     public function index()
     {
-        //
+        $programs = Programme::orderBy('name', 'ASC')->get();
+        
+        return view('programmes.index', compact('programs'));
     }
 
     /**
@@ -81,4 +84,6 @@ class ProgrammesController extends Controller
     {
         //
     }
+
+    
 }

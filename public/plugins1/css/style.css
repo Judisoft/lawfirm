@@ -149,8 +149,23 @@ a:hover {
   background-size: cover;
 }
 .bg-2 {
-  background: url(../../images/institution/campus.jpg) fixed no-repeat;
+  background: url(../../images/institution/campus1.jpg)  fixed no-repeat;
   background-size: cover;
+  
+}
+.bg-3 {
+  background: url(../../images/institution/programs2.jpg)  fixed no-repeat;
+  background-size: cover;
+  
+}
+.bg-4 {
+  background: url(../../images/institution/campus1.jpg)  fixed no-repeat;
+  background-size: cover;
+}
+.bg-5 {
+  background: url(../../images/institution/home.svg)  fixed no-repeat;
+  background-size: cover;
+  
 }
 
 .bg-coming-soon {
@@ -412,10 +427,10 @@ button:focus,
 .main-nav .navbar-nav .nav-item .nav-link {
   position: relative;
   text-align: center;
-  font-size: 13px;
-  text-transform: uppercase;
-  font-weight: 600;
-  color: #000;
+  font-size: 14px;
+  text-transform: capitalize;
+  font-weight: 700;
+  color: #0F2E75;
   padding-left: 20px;
   padding-right: 20px;
   line-height: 45px;
@@ -506,7 +521,7 @@ button:focus,
 }
 
 .main-nav .dropdown .dropdown-menu .dropdown-item.active, .main-nav .dropdown .dropdown-menu .dropdown-item.focus, .main-nav .dropdown .dropdown-menu .dropdown-item:focus, .main-nav .dropdown .dropdown-menu .dropdown-item:hover {
-  background-color: ;
+  background-color: var(--primary);
   color: #2e7eed;
   border-left: 3px solid #2e7eed;
   font-weight: 800;
@@ -1091,15 +1106,16 @@ button:focus,
 }
 
 .video-promo .content-block a i.video {
-  height: 125px;
-  width: 125px;
-  background: #2e7eed;
+  height: 60px;
+  width: 95px;
+  background: var(--danger);
   display: inline-block;
-  font-size: 40px;
+  font-size: 25px;
   color: #fff;
   text-align: center;
-  line-height: 125px;
-  border-radius: 100%;
+  line-height: 60px;
+  border-radius: 15px;
+  font-weight: 800;
 }
 
 .video-promo .content-block a:focus {
@@ -1971,11 +1987,11 @@ hr {
   position: -webkit-sticky;
   position: sticky;
   top: 100px;
-  background: #6495ED;
+  background: #1E3852;
   padding: 30px 0;
   display: flex;
   justify-content: center;
-  border-top: 3px solid var(--primary);
+  border-top: 3px solid var(--warning);
   border-left: none !important;
   border-radius: 0 0 3px 3px;
 }
@@ -1991,7 +2007,7 @@ hr {
 
 .privacy .privacy-nav ul li a {
   font-size: 16px;
-  color: #fff;
+  color: var(--warning);
   padding: 10px 0;
   font-weight: 500;
   display: block;
@@ -2005,7 +2021,7 @@ hr {
 }
 
 .privacy .privacy-nav ul li a.active {
-  color: var(--dark);
+  color: var(--light);
 }
 
 @media (max-width: 768px) {
@@ -2017,7 +2033,7 @@ hr {
 .privacy .block {
   background: #fff;
   padding: 40px 50px;
-  border-top: 3px solid var(--primary);
+  border-top: 3px solid var(--warning);
 }
 
 .privacy .block .policy-item {

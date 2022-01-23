@@ -85,12 +85,7 @@ Route::group(
         Route::post('modelCheck', 'ModelcheckController@modelCheck');
 
         // Dashboard / Index
-        Route::get(
-            '/',
-            function () {
-                return view('admin.index');
-            }
-        )->name('dashboard');
+        Route::get('/', 'JoshController@dashboard')->name('dashboard');
         Route::get('index1', 'JoshController@showHome');
         // crop demo
         Route::post('crop_demo', 'JoshController@cropDemo')->name('crop_demo');
@@ -314,6 +309,8 @@ Route::group(
         Route::get('/print/print1', 'PrintController@printOne')->name('printOne');
         Route::get('/print/print2', 'PrintController@printTwo')->name('printTwo');
         Route::get('/print/print3', 'PrintController@printThree')->name('printThree');
+        Route::get('application', 'FrontEndController@application')->name('application');
+        Route::get('institution/admin', 'InstitutionAdminController@index')->name('institution-admin');
     }
 );
 // Email System
@@ -399,3 +396,6 @@ Route::get('qr-code-g', function () {
   return view('print');
     
 });
+//Programmes
+Route::get('programmes/index', 'ProgrammesController@index')->name('study-programs');
+ 

@@ -4,7 +4,7 @@
 <head>
 <meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
-<title>StudPort Admissions Portal</title>
+<title>Student Portal CM</title>
 <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' rel='stylesheet'>
 <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css' rel='stylesheet'>
 <!-- PLUGINS CSS STYLE -->
@@ -22,75 +22,31 @@
 <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 </head>
 <body oncontextmenu='return false' class='snippet-body'>
-<nav class="navbar main-nav fixed-top navbar-expand-lg border-bottom px-2 px-sm-0 py-2 py-lg-0">
-  <div class="container">
-    <a class="navbar-brand" href="index.html"><img src="{{asset('images/recruit.png')}}" style="height: 40px; width: 40px;" alt="logo"><span class="h5 text-dark text-capitalize"><b>Admissions Portal<b></span></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+<nav class="navbar main-nav fixed-top navbar-expand-lg px-2 px-sm-0 py-2 py-lg-0 bg-light border-bottom shadow" style="overflow-x: hidden;">
+  <div class="container-fluid">
+        <a class="navbar-brand" href="{{route('home')}}"><img src="{{asset('images/recruit.png')}}" style="height: 35px; width: 35px;" alt="logo"><span class="h5  text-dark text-capitalize px-2"><b class="text-dark" style="padding-top: 5px;">Student Portal CM</b> <b class="text-warning"></b></span></a>    
+        <button class="navbar-toggler mt-3" type="button" data-toggle="collapse" data-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="ti-menu"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item @@contact">
+       <li class="nav-item {!! (Request::is('/admissions/institution_details/') ? 'active' : '') !!}">
           <a class="nav-link" href="/admissions/institutions/">Institutions</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">About Us
-            <span><i class="ti-angle-down"></i></span>
-          </a>
-          <!-- Dropdown list -->
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item @@team" href="team.html">Our Team</a></li>
-            <li><a class="dropdown-item @@career" href="career.html">FAQs</a></li>
-            <li><a class="dropdown-item @@blog" href="blog.html">Our Mission</a></li>
-            <li><a class="dropdown-item @@blog" href="blog.html">Privacy Policies</a></li>
-          </ul>
+          <a class="nav-link" href="{{route('study-programs')}}">Programs </a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Services
-            <span><i class="ti-angle-down"></i></span>
-          </a>
-          <!-- Dropdown list -->
-          <ul class="dropdown-menu">
-            <li class="dropdown dropdown-submenu dropright">
-              <a class="dropdown-item dropdown-toggle" href="#!" id="dropdown0301" role="button"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Academics</a>
-
-              <ul class="dropdown-menu" aria-labelledby="dropdown0301">
-                <li><a class="dropdown-item" href="index.html">Questions and answer</a></li>
-                <li><a class="dropdown-item" href="index.html">Online Courses</a></li>
-                <li><a class="dropdown-item" href="index.html">Digital Library</a></li>
-              </ul>
-            </li>
-            <li><a class="dropdown-item" href="homepage-2.html">General IT Support</a></li>
-            <li><a class="dropdown-item active3" href="homepage-3.html">Internship Placements</a></li>
-            <li><a class="dropdown-item active3" href="homepage-3.html">Online Application</a></li>
-            <li><a class="dropdown-item active3" href="homepage-3.html">Tutoring Jobs</a></li>
-          </ul>
+        @if(Sentinel::check())
+          <li class="nav-item">
+            <a class="nav-link " href="{{route('application')}}">Apply</a>
+          </li>
+        @endif
+        <li class="nav-item {!! (Request::is('contact') ? 'active' : '') !!}">
+          <a class="nav-link" href="{{route('contact')}}">Need help?</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">About Us
-            <span><i class="ti-angle-down"></i></span>
-          </a>
-          <!-- Dropdown list -->
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item @@team" href="team.html">Our Team</a></li>
-            <li><a class="dropdown-item @@career" href="career.html">FAQs</a></li>
-            <li><a class="dropdown-item @@blog" href="blog.html">Our Mission</a></li>
-            <li><a class="dropdown-item @@blog" href="blog.html">Privacy Policies</a></li>
-          </ul>
-        </li>
-        <li class="nav-item @@contact">
-          <a class="nav-link" href="{{route('contact')}}">Need Help?</a>
-        </li>
-         <li class="nav-item dropdown">
-          <a class="nav-link btn-primary text-light dropdown-toggle" href="{{route('login')}}" data-toggle="dropdown"><b>{{Sentinel::getUser()->full_name}} </b></a>
-          </a>
-          <!-- Dropdown list -->
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item @@team" href="team.html">My Account</a></li>
-            <li><a class="dropdown-item @@career" href="{{route('logout')}}">Log Out</a></li>
-          </ul>
+        <li class="nav-item">
+          <a class="nav-link btn-warning" href="{{route('login')}}"><i class="ti-shopping-cart px-2"></i><b>StudPort Market</b></a>
         </li>
       </ul>
     </div>

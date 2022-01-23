@@ -430,10 +430,7 @@ class UsersController extends JoshController
         try {
             // Get the user information
             $user = Sentinel::findUserById($id);
-            //get country name
-            if ($user->country) {
-                $user->country = $this->countries[$user->country];
-            }
+
         } catch (UserNotFoundException $e) {
             // Prepare the error message
             $error = trans('users/message.user_not_found', compact('id'));

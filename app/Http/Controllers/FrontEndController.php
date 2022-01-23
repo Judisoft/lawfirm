@@ -49,7 +49,7 @@ class FrontEndController extends JoshController
     {
         // Is the user logged in?
         if (Sentinel::check()) {
-            return Redirect::route('my-account');
+            return Redirect::route('application');
         }
         // Show the login page
         return view('login');
@@ -72,7 +72,7 @@ class FrontEndController extends JoshController
                     ->causedBy($user)
                     ->log('LoggedIn');
 
-                return Redirect::route("my-account")->with('success', trans('auth/message.login.success'));
+                return Redirect::route("application")->with('success', trans('auth/message.login.success'));
             } else {
                 return redirect('login')->with('error', 'Email or password is incorrect.');
             }
@@ -92,8 +92,13 @@ class FrontEndController extends JoshController
         // Ooops.. something went wrong
         return Redirect::back()->withInput()->withErrors($this->messageBag);
     }
+    /** Let user choose an action */
+    public function application()
+    {
+        return view('application');
+    }
 
-    /**
+    /**L
      * get user details and display
      */
     public function myAccount()
@@ -340,7 +345,7 @@ class FrontEndController extends JoshController
     {
         // Is the user logged in?
         if (Sentinel::check()) {
-            return Redirect::route('my-account');
+            return Redirect::route('application');
         }
 
         $user = Sentinel::findById($userId);

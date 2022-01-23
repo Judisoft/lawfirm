@@ -12,6 +12,7 @@ use Yajra\DataTables\DataTables;
 use App\Charts\Highcharts;
 use App\Models\User;
 use App\Models\Consultation;
+use App\Models\Institution;
 use Illuminate\Support\Facades\DB;
 use Spatie\Analytics\Period;
 use File;
@@ -72,6 +73,17 @@ class JoshController extends Controller
         } else {
             abort('404');
         }
+    }
+
+    public function dashboard() 
+    {
+        $user = Sentinel::getUser();
+        $user_name = Sentinel::getUser()->first_name . ' ' .Sentinel::getUser()->last_name;
+        $users = User::latest()->simplePaginate(10);
+        $revenue = User::sum('amount');
+        $institutions = Institution::all()->count();
+        $applications = User::where("institution", "!=", null)->count();
+        return view('admin.index', compact('users', 'revenue', 'institutions', 'applications', 'user_name', 'user'));
     }
 
     public function activityLogData()

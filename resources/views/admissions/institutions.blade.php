@@ -41,15 +41,35 @@ p{
 .policy-item a, p{
 	font-weight: 600;
 }
+nav > ul >li a{
+	font-family: "Open-Sans", sans-serif;
+    font-size: 20px;
+}
+
 </style>
 {{-- Page content --}}
 @section('content')
+<!--================================
+=            Page Title            =
+=================================-->
+<section class="video-promo section bg-4">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="content-block">
+					<!-- Heading -->
+					<h1 class="text-white" style="font-weight: 800;">Apply to your Dream School</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
 
 <!--====================================
 =            List of Institutions          =
 =====================================-->
 <section class="privacy section mt-0">
-	<div class="container">
+	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-3">
 				<nav class="privacy-nav bg-side-bar">

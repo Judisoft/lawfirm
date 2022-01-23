@@ -1,40 +1,67 @@
+
+<style>
+.error-message{
+    color: var(--danger);
+    font-size: 12px;
+    background-color: transparent;
+    padding:10px;
+    margin: auto;
+}
+.success-message{
+    color: var(--success);
+    font-size: 12px;
+    background-color: transparent;
+    padding:10px;
+    margin: 5px;
+}
+.info-message{
+    color: var(--info);
+    font-size: 12px;
+    background-color: transparent;
+    padding:10px;
+    margin: auto;
+}
+.warning-message{
+    color: var(--warning);
+    font-size: 12px;
+    background-color: transparent;
+    padding:10px;
+    margin: auto;
+}
+</style>
+
+
 @if ($errors->any())
-<div class="alert alert-danger alert-dismissable margin5">
-  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-  <strong>Error:</strong> Please check the form below for errors
+<div class="error-message">
+  <strong>Please check the form below for errors</strong> 
 </div>
 @endif
 
 @if ($message = Session::get('success'))
-<div class="alert alert-success alert-dismissable margin5">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    <strong>Success:</strong> {{ $message }}
+<div class="success-message">
+    <strong>{{ $message }}</strong> 
 </div>
 @endif
 
 @if ($message = Session::get('error'))
-<div class="alert alert-danger alert-dismissable margin5">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    <strong>Error:</strong> {{ $message }}
+<div class="error-message">
+    <strong>{{ $message }}</strong> 
 </div>
 @endif
 
 @if ($message = Session::get('warning'))
-<div class="alert alert-warning alert-dismissable margin5">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    <strong>Warning:</strong> {{ $message }}
+<div class="warming-message">
+    <strong>{{ $message }}</strong> 
 </div>
 @endif
 
 @if ($message = Session::get('info'))
-<div class="alert alert-info alert-dismissable margin5">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    <strong>Info:</strong> {{ $message }}
+<div class="info-message">
+    <strong>{{ $message }}</strong>
 </div>
 @endif
 @if ($message = Session::get('msg'))
     <div class="alert alert-danger alert-dismissable margin5">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <strong>Error:</strong> {{ $message }}
+        <strong>{{ $message }}</strong> 
     </div>
 @endif

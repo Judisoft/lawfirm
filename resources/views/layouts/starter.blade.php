@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
         @section('title')
-            StudPort
+            Student Portal CM
         @show
     </title>
     <!-- PLUGINS CSS STYLE -->
@@ -38,10 +38,9 @@
 
 </style>
 <body class="body-wrapper bg-light" data-spy="scroll" data-target=".privacy-nav">
-<nav class="navbar main-nav fixed-top navbar-expand-lg px-2 px-sm-0 py-2 py-lg-0 bg-light border-bottom" style="overflow-x: hidden;">
-  <div class="container">
-    <a class="navbar-brand" href="index.html"><img src="{{asset('images/recruit.png')}}" style="height: 40px; width: 40px;" alt="logo"><span class="h5 text-dark text-capitalize"><b>Admissions Portal<b></span></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+<nav class="navbar main-nav fixed-top navbar-expand-lg px-2 px-sm-0 py-2 py-lg-0 bg-light border-bottom shadow" style="overflow-x: hidden;">
+  <div class="container-fluid">
+        <a class="navbar-brand" href="{{route('home')}}"><img src="{{asset('images/recruit.png')}}" style="height: 35px; width: 35px;" alt="logo"><span class="h5  text-dark text-capitalize px-2"><b class="text-dark" style="padding-top: 5px;">Student Portal CM</b> <b class="text-warning"></b></span></a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="ti-menu"></span>
     </button>
@@ -50,20 +49,20 @@
        <li class="nav-item {!! (Request::is('/admissions/institution_details/') ? 'active' : '') !!}">
           <a class="nav-link" href="/admissions/institutions/">Institutions</a>
         </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link" href="{{route('study-programs')}}">Programs </a>
+        </li>
         @if(Sentinel::check())
           <li class="nav-item">
-            <a class="nav-link " href="{{route('my-account')}}">Apply Now</a>
+            <a class="nav-link " href="{{route('application')}}">Apply</a>
           </li>
         @endif
-        <li class="nav-item">
-          <a class="nav-link {!! (Request::is('about_us') ? 'active' : '') !!}" href="{{route('about')}}">Admissions</a>
-        </li>
        
         <li class="nav-item {!! (Request::is('contact') ? 'active' : '') !!}">
           <a class="nav-link" href="{{route('contact')}}">Need help?</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link btn-primary text-light" href="{{route('login')}}"><i class="ti-shopping-cart px-2"></i><b>Buy Textbooks</b></a>
+          <a class="nav-link btn-warning" href="{{route('login')}}"><i class="ti-shopping-cart px-2"></i><b>StudPort Market</b></a>
         </li>
       </ul>
     </div>
@@ -80,7 +79,7 @@
       <div class="row">
         <div class="col-lg-4 col-md-12 m-md-auto align-self-center">
           <div class="block">
-            <a href="index.html" class="text-light"><b>Admissions Portal</b></a>
+            <a href="index.html" class="text-light"><b>Admission Portal</b></a>
             <!-- Social Site Icons -->
             <ul class="social-icon list-inline mt-2">
               <li class="list-inline-item">
